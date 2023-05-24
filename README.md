@@ -18,6 +18,7 @@
 ### Links
 
 - Youtube video with detailed review is [here](https://www.youtube.com/watch?v=Pdhb9uNnzU0)
+- Short typing video [here](https://www.youtube.com/watch?v=eU5eg4PKMlQ)
 - Reddit [thread](https://www.reddit.com/r/ErgoMechKeyboards/comments/13qep4y/after_4_year_lurking_and_2_years_building_my_own/)
 - You can find zmk-config for this board [here](https://github.com/yangit/zmk-config/)
 - It took me two years to finish this project, thanks to [KBD.news](https://kbd.news/) for inspiration!
