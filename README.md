@@ -2,7 +2,7 @@
 ## Features
 
 - Thumb cluster with 6 keys, easy to use in combos, so ~12 combinations depending on how you setup combos
-- 12g springs to make same finger combos super easy
+- 15g SPRiT springs to make same finger combos super easy
 - Thumb cluster keys are designed to be poked with thumb nail/nose, not pressed with soft area, allows for easy access to all 6 keys with no wrist movement
 - Low distance between pinky and the table, allows to rest palms directly on the table without floating them, or using wrist rests.
 - Heavy tenting at 60 degrees
