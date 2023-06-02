@@ -87,88 +87,73 @@ module nice_nano()
         translate([ 15.24, -7.62, 6.3 ]) color(pcbColor)
             import("/Users/y/Dropbox/github/flactyl/case/scad/3d-models/nice-nano.stl");
 }
+module case (){
+    color(caseColor)
+        difference(){union(){difference(){union(){intersection(){
+            // cutter in the pcb plane
+            anchor_pcb() translate(v = [ 0, 0, -200 ]) linear_extrude(height = 200) square(size = 400, center = true);
+            // projection of the case on the table
+            linear_extrude(height = 200) projection(cut = false) anchor_pcb() linear_extrude(0.001)
+                offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();}
+                                                  // case extension for stability
+                                                  intersection(){
+                                                      // bottom
+                                                      translate([ 0, 11, 0 ]) linear_extrude(height = 200)
+                                                          square([ 90 + caseThikness + wallOffsetFromPcb, 51 ]);
+                                                      // tented
+                                                      translate([ 0, 11, 0 ]) rotate([ 0, -tentingAngle, 0 ])
+                                                          translate([ 0, 0, -200 ]) linear_extrude(height = 200)
+                                                              square([ 90 + caseThikness + wallOffsetFromPcb, 51 ]);}}
+                                          // cutout for thumb cluster slide left
+                                          anchor_thumb() rotate([ -90, 0, 0 ]) translate([ 0, 0, -100 ])
+                                              linear_extrude(height = 100) projection(cut = false) rotate([ 90, 0, 0 ])
+                                                  linear_extrude(height = 100) offset(delta = 1) thumb_dxf();}
+                             // left key well
+                             anchor_pcb() color(caseColor) linear_extrude(keysThikness)
+                                 difference(){offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();
+                                              offset(wallOffsetFromPcb) left_pcb_dxf();}
+                             // thumb key well
+                             anchor_thumb() color(caseColor) linear_extrude(keysThikness)
+                                 difference(){offset(caseThikness + wallOffsetFromPcb) thumb_dxf();
+                                              offset(wallOffsetFromPcb) thumb_dxf();} anchor_thumb()
+                                     translate([ 0, 0, -caseThikness ]) linear_extrude(height = caseThikness)
+                                         offset(caseThikness + wallOffsetFromPcb) thumb_dxf();
+                             for (i = legs){
 
-color(caseColor) difference()
-{
-    union()
-    {
-        difference()
-        {
-            union()
-            {
-                intersection()
-                {
-                    // cutter in the pcb plane
-                    anchor_pcb() translate(v = [ 0, 0, -200 ]) linear_extrude(height = 200)
-                        square(size = 400, center = true);
-                    // projection of the case on the table
-                    linear_extrude(height = 200) projection(cut = false) anchor_pcb() linear_extrude(0.001)
-                        offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();
-                }
-                // case extension for stability
-                intersection()
-                {
-                    // bottom
-                    translate([ 0, 11, 0 ]) linear_extrude(height = 200)
-                        square([ 90 + caseThikness + wallOffsetFromPcb, 51 ]);
-                    // tented
-                    translate([ 0, 11, 0 ]) rotate([ 0, -tentingAngle, 0 ]) translate([ 0, 0, -200 ])
-                        linear_extrude(height = 200) square([ 90 + caseThikness + wallOffsetFromPcb, 51 ]);
-                }
-            }
-            // cutout for thumb cluster slide left
-            anchor_thumb() rotate([ -90, 0, 0 ]) translate([ 0, 0, -100 ]) linear_extrude(height = 100)
-                projection(cut = false) rotate([ 90, 0, 0 ]) linear_extrude(height = 100) offset(delta = 1) thumb_dxf();
-        }
-        // left key well
-        anchor_pcb() color(caseColor) linear_extrude(keysThikness) difference()
-        {
-            offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();
-            offset(wallOffsetFromPcb) left_pcb_dxf();
-        }
-        // thumb key well
-        anchor_thumb() color(caseColor) linear_extrude(keysThikness) difference()
-        {
-            offset(caseThikness + wallOffsetFromPcb) thumb_dxf();
-            offset(wallOffsetFromPcb) thumb_dxf();
-        }
-        anchor_thumb() translate([ 0, 0, -caseThikness ]) linear_extrude(height = caseThikness)
-            offset(caseThikness + wallOffsetFromPcb) thumb_dxf();
-        for (i = legs)
-        {
+                                 // leg hole support
+                                 translate([ i[0], i[1] ]) linear_extrude(caseThikness + legRubberDepth)
+                                     circle(r = (legRubberDiameter + 3) / 2);}}
+                     // cutout for nice nano
+                     anchor_pcb() translate([ 0, 0, -niceNanoCutoutDepth ]) linear_extrude(height = 200)
+                         offset(delta = 1) projection(cut = false) nice_nano();
 
-            // leg hole support
-            translate([ i[0], i[1] ]) linear_extrude(caseThikness + legRubberDepth)
-                circle(r = (legRubberDiameter + 3) / 2);
-        }
-    }
-    // cutout for nice nano
-    anchor_pcb() translate([ 0, 0, -niceNanoCutoutDepth ]) linear_extrude(height = 200) offset(delta = 1)
-        projection(cut = false) nice_nano();
+                     // cutout for nice nano side
+                     anchor_pcb() rotate([ -90, 0, 0 ]) translate([ 0, 0, 10 ]) linear_extrude(height = 100) hull()
+                         offset(delta = wallOffsetFromPcb) projection(cut = false) rotate([ 90, 0, 0 ]) nice_nano();
 
-    // cutout for nice nano side
-    anchor_pcb() rotate([ -90, 0, 0 ]) translate([ 0, 0, 10 ]) linear_extrude(height = 100) hull()
-        offset(delta = wallOffsetFromPcb) projection(cut = false) rotate([ 90, 0, 0 ]) nice_nano();
+                     // cutout for thumb cluster
+                     anchor_thumb() linear_extrude(height = 200) offset(delta = 1) thumb_dxf();
+                     // cutout for pcb
+                     anchor_pcb() linear_extrude(height = 200) offset(delta = 1) left_pcb_dxf();
 
-    // cutout for thumb cluster
-    anchor_thumb() linear_extrude(height = 200) offset(delta = 1) thumb_dxf();
-    // cutout for pcb
-    anchor_pcb() linear_extrude(height = 200) offset(delta = 1) left_pcb_dxf();
+                     for (i = legs){
+                         // leg hole
+                         translate([ i[0], i[1] ]) linear_extrude(height = legRubberDepth)
+                             circle(r = (legRubberDiameter + 1) / 2);}
+                     // // cutout for thumb cluster slide up
+                     // anchor_thumb() rotate([ -90, -90, 0 ]) linear_extrude(height = 100) projection(cut = fsalse)
+                     // rotate([ 90, 90,
 
-    for (i = legs)
-    {
-        // leg hole
-        translate([ i[0], i[1] ]) linear_extrude(height = legRubberDepth) circle(r = (legRubberDiameter + 1) / 2);
-    }
-    // // cutout for thumb cluster slide up
-    // anchor_thumb() rotate([ -90, -90, 0 ]) linear_extrude(height = 100) projection(cut = fsalse) rotate([ 90, 90,
+                     // ])
+                     //     linear_extrude(height = 100) thumb_dxf();
 
-    // ])
-    //     linear_extrude(height = 100) thumb_dxf();
+                     // table cut
+                     translate(v = [ 0, 0, -200 ]) linear_extrude(height = 200) square(size = 400, center = true);}}
 
-    // table cut
-    translate(v = [ 0, 0, -200 ]) linear_extrude(height = 200) square(size = 400, center = true);
-}
+//
+case ();
+
+// difference(){minkowski(){case (); sphere(r = 2 * caseThikness, 6);} translate([ 0, 0, caseThikness ]) case ();}
 
 // !difference()
 // {
