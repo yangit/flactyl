@@ -53,6 +53,11 @@ module left_cutouts_dxf()
     // bottom left corner
     translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_switch_cutouts.dxf");
 }
+module left_keycaps_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_keycaps.dxf");
+}
 module thumb_dxf()
 {
     // bottom left corner
@@ -148,18 +153,16 @@ module case (){
                      //     linear_extrude(height = 100) thumb_dxf();
 
                      // table cut
-                     translate(v = [ 0, 0, -200 ]) linear_extrude(height = 200) square(size = 400, center = true);}}
+                     translate(v = [ 0, 0, -200 ]) linear_extrude(height = 200) square(size = 400, center = true);
+                     anchor_pcb() linear_extrude(height = 200) offset(delta = wallOffsetFromPcb) left_keycaps_dxf();}}
 
 //
 case ();
 
 // difference(){minkowski(){case (); sphere(r = 2 * caseThikness, 6);} translate([ 0, 0, caseThikness ]) case ();}
 
-// !difference()
-// {
-//     left_pcb_dxf();
-//     left_cutouts_dxf();
-// }
+// difference(){left_pcb_dxf(); left_cutouts_dxf();}
+// difference(){lefqt_pcb_dxf(); left_keycaps_dxf();}
 
 // anchor_pcb() left_pcb();
 // anchor_pcb() left_keys();
