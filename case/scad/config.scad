@@ -1,0 +1,23 @@
+pcbAndHotswapThikness = 3;
+caseThikness = 2.5;
+wallOffsetFromPcb = 1;
+wallOffsetFromConnector = 2;
+tentingAngle = 60;
+tableThikness = 10;
+keysThikness = 11;
+caseColor = "grey";
+pcbColor = "darkgreen";
+keysColor = "white";
+thumbXOffset = 49;
+thumbYOffset = 28;
+thumbZOffset = 71;
+thumbXRotation = -20;
+thumbYRotation = 35;
+thumbZRotation = -10;
+niceNanoCutoutDepth = 8;
+switchCutout = 13.8;
+switchCutoutDepth = 2.2;
+// legs
+legRubberDepth = 1;
+legRubberDiameter = 8;
+legs = [ [ 5, 66 ], [ 5, 2 ], [ 88, 17 ], [ 88, 56 ] ];

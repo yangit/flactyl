@@ -1,3 +1,4 @@
+include <./config.scad>;
 module showVector(vector)
 // showVector(vector = [ 10, 10, 10 ]);
 {
@@ -23,9 +24,92 @@ module gimbalRotate(vector)
     zVector = [ sin(y), -sin(x) * cos(y), cos(x) * cos(y) ];
     rotate(a = z, v = zVector) rotate(a = y, v = yVector) rotate(a = x, v = xVector) children(0);
 }
+module push(x)
+{
+    if (x > 0)
+    {
+        linear_extrude(x) children(0);
+    }
+    else
+    {
+        translate([ 0, 0, x ]) linear_extrude(x * -1) children(0);
+    }
+}
 
 module find_anchor(v)
 {
     children(0);
     color("yellow") rotate(v) children(0);
+}
+
+module anchor_thumb()
+{
+    translate([ thumbXOffset, thumbYOffset, thumbZOffset ])
+        gimbalRotate([ thumbXRotation, thumbYRotation, thumbZRotation ]) rotate([ 0, 90, -90 ]) children(0);
+}
+module anchor_pcb()
+{
+    rotate([ 0, -tentingAngle, 0 ]) children(0);
+}
+module table()
+{
+    color("brown") translate([ -50, 0, -tableThikness ]) linear_extrude(tableThikness) square([ 300, 250 ]);
+}
+module left_case_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/case/scad/dxf/left_case.dxf");
+}
+module left_pcb_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/case/scad/dxf/left_pcb_edgecut.dxf");
+}
+module left_cutouts_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_switch_cutouts.dxf");
+}
+module left_keycaps_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_keycaps.dxf");
+}
+module thumb_dxf()
+{
+    // bottom left corner
+    translate([ 9, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/case/scad/dxf/thumb_pcb_edgecut.dxf");
+}
+module thumb_pcb()
+{
+    color("lightgreen") linear_extrude(pcbAndHotswapThikness) thumb_dxf();
+}
+module left_pcb()
+{
+    color(pcbColor) linear_extrude(pcbAndHotswapThikness) left_pcb_dxf();
+}
+module left_keys()
+{
+    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) left_pcb_dxf();
+}
+module left_case()
+{
+    color("grey") translate([ 0, 0, -caseThikness ]) linear_extrude(caseThikness) left_case_dxf();
+}
+module thumb_keys()
+{
+    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb_dxf();
+}
+module nice_nano_mount_to_pcb()
+{
+    // translate for the pcb anchor
+    translate([ 86.6, 29, 0 ]) rotate([ 180, 0, 90 ]) children(0);
+}
+module nice_nano()
+{
+    color("lightblue")
+
+        // set anchor to bottom outermost corner hole of the pcb
+        translate([ 15.24, -7.62, 6.3 ]) color(pcbColor)
+            import("/Users/y/Dropbox/github/flactyl/case/scad/3d-models/nice-nano.stl");
 }
