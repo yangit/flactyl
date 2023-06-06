@@ -174,17 +174,22 @@ module case (){
             anchor_pcb() nice_nano_mount_to_pcb() rotate([ 0, -90, 0 ]) translate([ 0, 0, -24 ]) push(-100)
                 offset(delta = wallOffsetFromConnector) hull() projection(cut = true) translate(v = [ 0, 0, 32.5 ])
                     rotate([ 0, 90, 0 ]) nice_nano();
-// left screw holes
- anchor_pcb() push(10, 10 + caseThikness) left_screw_holes_dxf();
+            
+            // left screw holes
+            anchor_pcb() push(10, 10 + caseThikness) left_screw_holes_dxf();
+            
             // cutout for thumb cluster
             anchor_thumb() push(200) offset(delta = 1) thumb_dxf();
+            
+            // power switch cutout
+            intersection()  {
+            
+                anchor_pcb() translate([ 25,0, -2.5 ]) sphere(12);
+                rotate([0,90-tentingAngle,0]) translate([0,0,19+caseThikness]) cut(cutter);
+            }
             // cutout for pcb
             anchor_pcb() push(200) offset(delta = 1) left_pcb_dxf();
-// power switch cutout
-intersection()  {
- anchor_pcb() translate([ 25, 10, -2.5 ]) sphere(12);
- rotate([0,90-tentingAngle,0]) translate([0,0,19+caseThikness]) cut(cutter);
-}
+
 
 
 // cutout for thumb cluster slide up 
@@ -217,3 +222,5 @@ for (i = [1:5])
 rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 100 ]);
 }
 }
+
+// case ();
