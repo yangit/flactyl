@@ -21,7 +21,14 @@ switchCutoutDepth = 2.2;
 extensionWidth = 60 + (caseThikness + wallOffsetFromPcb) * 2;
 extensionLength = 90;
 extensionShift = 11 - caseThikness - wallOffsetFromPcb;
+cutter = 400;
+ccFarWall = 110;
 // legs
 legRubberDepth = 1;
 legRubberDiameter = 8;
-legs = [ [ 5, 66 ], [ 5, 13 ], [ 88, 17 ], [ 88, 56 ] ];
+legsInsideDepth = 5;
+legs = [
+    [ 5, 66 - legRubberDiameter / 2 - caseThikness ], [ 5, 13 ],
+    [ ccFarWall - legRubberDiameter / 2 - caseThikness, 13 ],
+    [ ccFarWall - legRubberDiameter / 2 - caseThikness, 66 - legRubberDiameter / 2 - caseThikness ]
+];

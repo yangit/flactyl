@@ -63,27 +63,6 @@ module push(x)
 // }
 
 // wall by wall
-module cut(size)
-{
-
-    if (size > 0)
-    {
-        push(size) square([ size, size ], center = true);
-    }
-    else
-    {
-        push(size) square([ -size, -size ], center = true);
-    }
-}
-
-module wall(thikness, size)
-{
-    intersection()
-    {
-        cut(size);
-        translate([ 0, 0, thikness ]) cut(-size);
-    }
-}
 
 thick = 1;
 size = 40;

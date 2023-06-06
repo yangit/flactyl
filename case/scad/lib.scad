@@ -45,6 +45,35 @@ module push(x, y)
         }
     }
 }
+module cut(size)
+{
+
+    if (size > 0)
+    {
+        push(size) square([ size, size ], center = true);
+    }
+    else
+    {
+        push(size) square([ -size, -size ], center = true);
+    }
+}
+
+module wall(thikness, size)
+{
+    intersection()
+    {
+        cut(size);
+        translate([ 0, 0, thikness ]) cut(-size);
+    }
+}
+module showWall()
+{
+    union()
+    {
+        translate([ 0, 0, 15 ]) cube([ 1, 1, 30 ], center = true);
+        sphere(r = 5);
+    }
+}
 
 module find_anchor(v)
 {
