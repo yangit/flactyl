@@ -53,13 +53,20 @@ module case (){
                     // leg hole support
                     translate([ i[0], i[1] ]) linear_extrude(caseThikness + legRubberDepth)
                         circle(r = (legRubberDiameter + 3) / 2);}}
-            // cutout for nice nano
-            anchor_pcb() translate([ 0, 0, -niceNanoCutoutDepth ]) linear_extrude(height = 200) offset(delta = 1)
-                projection(cut = false) nice_nano_mount_to_pcb() nice_nano();
-
             // cutout for nice nano side
-            anchor_pcb() nice_nano_mount_to_pcb() rotate([ 0, -90, 0 ]) push(100)
-                translate([ 0, 0, -wallOffsetFromPcb ]) hull() projection(cut = true) rotate([ 0, 90, 0 ]) nice_nano();
+            anchor_pcb() rotate([ -90, 0, 0 ]) translate([ 0, 0, 20 ]) push(20) projection(cut = false)
+                rotate([ 90, 0, 0 ]) push(10, niceNanoCutoutDepth) offset(delta = wallOffsetFromPcb)
+                    projection(cut = false) nice_nano_mount_to_pcb() nice_nano();
+            nice_nano_mount_to_pcb() nice_nano();
+            // cutout for nice nano
+            anchor_pcb() push(10, niceNanoCutoutDepth) offset(delta = wallOffsetFromPcb) projection(cut = false)
+                nice_nano_mount_to_pcb() nice_nano();
+
+            // // cutout for nice nano side
+            // *anchor_pcb() nice_nano_mount_to_pcb() rotate([ 0, -90, 0 ]) push(100)
+            //     translate([ 0, 0, -wallOffsetFromPcb ]) offset(delta = wallOffsetFromPcb) hull() projection(cut =
+            //     true)
+            //         rotate([ 0, 90, 0 ]) nice_nano();
             // cutout for nice nano connector
             anchor_pcb() nice_nano_mount_to_pcb() rotate([ 0, -90, 0 ]) translate([ 0, 0, -24 ]) push(-100)
                 offset(delta = wallOffsetFromConnector) hull() projection(cut = true) translate(v = [ 0, 0, 32.5 ])

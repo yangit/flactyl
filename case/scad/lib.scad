@@ -24,15 +24,25 @@ module gimbalRotate(vector)
     zVector = [ sin(y), -sin(x) * cos(y), cos(x) * cos(y) ];
     rotate(a = z, v = zVector) rotate(a = y, v = yVector) rotate(a = x, v = xVector) children(0);
 }
-module push(x)
+module push(x, y)
 {
-    if (x > 0)
+    if (y == undef)
     {
-        linear_extrude(x) children(0);
+        if (x > 0)
+        {
+            linear_extrude(x) children(0);
+        }
+        else
+        {
+            translate([ 0, 0, x ]) linear_extrude(x * -1) children(0);
+        }
     }
     else
     {
-        translate([ 0, 0, x ]) linear_extrude(x * -1) children(0);
+        if (x > 0 && y > 0)
+        {
+            translate([ 0, 0, -y ]) linear_extrude(height = x + y) children(0);
+        }
     }
 }
 
