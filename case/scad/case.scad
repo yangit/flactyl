@@ -217,4 +217,3 @@ for (i = [1:5])
 rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 100 ]);
 }
 }
-case ();
