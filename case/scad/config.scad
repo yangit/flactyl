@@ -1,13 +1,14 @@
 pcbAndHotswapThikness = 3;
 caseThikness = 2.5;
 wallOffsetFromPcb = 1;
-wallOffsetFromConnector = 2;
+wallOffsetFromConnector = 3;
 tentingAngle = 60;
 tableThikness = 10;
 keysThikness = 11;
 caseColor = "grey";
 pcbColor = "darkgreen";
 keysColor = "white";
+screwBumpSize = 2.5;
 thumbXOffset = 49;
 thumbYOffset = 28;
 thumbZOffset = 71;
@@ -17,7 +18,10 @@ thumbZRotation = -10;
 niceNanoCutoutDepth = 8;
 switchCutout = 13.8;
 switchCutoutDepth = 2.2;
+extensionWidth = 60 + (caseThikness + wallOffsetFromPcb) * 2;
+extensionLength = 90;
+extensionShift = 11 - caseThikness - wallOffsetFromPcb;
 // legs
 legRubberDepth = 1;
 legRubberDiameter = 8;
-legs = [ [ 5, 66 ], [ 5, 2 ], [ 88, 17 ], [ 88, 56 ] ];
+legs = [ [ 5, 66 ], [ 5, 13 ], [ 88, 17 ], [ 88, 56 ] ];

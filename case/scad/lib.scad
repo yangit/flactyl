@@ -75,20 +75,46 @@ module left_pcb_dxf()
     // bottom left corner
     translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/case/scad/dxf/left_pcb_edgecut.dxf");
 }
-module left_cutouts_dxf()
-{
-    // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_switch_cutouts.dxf");
-}
 module left_keycaps_dxf()
 {
     // bottom left corner
     translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_keycaps.dxf");
 }
+module left_switch_cutouts_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_switch_cutouts.dxf");
+}
+module left_screw_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_screw.dxf");
+}
+module left_screw_holes_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_screw_holes.dxf");
+}
 module thumb_dxf()
 {
     // bottom left corner
     translate([ 9, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/case/scad/dxf/thumb_pcb_edgecut.dxf");
+}
+module thumb_switch_cutouts_dxf()
+{
+    // bottom left corner
+    translate([ 9, 8.5, 0 ])
+        import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/thumb/thumb_switch_cutouts.dxf");
+}
+module thumb_screw_dxf()
+{
+    // bottom left corner
+    translate([ 9, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/thumb/thumb_screw.dxf");
+}
+module thumb_screw_holes_dxf()
+{
+    // bottom left corner
+    translate([ 9, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/thumb/thumb_screw_holes.dxf");
 }
 module thumb_pcb()
 {
