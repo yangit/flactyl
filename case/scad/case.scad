@@ -10,16 +10,16 @@ module ccPcbAnchor()
 }
 module ccTopAnchor()
 {
-    translate([ 0, 0, 107 ]) rotate([ 0, 270, 0 ]) anchor_pcb() children(0);
+    translate([ 0, 0, 108 ]) rotate([ 0, 270, 0 ]) anchor_pcb() children(0);
 }
 module ccFrontAnchor()
 {
-    translate([ 0, 5 + caseThikness, 0 ]) rotate([ 90, 0, 180 ]) children(0);
+    translate([ 0, ccFrontWall, 0 ]) rotate([ 90, 0, 180 ]) children(0);
 }
 
 module ccBackAnchor()
 {
-    translate([ 0, 63 + caseThikness, 0 ]) rotate([ 90, 0, 0 ]) children(0);
+    translate([ 0, 58 + ccFrontWall + caseThikness, 0 ]) rotate([ 90, 0, 0 ]) children(0);
 }
 module ccFarAnchor()
 {
@@ -74,6 +74,23 @@ module ccFarWall()
         cut(cutter);
     }
 }
+module ccMagnetHolder()
+{
+    difference()
+    {
+        intersection()
+        {
+
+            wall(caseThikness, cutter);
+            ccFrontAnchor() cut(cutter);
+            ccFarAnchor() cut(cutter);
+            ccPcbAnchor() cut(cutter);
+            translate([ 0, magnetStripeWidth + caseThikness * 2, 0 ]) ccFrontAnchor() cut(-cutter);
+            // ccBackAnchor() cut(cutter);
+        }
+        translate([ 0, ccFrontWall + caseThikness, -0.001 ]) cube([ ccFarWall, magnetStripeWidth, magnetStripeDepth ]);
+    }
+}
 module ccCase()
 {
 
@@ -81,6 +98,7 @@ module ccCase()
     ccFrontWall();
     ccBackWall();
     ccFarWall();
+    ccMagnetHolder();
 }
 
 // ccPcbAnchor() showWall();
@@ -129,7 +147,6 @@ module case (){
 
                 // left key baseplate
                 union(){
-
                     difference(){
 
                         anchor_pcb() push(-caseThikness) offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();
@@ -164,10 +181,6 @@ module case (){
 
                         anchor_thumb() push(-caseThikness) offset(caseThikness + wallOffsetFromPcb) thumb_dxf();
 
-                        anchor_thumb() push(1, 1 + caseThikness) thumb_screw_holes_dxf();
-
-                        anchor_pcb() push(1, 3 + caseThikness) thumb_screw_holes_dxf();
-
 }
 
                     anchor_thumb() push(-caseThikness - screwBumpSize) thumb_screw_dxf();}
@@ -176,6 +189,9 @@ module case (){
                     // leg hole support
                     translate([ i[0], i[1] ]) push(caseThikness + legsInsideDepth + legRubberDepth)
                         circle(r = (legRubberDiameter + 3) / 2);}}
+
+            // cutout thumb screw holes
+            anchor_thumb() push(1, 3 + caseThikness) thumb_screw_holes_dxf();
             // cutout for nice nano side
             anchor_pcb() rotate([ -90, 0, 0 ]) translate([ 0, 0, 20 ]) push(20) projection(cut = false)
                 rotate([ 90, 0, 0 ]) push(10, niceNanoCutoutDepth) offset(delta = wallOffsetFromPcb)
@@ -195,6 +211,9 @@ module case (){
             // cutout for pcb
             anchor_pcb() push(200) offset(delta = 1) left_pcb_dxf();
 
+// cutout for thumb cluster slide up 
+anchor_thumb() translate([ 0, 0, keysThikness ]) rotate([ 0, -90, 0 ]) push(cutter) projection(cut = false)
+    rotate([ 0, 90, 0 ]) push(100) offset(delta = 1) thumb_dxf();
             // leg holes
             for (i = legs){
 
@@ -203,30 +222,22 @@ module case (){
 }
             // table cut
             cut(-cutter);
-            anchor_pcb() push(200) offset(delta = wallOffsetFromPcb) left_keycaps_dxf();}}
+            anchor_pcb() push(200) offset(delta = wallOffsetFromPcb) left_keycaps_dxf();
+            
+            
+            // screw holes front and back
+            for (i = [2:10])
+{
+    ccFrontAnchor() translate([ -10 * i, 10, 0 ]) push(cutter, cutter) circle(d = screwHoleDiameter);
+}
+
+// screw holes far
+for (i = [1:5])
+{
+    ccFarAnchor() translate([ 10, ccFrontWall + 10 * i, 0 ]) push(caseThikness + 1, caseThikness + 1)
+        circle(d = screwHoleDiameter);
+}
+}
+}
 
 case ();
-// push(2) left_keycaps_dxf();
-//     color("green") left_pcb_dxf();
-
-// difference(){minkowski(){case (); sphere(r = 2 * caseThikness, 6);} translate([ 0, 0, caseThikness ]) case ();}
-
-// anchor_pcb() difference(){left_pcb_dxf(); left_keycaps_dxf();}
-
-// anchor_pcb() left_pcb();
-// anchor_pcb() left_keys();
-// anchor_pcb() nice_nano_mount_to_pcb() nice_nano();
-// anchor_thumb() thumb_pcb();
-// anchor_thumb() thumb_keys();
-
-// find_anchor([ 0, 0, 0 ]) thumb_dxf();
-// difference()
-// {
-//    anchor_pcb() left_pcb_case();
-//     table();
-// }
-
-// // flat under case
-// anchor_pcb() left_pcb_case();
-// // rotate extrude case
-// anchor_pcb() rotate([ -90, 0, 0 ]) rotate_extrude(angle = tentingAngle, $fn = 100) left_dxf();

@@ -23,12 +23,18 @@ extensionLength = 90;
 extensionShift = 11 - caseThikness - wallOffsetFromPcb;
 cutter = 400;
 ccFarWall = 110;
+ccFrontWall = 5 + caseThikness;
+magnetStripeWidth = 26;
+magnetStripeDepth = 0.7;
 // legs
 legRubberDepth = 1;
 legRubberDiameter = 8;
 legsInsideDepth = 5;
 legs = [
-    [ 5, 66 - legRubberDiameter / 2 - caseThikness ], [ 5, 13 ],
+    [ 5, 69 - legRubberDiameter / 2 - caseThikness ], [ 5, 13 ],
     [ ccFarWall - legRubberDiameter / 2 - caseThikness, 13 ],
-    [ ccFarWall - legRubberDiameter / 2 - caseThikness, 66 - legRubberDiameter / 2 - caseThikness ]
+    [ ccFarWall - legRubberDiameter / 2 - caseThikness, 69 - legRubberDiameter / 2 - caseThikness ]
 ];
+
+// case to case mounting
+screwHoleDiameter = 2.3;
