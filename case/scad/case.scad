@@ -1,6 +1,6 @@
 include <./config.scad>;
-// $fa = 1;
-// $fs = 0.4;
+$fa = 1;
+$fs = 0.4;
 use <./lib.scad>;
 // color(caseColor)
 
@@ -81,7 +81,7 @@ module ccMagnetHolder()
         intersection()
         {
 
-            wall(caseThikness, cutter);
+            wall(caseThikness + magnetStripeDepth, cutter);
             ccFrontAnchor() cut(cutter);
             ccFarAnchor() cut(cutter);
             ccPcbAnchor() cut(cutter);
@@ -110,33 +110,7 @@ module case (){
 
             union(){
 
-                difference(){
-
-                    ccCase();
-
-}
-                // *difference(){
-
-                //     union(){
-
-                //         *intersection(){
-                //             // cutter in the pcb plane
-                //             anchor_pcb() push(-200) square(size = 400, center = true);
-                //             // projection of the case on the table
-                //             push(200) projection(cut = false) anchor_pcb() push(0.001)
-                //                 offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();}
-                //         // case extension for stability
-                //         *
-                //         intersection(){
-                //             // bottom
-                //             translate([ 0, extensionShift, 0 ]) push(200)
-                //                 square([ extensionLength + caseThikness + wallOffsetFromPcb, extensionWidth ]);
-                //             // tented
-                //             translate([ 0, extensionShift, 0 ]) rotate([ 0, -tentingAngle, 0 ]) push(-200)
-                //                 square([ extensionLength + caseThikness + wallOffsetFromPcb, extensionWidth ]);}}
-                //     // cutout for thumb cluster slide left
-                //     anchor_thumb() rotate([ -90, 0, 0 ]) push(-100) projection(cut = false) rotate([ 90, 0, 0 ])
-                //         push(100) offset(delta = 1) thumb_dxf();}
+                ccCase();
 
                 // left key well
                 anchor_pcb() color(caseColor) push(keysThikness+ pcbAndHotswapThikness) difference(){
@@ -153,9 +127,6 @@ module case (){
 
                         anchor_thumb() rotate([ -90, 0, 0 ]) push(-100) projection(cut = false) rotate([ 90, 0, 0 ])
                             push(100) offset(delta = 1) thumb_dxf();
-
-                        anchor_pcb() push(1, 1 + caseThikness) left_screw_holes_dxf();
-
 }
 
                     anchor_pcb() push(-caseThikness - screwBumpSize) left_screw_dxf();}
@@ -205,7 +176,8 @@ module case (){
             anchor_pcb() nice_nano_mount_to_pcb() rotate([ 0, -90, 0 ]) translate([ 0, 0, -24 ]) push(-100)
                 offset(delta = wallOffsetFromConnector) hull() projection(cut = true) translate(v = [ 0, 0, 32.5 ])
                     rotate([ 0, 90, 0 ]) nice_nano();
-
+// left screw holes
+ anchor_pcb() push(10, 10 + caseThikness) left_screw_holes_dxf();
             // cutout for thumb cluster
             anchor_thumb() push(200) offset(delta = 1) thumb_dxf();
             // cutout for pcb
@@ -213,7 +185,7 @@ module case (){
 // power switch cutout
 intersection()  {
  anchor_pcb() translate([ 25, 0, 0 ]) sphere(12);
- rotate([0,90-tentingAngle,0]) translate([0,0,20]) cut(cutter);
+ rotate([0,90-tentingAngle,0]) translate([0,0,19+caseThikness]) cut(cutter);
 }
 
 
@@ -243,7 +215,7 @@ for (i = [1:5])
     ccFarAnchor() translate([ 10, ccFrontWall + 10 * i, 0 ]) push(caseThikness + 1, caseThikness + 1)
         circle(d = screwHoleDiameter);
 }
-
+// reset button access
 rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 20 ]);
 }
 }
