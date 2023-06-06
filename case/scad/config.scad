@@ -24,6 +24,7 @@ extensionShift = 11 - caseThikness - wallOffsetFromPcb;
 cutter = 400;
 ccFarWall = 110;
 ccFrontWall = 5 + caseThikness;
+ccBackWall = 58 + ccFrontWall + caseThikness;
 magnetStripeWidth = 26;
 magnetStripeDepth = 0.7;
 // legs

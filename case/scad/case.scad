@@ -19,7 +19,7 @@ module ccFrontAnchor()
 
 module ccBackAnchor()
 {
-    translate([ 0, 58 + ccFrontWall + caseThikness, 0 ]) rotate([ 90, 0, 0 ]) children(0);
+    translate([ 0, ccBackWall, 0 ]) rotate([ 90, 0, 0 ]) children(0);
 }
 module ccFarAnchor()
 {
@@ -139,7 +139,7 @@ module case (){
                 //         push(100) offset(delta = 1) thumb_dxf();}
 
                 // left key well
-                anchor_pcb() color(caseColor) push(keysThikness) difference(){
+                anchor_pcb() color(caseColor) push(keysThikness+ pcbAndHotswapThikness) difference(){
 
                     offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();
 
@@ -163,7 +163,7 @@ module case (){
                 // thumb key well
                 anchor_thumb() color(caseColor) difference(){
 
-                    push(keysThikness) difference(){
+                    push(keysThikness+ pcbAndHotswapThikness) difference(){
 
                         offset(caseThikness + wallOffsetFromPcb) thumb_dxf();
 
@@ -210,9 +210,15 @@ module case (){
             anchor_thumb() push(200) offset(delta = 1) thumb_dxf();
             // cutout for pcb
             anchor_pcb() push(200) offset(delta = 1) left_pcb_dxf();
+// power switch cutout
+intersection()  {
+ anchor_pcb() translate([ 25, 0, 0 ]) sphere(12);
+ rotate([0,90-tentingAngle,0]) translate([0,0,20]) cut(cutter);
+}
+
 
 // cutout for thumb cluster slide up 
-anchor_thumb() translate([ 0, 0, keysThikness ]) rotate([ 0, -90, 0 ]) push(cutter) projection(cut = false)
+anchor_thumb() translate([ 0, 0, keysThikness + pcbAndHotswapThikness]) rotate([ 0, -90, 0 ]) push(cutter) projection(cut = false)
     rotate([ 0, 90, 0 ]) push(100) offset(delta = 1) thumb_dxf();
             // leg holes
             for (i = legs){
@@ -237,7 +243,14 @@ for (i = [1:5])
     ccFarAnchor() translate([ 10, ccFrontWall + 10 * i, 0 ]) push(caseThikness + 1, caseThikness + 1)
         circle(d = screwHoleDiameter);
 }
+
+rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 20 ]);
 }
 }
 
 case ();
+
+// color(keysColor) anchor_pcb() translate([ 0, 0, pcbAndHotswapThikness ]) push(keysThikness) left_keycaps_dxf();
+
+// color(pcbColor) anchor_pcb() push(pcbAndHotswapThikness) left_pcb_dxf();
+// anchor_pcb() nice_nano_mount_to_pcb() nice_nano();
