@@ -109,6 +109,12 @@ module left_keycaps_dxf()
     // bottom left corner
     translate([ 7, 8.5, 0 ]) import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_keycaps.dxf");
 }
+module left_pcb_with_keys_dxf()
+{
+    // bottom left corner
+    translate([ 7, 8.5, 0 ])
+        import("/Users/y/Dropbox/github/flactyl/pcb/ergogen/output/left/left_pcb_edgecut_with_keys.dxf");
+}
 module left_switch_cutouts_dxf()
 {
     // bottom left corner

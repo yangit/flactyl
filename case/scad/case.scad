@@ -112,16 +112,19 @@ module case (){
 
                 // left key well
                 anchor_pcb() color(caseColor) push(keysThikness+ pcbAndHotswapThikness) difference(){
+                    union() {
+                    offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
+                    // offset(caseThikness+wallOffsetFromPcb) left_keycaps_round_dxf();
+                    }
 
-                    offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();
-
-                    offset(wallOffsetFromPcb) left_pcb_dxf();}
+                    offset(wallOffsetFromPcb) left_pcb_with_keys_dxf();
+                }
 
                 // left key baseplate
                 union(){
                     difference(){
 
-                        anchor_pcb() push(-caseThikness) offset(caseThikness + wallOffsetFromPcb) left_pcb_dxf();
+                        anchor_pcb() push(-caseThikness) offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
 
                         anchor_thumb() rotate([ -90, 0, 0 ]) push(-100) projection(cut = false) rotate([ 90, 0, 0 ])
                             push(100) offset(delta = 1) thumb_dxf();
@@ -188,7 +191,7 @@ module case (){
                 rotate([0,90-tentingAngle,0]) translate([0,0,19+caseThikness]) cut(cutter);
             }
             // cutout for pcb
-            anchor_pcb() push(200) offset(delta = 1) left_pcb_dxf();
+            anchor_pcb() push(200) offset(delta = 1) left_pcb_with_keys_dxf();
 
 
 
