@@ -1,6 +1,4 @@
 include <./config.scad>;
-$fa = 1;
-$fs = 0.4;
 use <./lib.scad>;
 // color(caseColor)
 
@@ -142,7 +140,7 @@ module case (){
 
 }
                     // cutout for thumb cluster slide left
-                    rotate([ -90, 0, 0 ]) push(-100) projection(cut = false) rotate([ 90, 0, 0 ]) push(100)
+                    rotate([ -90, 0, 0 ]) push(10,100) projection(cut = false) rotate([ 90, 0, 0 ]) push(100)
                         offset(delta = 1) thumb_dxf();}
 
                 // thumb key baseplate
@@ -184,7 +182,7 @@ module case (){
             anchor_pcb() push(200) offset(delta = 1) left_pcb_dxf();
 // power switch cutout
 intersection()  {
- anchor_pcb() translate([ 25, 0, 0 ]) sphere(12);
+ anchor_pcb() translate([ 25, 10, -2.5 ]) sphere(12);
  rotate([0,90-tentingAngle,0]) translate([0,0,19+caseThikness]) cut(cutter);
 }
 
@@ -216,13 +214,7 @@ for (i = [1:5])
         circle(d = screwHoleDiameter);
 }
 // reset button access
-rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 20 ]);
+rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 100 ]);
 }
 }
-
 case ();
-
-// color(keysColor) anchor_pcb() translate([ 0, 0, pcbAndHotswapThikness ]) push(keysThikness) left_keycaps_dxf();
-
-// color(pcbColor) anchor_pcb() push(pcbAndHotswapThikness) left_pcb_dxf();
-// anchor_pcb() nice_nano_mount_to_pcb() nice_nano();
