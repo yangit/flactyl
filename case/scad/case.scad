@@ -114,7 +114,6 @@ module case (){
                 anchor_pcb() color(caseColor) push(keysThikness+ pcbAndHotswapThikness) difference(){
                     union() {
                     offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
-                    // offset(caseThikness+wallOffsetFromPcb) left_keycaps_round_dxf();
                     }
 
                     offset(wallOffsetFromPcb) left_pcb_with_keys_dxf();
@@ -160,7 +159,18 @@ module case (){
                 for (i = legs){
                     // leg hole support
                     translate([ i[0], i[1] ]) push(caseThikness + legsInsideDepth + legRubberDepth)
-                        circle(r = (legRubberDiameter + 3) / 2);}}
+                        circle(r = (legRubberDiameter + 3) / 2);}
+                        
+                        }
+            // power switch cutout
+            intersection() {
+                
+                anchor_pcb() translate([ 26,1, -2.5 ]) sphere(10);
+                rotate([0,90-tentingAngle,0]) translate([0,0,19+caseThikness]) cut(cutter);
+            }
+
+            // reset button access
+            rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 100 ]);
 
             // cutout thumb screw holes
             anchor_thumb() push(1, 3 + caseThikness) thumb_screw_holes_dxf();
@@ -184,19 +194,14 @@ module case (){
             // cutout for thumb cluster
             anchor_thumb() push(200) offset(delta = 1) thumb_dxf();
             
-            // power switch cutout
-            intersection()  {
-            
-                anchor_pcb() translate([ 25,0, -2.5 ]) sphere(12);
-                rotate([0,90-tentingAngle,0]) translate([0,0,19+caseThikness]) cut(cutter);
-            }
+
             // cutout for pcb
             anchor_pcb() push(200) offset(delta = 1) left_pcb_with_keys_dxf();
 
 
 
 // cutout for thumb cluster slide up 
-anchor_thumb() translate([ 0, 0, keysThikness + pcbAndHotswapThikness]) rotate([ 0, -90, 0 ]) push(cutter) projection(cut = false)
+anchor_thumb() translate([ 0, 0, keysThikness + pcbAndHotswapThikness]) rotate([ 0, -90, 0 ]) push(cutter,5) projection(cut = false)
     rotate([ 0, 90, 0 ]) push(100) offset(delta = 1) thumb_dxf();
             // leg holes
             for (i = legs){
@@ -221,9 +226,11 @@ for (i = [1:5])
     ccFarAnchor() translate([ 10, ccFrontWall + 10 * i, 0 ]) push(caseThikness + 1, caseThikness + 1)
         circle(d = screwHoleDiameter);
 }
-// reset button access
-rotate([ 0, 90 - tentingAngle, 0 ]) translate([ -0.001, ccBackWall, 48 ]) cube([ caseThikness * 3, 10, 100 ]);
 }
 }
 
-// case ();
+case ();
+
+// color(pcbColor) push(pcbAndHotswapThikness) left_pcb_dxf();
+// color("red") push(-pcbAndHotswapThikness) left_pcb_with_keys_dxf();
+// anchor_pcb() color(keysColor) translate([ 0, 0, pcbAndHotswapThikness ]) push(keysThikness) left_keycaps_dxf();
