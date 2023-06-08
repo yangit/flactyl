@@ -111,9 +111,18 @@ You can grab `.zip` and `.stl` here, and send them to JLCPCB.com, they will prin
 (COMING SOON) Look at the how to order video.
 
 ### `./ergogen`
+Modified fork of [ergogen](https://github.com/ergogen/ergogen) now can be found [here](https://github.com/yangit/ergogen)
 
-Here is modified fork of [ergogen](https://github.com/ergogen/ergogen)
-To run it make sure you have npm/nodejs installed:
+This folder will appear to be empty if you try to `git clone` or download a zip archive, you just need to run
+```
+git clone https://github.com/yangit/flactyl
+cd ./flactyl
+git submodule init
+git submodule update
+```
+How your `./ergogen` should contain latest data code.
+
+To build it make sure you have npm/nodejs installed:
 
 ```
 cd ./ergogen
