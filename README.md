@@ -120,7 +120,7 @@ cd ./flactyl
 git submodule init
 git submodule update
 ```
-How your `./ergogen` should contain latest data code.
+How your `./ergogen` should contain latest code.
 
 To build it make sure you have npm/nodejs installed:
 
