@@ -27,6 +27,7 @@ I'd be happy to help!
 
 - Youtube video with detailed review is [here](https://www.youtube.com/watch?v=Pdhb9uNnzU0)
 - Short typing video [here](https://www.youtube.com/watch?v=eU5eg4PKMlQ)
+- Video how to order 3d case from JLCPCB.com [here](https://www.youtube.com/watch?v=07qFKaykjfg)
 - Reddit [thread](https://www.reddit.com/r/ErgoMechKeyboards/comments/13qep4y/after_4_year_lurking_and_2_years_building_my_own/)
 - You can find zmk-config for this board [here](https://github.com/yangit/zmk-config/)
 - It took me two years to finish this project, thanks to [KBD.news](https://kbd.news/) for inspiration!
@@ -70,6 +71,8 @@ Consists of single hollow box, switches are exposed on the sides.
 
 [<img src="./photos/cases/hitam1.png" width="200px">](./photos/cases/hitam1.png)
 [<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png)
+
+Video how to order 3d case from JLCPCB.com [here](https://www.youtube.com/watch?v=07qFKaykjfg)
 
 ## Customize case
 
