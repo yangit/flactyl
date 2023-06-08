@@ -67,7 +67,7 @@ Consists of single hollow box, switches are exposed on the sides.
 
 ### Hitam
 
-(COMING SOON) pretty involved shape to cover all the keys from the sides as well. Great for transportability.
+(COMING SOON) pretty involved shape to cover all the keys from the sides as well.
 
 [<img src="./photos/cases/hitam1.png" width="200px">](./photos/cases/hitam1.png)
 [<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png)
