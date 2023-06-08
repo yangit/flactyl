@@ -45,6 +45,11 @@ Clay, Iceberg, Hitam.
 
 **Iceberg** consists of single hollow box, switches are exposed on the sides.
 
+[<img src="./photos/cases/ice1.png" width="200px">](./photos/cases/ice1.png)
+[<img src="./photos/cases/ice2.png" width="200px">](./photos/cases/ice2.png)
+[<img src="./photos/cases/ice3.png" width="200px">](./photos/cases/ice3.png)
+[<img src="./photos/cases/ice4.png" width="200px">](./photos/cases/ice4.png)
+
 **Hitam** (COMING SOON) pretty involved shape to cover all the keys from the sides as well. Great for transportability.
 
 ## Customize case
@@ -101,7 +106,7 @@ You will also need
 
 ## ZMK-config
 
-You can take a base config for this shield [here](https://github.com/yangit/zmk-config-flactyl/)
+You can take a basic config for this shield [here](https://github.com/yangit/zmk-config-flactyl/)
 
 ## Structure of this repo
 
