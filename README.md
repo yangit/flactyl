@@ -73,7 +73,7 @@ Consists of single hollow box, switches are exposed on the sides.
 [<img src="./photos/cases/hitam1.png" width="200px">](./photos/cases/hitam1.png)
 [<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png)
 
-Look up `Videos` section of this readme to see how order PCB and 3d files from JLCPCB.com
+Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
 
 ## Customize case
 
@@ -92,7 +92,7 @@ High-level build steps looks like so:
 - Assemble everything down
 - Flash it with ZMK firmware (or any other you want)
 
-Look up `Videos` section of this readme to see how order PCB and 3d files from JLCPCB.com
+Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
 
 This is how PCB should come out from JLCPCB.com, complete with all diodes, JST connectors, power switch, reset button(not visible)
 
@@ -137,7 +137,7 @@ You can take a basic config for this shield [here](https://github.com/yangit/zmk
 
 You can grab `.zip` and `.stl` here, and send them to JLCPCB.com, they will print case, and PCB, it also includes BOM and POS files so that JLCPCB can solder connectors, diodes, reset button and power switch on the board for you.
 
-Look up `Videos` section of this readme to see how order PCB and 3d files from JLCPCB.com
+Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
 
 ### `./ergogen`
 
