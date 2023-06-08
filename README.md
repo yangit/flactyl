@@ -72,7 +72,7 @@ Consists of single hollow box, switches are exposed on the sides.
 [<img src="./photos/cases/hitam1.png" width="200px">](./photos/cases/hitam1.png)
 [<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png)
 
-Video how to order 3d case from JLCPCB.com [here](https://www.youtube.com/watch?v=07qFKaykjfg)
+Look up `Videos` section of this readme to see how order PCB and 3d files from JLCPCB.com
 
 ## Customize case
 
@@ -91,7 +91,7 @@ High-level build steps looks like so:
 - Assemble everything down
 - Flash it with ZMK firmware (or any other you want)
 
-(COMING SOON) Video on how to order PCB and case from jlcpcb.com
+Look up `Videos` section of this readme to see how order PCB and 3d files from JLCPCB.com
 
 This is how PCB should come out from JLCPCB.com, complete with all diodes, JST connectors, power switch, reset button(not visible)
 
@@ -133,32 +133,42 @@ You can take a basic config for this shield [here](https://github.com/yangit/zmk
 ## Structure of this repo
 
 ### `./production`
+
 You can grab `.zip` and `.stl` here, and send them to JLCPCB.com, they will print case, and PCB, it also includes BOM and POS files so that JLCPCB can solder connectors, diodes, reset button and power switch on the board for you.
 
-(COMING SOON) Look at the how to order video.
+Look up `Videos` section of this readme to see how order PCB and 3d files from JLCPCB.com
 
 ### `./ergogen`
+
+YOU DO NOT NEED THIS 
+
+unless you want to mess with my PCB generation code, you can just grab readymade pcb from `./production/`
 Modified fork of [ergogen](https://github.com/ergogen/ergogen) now can be found [here](https://github.com/yangit/ergogen)
 
 This folder will appear to be empty if you try to `git clone` or download a zip archive, you just need to run
-```
+
+```bash
 git clone https://github.com/yangit/flactyl
 cd ./flactyl
 git submodule init
 git submodule update
 ```
+
 Now your `./ergogen` should contain latest code.
 Alternatively you can proceed to [here](https://github.com/yangit/ergogen) to find contents of `./ergogen` folder.
 
 To build it make sure you have npm/nodejs installed:
 
-```
+```bash
 cd ./ergogen
 npm install
 ./input/bulid.sh
 ```
 
-This will produce files in the `./output` folder and they can be used for JLCPCB.com printing, that includes `.pos` and `.bom` files for SMT assembly.
+This will produce files in the `./ergogen/output` folder.
+Now you need to prepare them for JLCPCB, you HAVE to follow requirements in `./ergogen`
+
+ and they can be used for JLCPCB.com printing, that includes `.pos` and `.bom` files for SMT assembly.
 If you are looking to make any changes, go under `./ergogen/input` folder and change config files there.
 
 ## Photos
