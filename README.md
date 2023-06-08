@@ -15,13 +15,30 @@
 - Magnetic stripe to securely fasten to the table
 - The tentable table seen on the photos is from HumanScale
 
-### Links
+## Links
 
 - Youtube video with detailed review is [here](https://www.youtube.com/watch?v=Pdhb9uNnzU0)
 - Short typing video [here](https://www.youtube.com/watch?v=eU5eg4PKMlQ)
 - Reddit [thread](https://www.reddit.com/r/ErgoMechKeyboards/comments/13qep4y/after_4_year_lurking_and_2_years_building_my_own/)
 - You can find zmk-config for this board [here](https://github.com/yangit/zmk-config/)
 - It took me two years to finish this project, thanks to [KBD.news](https://kbd.news/) for inspiration!
+
+## Build
+
+High-level build steps looks like so:
+
+- Order parts online from various vendors according to the parts list
+- Order case and PCB from JLCPCB or any other pcb/3d printing vendor
+- Solder everything up
+- Assemble everything down
+- Flash it with ZMK firmware (or any other you want)
+
+## Customise
+
+You can customize thumb cluster location reasonably easy using 
+`./scad/` folder. Try to play around with it, you need OpenScad free software.
+Things to keep in mind:
+
 
 ## Structure of this repo
 ### production
@@ -57,3 +74,7 @@ If you are looking to make any changes, go under `./ergogen/input` folder and ch
 ![Photo10](./photos/10.jpeg)
 ![Photo11](./photos/11.jpeg)
 ![Photo12](./photos/12.jpeg)
+
+# License
+
+MIT
