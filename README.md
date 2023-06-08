@@ -36,21 +36,40 @@ I'd be happy to help!
 There are 3 cases available:
 Clay, Iceberg, Hitam.
 
-**Clay** consist of two pieces, you are supposed to put clay/play dough in it and see what position is best for you. It is pretty usable already.
+### Clay
+
+Consist of two pieces, you are supposed to put clay/play dough in it and see what position is best for you. It is pretty usable already.
 
 [<img src="./photos/cases/clay1.jpeg" width="200px">](./photos/cases/clay1.jpeg)
 [<img src="./photos/cases/clay2.jpeg" width="200px">](./photos/cases/clay2.jpeg)
 [<img src="./photos/cases/clay3.jpeg" width="200px">](./photos/cases/clay3.jpeg)
 [<img src="./photos/cases/clay4.jpeg" width="200px">](./photos/cases/clay4.jpeg)
 
-**Iceberg** consists of single hollow box, switches are exposed on the sides.
+[<img src="./photos/cases/clay6.png" width="200px">](./photos/cases/clay6.png)
+[<img src="./photos/cases/clay8.png" width="200px">](./photos/cases/clay8.png)
+[<img src="./photos/cases/clay9.png" width="200px">](./photos/cases/clay9.png)
+[<img src="./photos/cases/clay10.png" width="200px">](./photos/cases/clay10.png)
+
+### Iceberg
+
+Consists of single hollow box, switches are exposed on the sides.
+
+[<img src="./photos/1.jpeg" width="200px">](./photos/1.jpeg)
+[<img src="./photos/6.jpeg" width="200px">](./photos/6.jpeg)
+[<img src="./photos/8.jpeg" width="200px">](./photos/8.jpeg)
+[<img src="./photos/10.jpeg" width="200px">](./photos/10.jpeg)
 
 [<img src="./photos/cases/ice1.png" width="200px">](./photos/cases/ice1.png)
 [<img src="./photos/cases/ice2.png" width="200px">](./photos/cases/ice2.png)
 [<img src="./photos/cases/ice3.png" width="200px">](./photos/cases/ice3.png)
 [<img src="./photos/cases/ice4.png" width="200px">](./photos/cases/ice4.png)
 
-**Hitam** (COMING SOON) pretty involved shape to cover all the keys from the sides as well. Great for transportability.
+### Hitam
+
+(COMING SOON) pretty involved shape to cover all the keys from the sides as well. Great for transportability.
+
+[<img src="./photos/cases/hitam1.png" width="200px">](./photos/cases/hitam1.png)
+[<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png)
 
 ## Customize case
 

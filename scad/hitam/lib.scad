@@ -99,32 +99,32 @@ module table()
 module left_pcb_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/4.2/left/left_pcb_edgecut.dxf");
+    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_pcb_edgecut.dxf");
 }
 module left_keycaps_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/4.2/left/left_keycaps.dxf");
+    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_keycaps.dxf");
 }
 module left_pcb_with_keys_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/4.2/left/left_pcb_edgecut_with_keys.dxf");
+    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_pcb_edgecut_with_keys.dxf");
 }
 module left_switch_cutouts_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/4.2/left/left_switch_cutouts.dxf");
+    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_switch_cutouts.dxf");
 }
 module left_screw_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/4.2/left/left_screw.dxf");
+    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_screw.dxf");
 }
 module left_screw_holes_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/4.2/left/left_screw_holes.dxf");
+    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_screw_holes.dxf");
 }
 module left_pcb()
 {
@@ -136,22 +136,22 @@ module left_pcb()
 module thumb_dxf()
 {
     // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/4.2/thumb/thumb_pcb_edgecut.dxf");
+    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_pcb_edgecut.dxf");
 }
 module thumb_switch_cutouts_dxf()
 {
     // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/4.2/thumb/thumb_switch_cutouts.dxf");
+    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_switch_cutouts.dxf");
 }
 module thumb_screw_dxf()
 {
     // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/4.2/thumb/thumb_screw.dxf");
+    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_screw.dxf");
 }
 module thumb_screw_holes_dxf()
 {
     // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/4.2/thumb/thumb_screw_holes.dxf");
+    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_screw_holes.dxf");
 }
 module thumb_pcb()
 {
@@ -182,5 +182,5 @@ module nice_nano()
 {
     color("lightblue")
         // set anchor to bottom outermost corner hole of the pcb
-        translate([ 15.24, -7.62, 6.3 ]) color(pcbColor) import("./3d-models/nice-nano.stl");
+        translate([ 15.24, -7.62, 6.3 ]) color(pcbColor) import("../shared-3d-models/nice-nano.stl");
 }
