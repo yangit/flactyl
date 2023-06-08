@@ -38,9 +38,20 @@ Clay, Iceberg, Hitam.
 
 **Clay** consist of two pieces, you are supposed to put clay/play dough in it and see what position is best for you. It is pretty usable already.
 
+[<img src="./photos/cases/clay1.jpeg" width="200px">](./photos/cases/clay1.jpeg)
+[<img src="./photos/cases/clay2.jpeg" width="200px">](./photos/cases/clay2.jpeg)
+[<img src="./photos/cases/clay3.jpeg" width="200px">](./photos/cases/clay3.jpeg)
+[<img src="./photos/cases/clay4.jpeg" width="200px">](./photos/cases/clay4.jpeg)
+
 **Iceberg** consists of single hollow box, switches are exposed on the sides.
 
 **Hitam** (COMING SOON) pretty involved shape to cover all the keys from the sides as well. Great for transportability.
+
+## Customize case
+
+You can customize thumb cluster location reasonably easy using
+`./scad/` folder. Try to play around with it, you need OpenScad free software. Look for `./scad/hitam/develop.scad` file.
+And if you want to render for export you can use `export_left.scad` and `export_right.scad` respectively
 
 ## Build
 
@@ -55,34 +66,38 @@ High-level build steps looks like so:
 
 (COMING SOON) Video on how to order PCB and case from jlcpcb.com
 
+This is how PCB should come out from JLCPCB.com, complete with all diodes, JST connectors, power switch, reset button(not visible)
+
+[<img src="./photos/parts/assembly.jpeg" width="400px">](./photos/parts/assembly.jpeg)
+
 ## Parts list
 
 You going to need some assorment of items to get done:
 
-- 2 x EC11 Rotary encoder with a knob (ALP-ENC-TCT-001 or any similar will do)
-- 42 x Kailh Low Profile Choc switches (highly recommend getting 20g (pink) for thumb cluster to make multi key combos easier)
-- 42 x 1u Blank MBK Choc Low Profile Keycaps
-- 2 x Pitch 2.54mm 1 * 40 Pin Sets of headers for Nice!Nanos
-- 2 x Nice!Nano microcontrollers
-- 32 x Hot swap connectors (two buttons are soldered directly on each half)
-- 2 x Case
-- 4 x Pcb (two for each half and two for thumb clusters)
-- 12 x M2 x 10mm Screws
-- 12 x M2x3x3x1.8 square nuts
-- 12 x Spring washers (I recommend getting hex head screws, they are easier to tighten)
-- 2 x JST SH 1.0mm x 2 wireConnector for battery (only if you want to go wireless)
-- 2 x Battery (only if you want to go wireless)
-- 2 x JST SH 1.0mm x 5 wire cable for thumb cluster
+|  Count   | Name   | Photo   |
+|-------------|-------------|-------------|
+| 2 | EC11 Rotary encoder with a knob (ALP-ENC-TCT-001 or any similar will do)| [<img src="./photos/parts/encoder.webp" width="200px">](./photos/parts/encoder.webp)
+| 42 | Kailh Low Profile Choc switches (highly recommend getting 20g (pink) for thumb cluster to make multi key combos easier)|  [<img src="./photos/parts/pink.webp" width="200px">](./photos/parts/pink.webp)
+| 42 | 1u Blank MBK Choc Low Profile Keycaps| [<img src="./photos/parts/mbk.png" width="200px">](./photos/parts/mbk.png)
+| 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
+| 2 | Nice!Nano microcontrollers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
+| 32 | Hot swap connectors (two buttons are soldered directly on each half)| [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
+| 2 | Case| 
+| 4 | Pcb (two for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg)
+| 12 | M2 x 10mm Screws (I recommend getting hex head screws, they are easier to tighten)| [<img src="./photos/parts/nuts.jpeg" width="200px">](./photos/parts/nuts.jpeg)
+| 12 | M2x3x3x1.8 square (!NOT regular hex!) nuts, see photo| 
+| 12 | Spring washers |
+| 2 | JST SH 1.0mm x 2 wireConnector for battery (only if you want to go wireless)| [<img src="./photos/parts/battc.jpeg" width="200px">](./photos/parts/battc.jpeg)
+| 2 | Battery, any single cell Li-ion/Li-po 100-1000mah will do, connector does not matter, you going to resolder it anyway  (only if you want to go wireless)| [<img src="./photos/parts/batt.jpeg" width="200px">](./photos/parts/batt.jpeg)
+| 2 | JST SH 1.0mm x 5 wire cable for thumb cluster (carefully look at the cable colors, there are two types of connector with  cross over and direct, you need connector with the same color order on both sides ), second photo shows how you will need to trim the connector using utility knife to make sure it fits into the pcb|[<img src="./photos/parts/conn.jpeg" width="200px">](./photos/parts/conn.jpeg) [<img src="./photos/parts/trim.jpeg" width="200px">](./photos/parts/trim.jpeg)
+| 8 | 8mm silicone rubber feet (self adhesive)| [<img src="./photos/parts/feet.webp" width="200px">](./photos/parts/feet.webp)
+| 1 | Roll of 3m magnetic strip 1inch wide (25.4mm) for the undercase holder.| [<img src="./photos/parts/mag1.jpeg" width="200px">](./photos/parts/mag1.jpeg) [<img src="./photos/parts/mag2.jpeg" width="200px">](./photos/parts/mag2.jpeg)
 
 You will also need
 
 - Screw driver
 - Soldering iron with flux and solder
-
-## Customize
-
-You can customize thumb cluster location reasonably easy using
-`./scad/` folder. Try to play around with it, you need OpenScad free software.
+- Knife to trim JST connectors for thumb cluster
 
 ## ZMK-config
 
@@ -109,19 +124,17 @@ npm install
 This will produce files in the `./output` folder and they can be used for JLCPCB.com printing, that includes `.pos` and `.bom` files for SMT assembly.
 If you are looking to make any changes, go under `./ergogen/input` folder and change config files there.
 
-
-
 ## Photos
 
-![Photo1](./photos/1.jpeg)
-![Photo4](./photos/4.jpeg)
-![Photo6](./photos/6.jpeg)
-![Photo7](./photos/7.jpeg)
-![Photo8](./photos/8.jpeg)
-![Photo9](./photos/9.jpeg)
-![Photo10](./photos/10.jpeg)
-![Photo11](./photos/11.jpeg)
-![Photo12](./photos/12.jpeg)
+[<img src="./photos/1.jpeg" width="800px">](./photos/1.jpeg)
+[<img src="./photos/6.jpeg" width="800px">](./photos/6.jpeg)
+[<img src="./photos/7.jpeg" width="800px">](./photos/7.jpeg)
+[<img src="./photos/8.jpeg" width="800px">](./photos/8.jpeg)
+[<img src="./photos/9.jpeg" width="800px">](./photos/9.jpeg)
+[<img src="./photos/10.jpeg" width="800px">](./photos/10.jpeg)
+[<img src="./photos/11.jpeg" width="800px">](./photos/11.jpeg)
+[<img src="./photos/12.jpeg" width="800px">](./photos/12.jpeg)
+[<img src="./photos/4.jpeg" width="800px">](./photos/4.jpeg)
 
 ## License
 

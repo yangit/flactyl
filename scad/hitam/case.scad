@@ -1,6 +1,5 @@
 include <./config.scad>;
 use <./lib.scad>;
-// color(caseColor)
 
 module ccPcbAnchor()
 {
@@ -268,7 +267,7 @@ for (i = [1:5])
 }
 
 // case ();
-ccCase();
+// ccCase();
 
 // color(pcbColor) push(pcbAndHotswapThikness) left_pcb_dxf();
 // color("red") push(-pcbAndHotswapThikness) left_pcb_with_keys_dxf();
