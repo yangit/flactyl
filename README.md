@@ -87,7 +87,7 @@ You going to need some assorment of items to get done:
 | 12 | M2 x 10mm Screws (I recommend getting hex head screws, they are easier to tighten)| [<img src="./photos/parts/nuts.jpeg" width="200px">](./photos/parts/nuts.jpeg)
 | 12 | M2x3x3x1.8 square (!NOT regular hex!) nuts, see photo| 
 | 12 | Spring washers |
-| 2 | JST SH 1.0mm x 2 wireConnector for battery (only if you want to go wireless)| [<img src="./photos/parts/battc.jpeg" width="200px">](./photos/parts/battc.jpeg)
+| 2 | JST SH 1.0mm x 2 wire connector for battery (only if you want to go wireless)| [<img src="./photos/parts/battc.jpeg" width="200px">](./photos/parts/battc.jpeg)
 | 2 | Battery, any single cell Li-ion/Li-po 100-1000mah will do, connector does not matter, you going to resolder it anyway  (only if you want to go wireless)| [<img src="./photos/parts/batt.jpeg" width="200px">](./photos/parts/batt.jpeg)
 | 2 | JST SH 1.0mm x 5 wire cable for thumb cluster (carefully look at the cable colors, there are two types of connector with  cross over and direct, you need connector with the same color order on both sides ), second photo shows how you will need to trim the connector using utility knife to make sure it fits into the pcb|[<img src="./photos/parts/conn.jpeg" width="200px">](./photos/parts/conn.jpeg) [<img src="./photos/parts/trim.jpeg" width="200px">](./photos/parts/trim.jpeg)
 | 8 | 8mm silicone rubber feet (self adhesive)| [<img src="./photos/parts/feet.webp" width="200px">](./photos/parts/feet.webp)
