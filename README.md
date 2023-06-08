@@ -141,7 +141,7 @@ Look up `Videos` section of this readme to see how order PCB and 3d files from J
 
 ### `./ergogen`
 
-YOU DO NOT NEED THIS 
+YOU DO NOT NEED THIS
 
 unless you want to mess with my PCB generation code, you can just grab readymade pcb from `./production/`
 Modified fork of [ergogen](https://github.com/ergogen/ergogen) now can be found [here](https://github.com/yangit/ergogen)
