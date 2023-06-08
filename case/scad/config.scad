@@ -21,10 +21,13 @@ switchCutoutDepth = 2.2;
 extensionWidth = 60 + (caseThikness + wallOffsetFromPcb) * 2;
 extensionLength = 90;
 extensionShift = 11 - caseThikness - wallOffsetFromPcb;
+pcbWidth = 90;
 cutter = 400;
-ccFarWall = 110;
+ccFarWall = 120;
+
 ccFrontWall = 5 + caseThikness;
 ccBackWall = 58 + ccFrontWall + caseThikness;
+
 magnetStripeWidth = 26;
 magnetStripeDepth = 0.7;
 // legs

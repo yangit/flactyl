@@ -1,0 +1,6 @@
+Comment,Designator,Footprint,LCSC
+"DIODE","D1,D2,D3,D4,D5,D6","Yan:D_SOD-523","C511874"
+"JC","JC1,JC2,JC3,JC4","Yan:JST_SH_SM05B-SRSS-TB_1x05-1MP_P1.00mm_Horizontal","C136657"
+"JB","JB1,JB2,JB3,JB4","Yan:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal","C160402"
+"SB","SB1,SB2,SB3,SB4","Yan:b3u-1000P","C231329"
+"SS","SS1,SS2,SS3,SS4","Yan:Side switch","C431541"

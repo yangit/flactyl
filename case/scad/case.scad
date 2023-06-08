@@ -8,7 +8,7 @@ module ccPcbAnchor()
 }
 module ccTopAnchor()
 {
-    translate([ 0, 0, 108 ]) rotate([ 0, 270, 0 ]) anchor_pcb() children(0);
+    anchor_pcb() translate([ pcbWidth + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, -90, 0 ]) children(0);
 }
 module ccFrontAnchor()
 {
@@ -17,10 +17,13 @@ module ccFrontAnchor()
 
 module ccBackAnchor()
 {
-    translate([ 0, ccBackWall, 0 ]) rotate([ 90, 0, 0 ]) children(0);
+    // translate([ 0, ccBackWall, 0 ]) rotate([ 90, 90 - tentingAngle, 20 ]) children(0);
+    translate([ 0, ccBackWall, 0 ]) rotate([ 90, 90 - tentingAngle, 0 ]) children(0);
 }
+
 module ccFarAnchor()
 {
+    // rotate([ 0, 90, 0 ]) translate([ 0, 0, ccFarWall ]) rotate([ -10, 180, 0 ]) children(0);
     rotate([ 0, 90, 0 ]) translate([ 0, 0, ccFarWall ]) rotate([ 0, 180, 0 ]) children(0);
 }
 
@@ -89,6 +92,39 @@ module ccMagnetHolder()
         translate([ 0, ccFrontWall + caseThikness, -0.001 ]) cube([ ccFarWall, magnetStripeWidth, magnetStripeDepth ]);
     }
 }
+module ssBackAnchor()
+{
+    translate([ 0, 30, 0 ]) ccBackAnchor() children(0);
+}
+module ssPcbAnchor()
+{
+    ccPcbAnchor() translate([ 0, 0, pcbWidth - 40 ]) children(0);
+}
+
+module ssTop()
+{
+    intersection()
+    {
+        ccTopAnchor() wall(caseThikness, cutter);
+        ccFrontAnchor() cut(cutter);
+        ccFarAnchor() cut(cutter);
+        ssPcbAnchor() cut(cutter);
+        ssBackAnchor() cut(cutter);
+    }
+}
+
+module ssFar()
+{
+    intersection()
+    {
+        ccFarAnchor() wall(caseThikness, cutter);
+        ccFrontAnchor() cut(cutter);
+        ccTopAnchor() cut(cutter);
+        ssBackAnchor() cut(cutter);
+        cut(cutter);
+    }
+}
+
 module ccCase()
 {
 
@@ -97,6 +133,8 @@ module ccCase()
     ccBackWall();
     ccFarWall();
     ccMagnetHolder();
+    ssFar();
+    ssTop();
 }
 
 // ccPcbAnchor() showWall();
@@ -229,8 +267,29 @@ for (i = [1:5])
 }
 }
 
-case ();
+// case ();
+ccCase();
 
 // color(pcbColor) push(pcbAndHotswapThikness) left_pcb_dxf();
 // color("red") push(-pcbAndHotswapThikness) left_pcb_with_keys_dxf();
 // anchor_pcb() color(keysColor) translate([ 0, 0, pcbAndHotswapThikness ]) push(keysThikness) left_keycaps_dxf();
+
+// color(caseColor) push(keysThikness + pcbAndHotswapThikness) difference()
+// {
+//     union()
+//     {
+//         offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
+//     }
+
+//     offset(wallOffsetFromPcb) left_pcb_with_keys_dxf();
+// }
+// translate([ 87 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, 90, 0 ]) wall(caseThikness, cutter);
+
+// find_anchor(90) left_pcb_with_keys_dxf();
+
+// find_anchor(180) left_pcb_dxf();
+// translate([ 87 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, 90, 0 ]) wall(caseThikness, cutter);
+
+// color("green") push(-2) offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
+// color(caseColor) push(caseThikness) left_pcb_dxf();
+// translate([ 90 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, -90, 0 ]) wall(caseThikness, cutter);

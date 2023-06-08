@@ -24,13 +24,17 @@
 - It took me two years to finish this project, thanks to [KBD.news](https://kbd.news/) for inspiration!
 
 ## Structure of this repo
+### production
+You can grab `.kicad` and `.stl` here, and send them to JLCPCB.com, they will print case, and PCB, it also includes BOM and POS files so that JLCPCB can solder connectors, diodes, reset button and power switch on the board for you.
 
 ### case
-Contains Fusion 360 file and also exported `.stl` for 3d printing using JLCPCB.com
+Contains OpenScad files to generate case, try running:
+```
+cd case/scad
+./build.sh
+```
 
-### pcb
-
-#### ergogen
+### ergogen
 Under `ergogen` folder there is modified fork of [ergogen](https://github.com/ergogen/ergogen)
 To run it make sure you have npm/nodejs installed:
 ```
@@ -41,9 +45,6 @@ npm install
 
 This will produce files in the `./output` folder and they can be used for JLCPCB.com printing, that includes `.pos` and `.bom` files for SMT assembly, that you only need to solder hotswap connectors for choc switches, and headers for Nice!Nano.
 If you are looking to make any changes, go under `./ergogen/input` folder and change config files there.
-
-#### kikad
-This folder contains different versions of kicad files I have already sent to JLCPCB.
 
 ## Photos
 
