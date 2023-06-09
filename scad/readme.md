@@ -1,3 +1,3 @@
 # SCAD
 
-Check out the library folders for `./box.scad` and `./test.scad`
+Check out the `./library` folder for `./box.scad` and `./test.scad`
