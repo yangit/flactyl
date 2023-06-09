@@ -1,4 +1,5 @@
 include <./config.scad>;
+function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8] ];
 module showVector(vector)
 // showVector(vector = [ 10, 10, 10 ]);
 {
@@ -72,6 +73,54 @@ module showWall()
     {
         translate([ 0, 0, 15 ]) cube([ 1, 1, 30 ], center = true);
         sphere(r = 5);
+    }
+}
+
+module moveRotateTranslate(rt)
+{
+
+    if (rt[0] == undef)
+    {
+        children(0);
+    }
+    else
+    {
+        if (rt[1] == undef)
+        {
+            if (rt[0][0] == "r")
+            {
+                rotate(rt[0][1]) children(0);
+            }
+            if (rt[0][0] == "t")
+            {
+                translate(rt[0][1]) children(0);
+            }
+        }
+        else
+        {
+            if (rt[0][0] == "r")
+            {
+                rotate(rt[0][1]) moveRotateTranslate(unshift(rt)) children(0);
+            }
+            if (rt[0][0] == "t")
+            {
+                translate(rt[0][1]) moveRotateTranslate(unshift(rt)) children(0);
+            }
+        }
+    }
+}
+module box(walls, cutters, thikness, cutter)
+{
+    for (i = walls)
+    {
+        difference()
+        {
+            moveRotateTranslate(i) wall(thikness, cutter);
+            for (i = cutters)
+            {
+                moveRotateTranslate(i) cut(-cutter);
+            }
+        }
     }
 }
 

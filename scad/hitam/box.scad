@@ -1,55 +1,20 @@
 include <./config.scad>;
 use <./lib.scad>;
 
-module movert1(rt)
-{
+// Here is an example how to build any hollow box
 
-    if (rt[0][0] == "r")
-    {
-        echo(rt);
-        rotate(rt[0][1]) children(0);
-    }
-    if (rt[0][0] == "t")
-    {
-        echo(rt[0][1], rt[0][1]);
-        translate(rt[0][1]) children(0);
-    }
-}
-module movert(rt)
-{
+vTop = [ [ "t", [ 0, 0, 40 ] ], [ "r", [ 160, 0, 0 ] ] ];
+vBack = [ [ "t", [ 0, 100, 0 ] ], [ "r", [ 90, 0, 0 ] ] ];
+vLeft = [ [ "t", [ -50, 0, 0 ] ], [ "r", [ 0, 90, 0 ] ] ];
+vBottom = [ [ "t", [ 0, 0, 0 ] ], [ "r", [ 0, 0, 0 ] ] ];
+vFront = [ [ "t", [ 0, -10, 0 ] ], [ "r", [ -90, 0, 0 ] ] ];
+vRight = [ [ "t", [ 50, 0, 0 ] ], [ "r", [ 0, -90, 0 ] ] ];
 
-    if (rt[0][0] == "r")
-    {
-        rotate(rt[0][1]) movert1([rt[1]]) children(0);
-    }
-    if (rt[0][0] == "t")
-    {
-        translate(rt[0][1]) movert1([rt[1]]) children(0);
-    }
-}
-module box(walls, cutters, thikness, cutter)
-{
-    for (i = walls)
-    {
-        difference()
-        {
-            movert(i) wall(thikness, cutter);
-            for (i = cutters)
-            {
-                movert(i) cut(-cutter);
-            }
-        }
-    }
-}
+color("red") moveRotateTranslate(vTop) showWall();
+color("green") moveRotateTranslate(vBack) showWall();
+color("blue") moveRotateTranslate(vLeft) showWall();
+color("pink") moveRotateTranslate(vBottom) showWall();
+color("white") moveRotateTranslate(vFront) showWall();
+color("black") moveRotateTranslate(vRight) showWall();
 
-vTop2 = [ [ "r", [ 10, 0, 0 ] ], [ "t", [ 0, 0, 40 ] ] ];
-vTop = [ [ "r", [ 180, 0, 0 ] ], [ "t", [ 0, 0, 40 ] ] ];
-vBack = [ [ "r", [ 90, 0, 0 ] ], [ "t", [ 0, 100, 0 ] ] ];
-vLeft = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -50, 0, 0 ] ] ];
-vBottom = [ [ "r", [ 0, 0, 0 ] ], [ "t", [ 0, 0, 0 ] ] ];
-vFront = [ [ "r", [ -90, 0, 0 ] ], [ "t", [ 0, -10, 0 ] ] ];
-vRight = [ [ "r", [ 0, -90, 0 ] ], [ "t", [ 50, 0, 0 ] ] ];
-// movert([[ "t", [ 0, 0, 40 ] ]]) cube([ 10, 10, 10 ]);
-movert(vTop2) cube([ 10, 10, 10 ]);
-// movert1([vTop2[1]]) cube([ 10, 10, 10 ]);
-// box([ vTop, vBack, vLeft, vBottom, vRight ], [ vTop, vBack, vLeft, vBottom, vFront, vRight ], caseThikness, cutter);
+box([ vTop, vBack, vLeft, vBottom, vRight ], [ vTop, vBack, vLeft, vBottom, vFront, vRight ], caseThikness, cutter);
