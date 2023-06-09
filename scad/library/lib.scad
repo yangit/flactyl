@@ -1,5 +1,25 @@
 include <./config.scad>;
-function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8] ];
+
+// This function is limited to 11 elements!
+function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8], vec[9], vec[10], vec[11] ];
+
+module showVector(vector)
+// showVector(vector = [ 10, 10, 10 ]);
+{
+    start = [ 0, 0, 0 ];           // Starting point of the vector
+    length = norm(vector - start); // Length of the vector
+    x = vector[0];
+    y = vector[1];
+    z = vector[2];
+    b = acos(z / length); // inclination angle
+    c = atan2(y, x);      // azimuthal angle
+
+    rotate([ 0, b, c ]) cylinder(h = length, r = 0.2);
+    // % cube(vector); // corner of cube should coinciqde with end of cylin
+}
+// This function is limited to 11 elements!
+function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8], vec[9], vec[10], vec[11] ];
+
 module showVector(vector)
 // showVector(vector = [ 10, 10, 10 ]);
 {
@@ -15,6 +35,11 @@ module showVector(vector)
     // % cube(vector); // corner of cube should coinciqde with end of cylin
 }
 
+// Allows to rotate a vector around the x, y and z axis while keeping original object rotation axis
+// very usefull to rotate something around certain point in human readable format
+// normal rotate() module stops being sane after second rotation
+// i.e. rotate() rotate() rotate() will yield unexpected results if you are rotating for non 90 degree angles
+
 module gimbalRotate(vector)
 {
     x = vector[0];
@@ -25,6 +50,9 @@ module gimbalRotate(vector)
     zVector = [ sin(y), -sin(x) * cos(y), cos(x) * cos(y) ];
     rotate(a = z, v = zVector) rotate(a = y, v = yVector) rotate(a = x, v = xVector) children(0);
 }
+
+// Same like linear_extrude but with negative parameters,
+// and allows to extrude in both directions if you provide two parameters
 module push(x, y)
 {
     if (y == undef)
@@ -46,6 +74,9 @@ module push(x, y)
         }
     }
 }
+
+// Utility module used to create shapes by cutting planes form them
+// we can not cut a plane, but we can cut a sufficiently big cube, which is the same
 module cut(size)
 {
 
@@ -59,6 +90,8 @@ module cut(size)
     }
 }
 
+// Utility module used to create walls
+// usfull to create boxes
 module wall(thikness, size)
 {
     intersection()
@@ -67,6 +100,8 @@ module wall(thikness, size)
         translate([ 0, 0, thikness ]) cut(-size);
     }
 }
+
+// Debug module to show the wall anchor
 module showWall()
 {
     union()
@@ -76,9 +111,11 @@ module showWall()
     }
 }
 
+// Utility module to translate and rotate an object by a vector containing the translation and rotation values
+// Limited to 11 elements
 module moveRotateTranslate(rt)
 {
-
+    assert(len(rt) < 12, "rotation translation vector can not have more than 11 elements");
     if (rt[0] == undef)
     {
         children(0);
@@ -109,6 +146,8 @@ module moveRotateTranslate(rt)
         }
     }
 }
+
+// see box.scad for usage and debug examples
 module box(walls, cutters, thikness, cutter)
 {
     for (i = walls)
@@ -124,6 +163,9 @@ module box(walls, cutters, thikness, cutter)
     }
 }
 
+// if you have .dxf file and want to find its anchor point that is very uesfull
+//  find_anchor([ 90, 0, 0 ]) import("path/to/file.dxf");
+//  try rotating around x, y and z axis by 90 and 180 to find the anchor point
 module find_anchor(v)
 {
     children(0);

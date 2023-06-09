@@ -1,5 +1,5 @@
-include <./config.scad>;
+include <../library/config.scad>;
+use <../library/lib.scad>;
 use <./case.scad>;
-use <./lib.scad>;
 
 case ();

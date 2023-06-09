@@ -1,5 +1,5 @@
-include <./config.scad>;
-use <./lib.scad>;
+include <../library/config.scad>;
+use <../library/lib.scad>;
 
 module ccPcbAnchor()
 {
