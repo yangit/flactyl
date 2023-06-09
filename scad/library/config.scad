@@ -33,7 +33,7 @@ magnetStripeDepth = 0.7;
 // legs
 legRubberDepth = 1;
 legRubberDiameter = 8;
-legsInsideDepth = 5;
+legsInsideDepth = caseThikness;
 legs = [
     [ 5, 69 - legRubberDiameter / 2 - caseThikness ], [ 5, 13 ],
     [ ccFarWall - legRubberDiameter / 2 - caseThikness, 13 ],
