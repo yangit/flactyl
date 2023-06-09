@@ -90,6 +90,21 @@ module cut(size)
     }
 }
 
+// given array of planes cut child nodes
+module cut3d(planes)
+{
+
+    intersection()
+    {
+        children(0);
+        intersection_for(i = planes)
+        {
+
+            moveRotateTranslate(i) cut(cutter);
+        }
+    }
+}
+
 // Utility module used to create walls
 // usfull to create boxes
 module wall(thikness, size)
@@ -117,6 +132,10 @@ module moveRotateTranslate(rt)
 {
     assert(len(rt) < 12, "rotation translation vector can not have more than 11 elements");
     if (rt[0] == undef)
+    {
+        children(0);
+    }
+    if (rt[0][0] == undef)
     {
         children(0);
     }
@@ -150,15 +169,11 @@ module moveRotateTranslate(rt)
 // see box.scad for usage and debug examples
 module box(walls, cutters, thikness, cutter)
 {
-    for (i = walls)
+    cut3d(cutters) union()
     {
-        difference()
+        for (i = walls)
         {
             moveRotateTranslate(i) wall(thikness, cutter);
-            for (i = cutters)
-            {
-                moveRotateTranslate(i) cut(-cutter);
-            }
         }
     }
 }
