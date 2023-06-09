@@ -1,3 +1,5 @@
-mkdir -p ./export
-time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -o ./export/left.stl export_left.scad
-time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -o ./export/right.stl export_right.scad
+#!/bin/bash
+time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o ../../production/case/hitam/left.stl hitam.scad
+time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"right\" -o ../../production/case/hitam/right.stl hitam.scad
+
+

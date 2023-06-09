@@ -1,6 +1,15 @@
 include <../library/config.scad>;
 use <../library/lib.scad>;
 
+module anchor_thumb()
+{
+    translate([ thumbXOffset, thumbYOffset, thumbZOffset ])
+        sequenceRotate([ thumbXRotation, thumbYRotation, thumbZRotation ]) rotate([ 0, 90, -90 ]) children(0);
+}
+module anchor_pcb()
+{
+    rotate([ 0, -tentingAngle, 0 ]) children(0);
+}
 module ccPcbAnchor()
 {
     anchor_pcb() rotate([ 0, 180, 0 ]) children(0);
@@ -266,29 +275,44 @@ for (i = [1:5])
 }
 }
 
-// case ();
-// ccCase();
+// Some export magic, look into ./build.sh
+if (PARTNO == undef)
+{
+    color(caseColor) case();
+}
+else
+{
+    $fa = 1;
+    $fs = 0.4;
+    if (PARTNO == "left")
+        case();
+    if (PARTNO == "right")
+        mirror([ 1, 0, 0 ]) case();
+}
 
-// color(pcbColor) push(pcbAndHotswapThikness) left_pcb_dxf();
-// color("red") push(-pcbAndHotswapThikness) left_pcb_with_keys_dxf();
-// anchor_pcb() color(keysColor) translate([ 0, 0, pcbAndHotswapThikness ]) push(keysThikness) left_keycaps_dxf();
+    // case ();
+    // ccCase();
 
-// color(caseColor) push(keysThikness + pcbAndHotswapThikness) difference()
-// {
-//     union()
-//     {
-//         offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
-//     }
+    // color(pcbColor) push(pcbAndHotswapThikness) left_pcb_dxf();
+    // color("red") push(-pcbAndHotswapThikness) left_pcb_with_keys_dxf();
+    // anchor_pcb() color(keysColor) translate([ 0, 0, pcbAndHotswapThikness ]) push(keysThikness) left_keycaps_dxf();
 
-//     offset(wallOffsetFromPcb) left_pcb_with_keys_dxf();
-// }
-// translate([ 87 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, 90, 0 ]) wall(caseThikness, cutter);
+    // color(caseColor) push(keysThikness + pcbAndHotswapThikness) difference()
+    // {
+    //     union()
+    //     {
+    //         offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
+    //     }
 
-// find_anchor(90) left_pcb_with_keys_dxf();
+    //     offset(wallOffsetFromPcb) left_pcb_with_keys_dxf();
+    // }
+    // translate([ 87 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, 90, 0 ]) wall(caseThikness, cutter);
 
-// find_anchor(180) left_pcb_dxf();
-// translate([ 87 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, 90, 0 ]) wall(caseThikness, cutter);
+    // find_anchor(90) left_pcb_with_keys_dxf();
 
-// color("green") push(-2) offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
-// color(caseColor) push(caseThikness) left_pcb_dxf();
-// translate([ 90 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, -90, 0 ]) wall(caseThikness, cutter);
+    // find_anchor(180) left_pcb_dxf();
+    // translate([ 87 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, 90, 0 ]) wall(caseThikness, cutter);
+
+    // color("green") push(-2) offset(caseThikness + wallOffsetFromPcb) left_pcb_with_keys_dxf();
+    // color(caseColor) push(caseThikness) left_pcb_dxf();
+    // translate([ 90 + caseThikness + wallOffsetFromPcb, 0, 0 ]) rotate([ 0, -90, 0 ]) wall(caseThikness, cutter);

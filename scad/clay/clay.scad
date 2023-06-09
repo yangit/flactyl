@@ -7,17 +7,17 @@ legs = [
     [ ccFarWall - legRubberDiameter / 2 - caseThikness, 69 - legRubberDiameter / 2 - caseThikness ]
 ];
 
-// rotate([ 0, tentingAngle + 180, 0 ]) wall(1, 200);
 vPcb = [[ "r", [ 0, 180 - tentingAngle, 0 ] ]];
 vPcbMount = [[ "r", [ 0, -tentingAngle, 0 ] ]];
 vTable = [];
-vFront = [ [ "r", [ -90, 0, 0 ] ], [ "t", [ 0, 0, 0 ] ] ];
-vBack = [ [ "r", [ 90, 0, 0 ] ], [ "t", [ 0, 0, -68 ] ] ];
-vFar = [ [ "r", [ 0, -90, 0 ] ], [ "t", [ 0, 0, -ccFarWall ] ] ];
-vTop = [ [ "r", [ 0, 175 - tentingAngle, 0 ] ], [ "t", [ -pcbWidth + 21, 0, 0 ] ], [ "r", [ 0, 90, 0 ] ] ];
-// vTop = [ [ "r", [ 180, 0, 0 ] ], [ "t", [ 0, 0, -50 ] ] ];
-vThumb = [ [ "t", [ 0, -10, 0 ] ], [ "r", [ 230, 0, 0 ] ] ];
-vMiniWall = [ [ "r", [ 190, 0, 0 ] ], [ "t", [ 0, 0, -4 ] ] ];
+vFront = [ [ "t", [ 0, 0, 0 ] ], [ "r", [ -90, 0, 0 ] ] ];
+vBack = [ [ "t", [ 0, 0, -68 ] ], [ "r", [ 90, 0, 0 ] ] ];
+vFar = [ [ "t", [ 0, 0, -ccFarWall ] ], [ "r", [ 0, -90, 0 ] ] ];
+vTop = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -pcbWidth + 21, 0, 0 ] ], [ "r", [ 0, 175 - tentingAngle, 0 ] ] ];
+vThumb = [ [ "r", [ 230, 0, 0 ] ], [ "t", [ 0, -10, 0 ] ] ];
+vMiniWall = [ [ "t", [ 0, 0, -4 ] ], [ "r", [ 190, 0, 0 ] ] ];
+vSupportWall = [ [ "t", [ 0, 0, -30 ] ], [ "r", [ 90, 0, 0 ] ] ];
+vSupportTop = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -35, 0, 0 ] ], [ "r", [ 0, 235 - tentingAngle, 0 ] ] ];
 
 module clay()
 {
@@ -27,8 +27,9 @@ module clay()
         union()
         {
 
-            box([ vPcb, vBack ], [ vPcb, vTable, vFront, vBack, vFar, vTop ], caseThikness, cutter);
+            box([ vPcb, vBack ], [ vTable, vFront, vFar, vTop ], caseThikness, cutter);
             // add bottom with cutout for magnet holder
+
             difference()
             {
                 cut3d([ vFar, vPcb, vFront, vBack ]) wall(caseThikness + magnetStripeDepth, cutter);
@@ -37,6 +38,10 @@ module clay()
                 translate([ caseThikness, caseThikness, 0 ])
                     cube([ ccFarWall - caseThikness * 2, magnetStripeWidth, magnetStripeDepth ]);
             }
+
+            // support wall (not that it is needed)
+            cut3d([ vPcb, vTable, vFar, vSupportTop, vThumb ]) moveRotateTranslate(vSupportWall)
+                wall(caseThikness, cutter);
             // add legs
             for (i = legs)
             {
@@ -63,17 +68,16 @@ module clay()
     }
 }
 
+// Some export magic, look into ./build.sh
 if (PARTNO == undef)
 {
     color(caseColor) translate([ 0, -100, 0 ]) thumb();
     color(caseColor) clay();
-    color(pcbColor) anchor_pcb() left_pcb_dxf();
-    color(keysColor) anchor_pcb() left_keys();
+    color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb_dxf();
+    color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
 }
 else
 {
-    $fa = 1;
-    $fs = 0.4;
     if (PARTNO == "thumb")
         thumb();
     if (PARTNO == "left")

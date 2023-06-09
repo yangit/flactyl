@@ -35,12 +35,26 @@ module showVector(vector)
     // % cube(vector); // corner of cube should coinciqde with end of cylin
 }
 
+// Sorry some black magic here, I do not understand it myself
+// You can take a look at rotate.scad to see how it works
+// this funciton returns a list of rotations that will rotate a vector around x, y and z axis
+// it does more than just sequential rotate() rotate() rotate() because it keeps the
+// objects relative rotation axis instead of always rotating around [0,0,0] origin.
+function sequenceRotateFn(vector) = [
+    // x
+    [ "r", [ 1, 0, 0 ] * vector[0] ],
+    // y
+    [ "r", [ 0, cos(vector[0]), sin(vector[0]) ] * vector[1] ],
+    // z
+    [ "r", [ sin(vector[1]), -sin(vector[0]) * cos(vector[1]), cos(vector[0]) * cos(vector[1]) ] * vector[2] ]
+];
+
 // Allows to rotate a vector around the x, y and z axis while keeping original object rotation axis
 // very usefull to rotate something around certain point in human readable format
 // normal rotate() module stops being sane after second rotation
 // i.e. rotate() rotate() rotate() will yield unexpected results if you are rotating for non 90 degree angles
 
-module gimbalRotate(vector)
+module sequenceRotate(vector)
 {
     x = vector[0];
     y = vector[1];
@@ -122,11 +136,19 @@ module showWall()
     union()
     {
         translate([ 0, 0, 15 ]) cube([ 1, 1, 30 ], center = true);
+        rotate([ 0, 90, 0 ]) translate([ 0, 0, 5 ]) cube([ 1, 1, 10 ], center = true);
+        rotate([ 90, 0, 0 ]) translate([ 0, 0, 5 ]) cube([ 1, 1, 10 ], center = true);
         sphere(r = 5);
     }
 }
 
 // Utility module to translate and rotate an object by a vector containing the translation and rotation values
+//  if t=[10,0,0]
+// and r = [90,0,0]
+// moveRotateTranslate([["r",r],["t",t]]) is the same as translate(t) rotate(r)
+// notice the reverse order of arguments.
+// Except you can pass [["r",r],["t",t]] around as an argument and you can not pass "translate(t) rotate(r)" as an
+// argument 
 // Limited to 11 elements
 module moveRotateTranslate(rt)
 {
@@ -156,20 +178,21 @@ module moveRotateTranslate(rt)
         {
             if (rt[0][0] == "r")
             {
-                rotate(rt[0][1]) moveRotateTranslate(unshift(rt)) children(0);
+                moveRotateTranslate(unshift(rt)) rotate(rt[0][1]) children(0);
             }
             if (rt[0][0] == "t")
             {
-                translate(rt[0][1]) moveRotateTranslate(unshift(rt)) children(0);
+                moveRotateTranslate(unshift(rt)) translate(rt[0][1]) children(0);
             }
         }
     }
 }
 
 // see box.scad for usage and debug examples
+// Can create convex shapes using planes
 module box(walls, cutters, thikness, cutter)
 {
-    cut3d(cutters) union()
+    cut3d(concat(walls, cutters)) union()
     {
         for (i = walls)
         {
@@ -179,89 +202,56 @@ module box(walls, cutters, thikness, cutter)
 }
 
 // if you have .dxf file and want to find its anchor point that is very uesfull
+//
 //  find_anchor([ 90, 0, 0 ]) import("path/to/file.dxf");
-//  try rotating around x, y and z axis by 90 and 180 to find the anchor point
+//
+//  try rotating around x, y and z axis by 90 and 180 to visually find the anchor point
 module find_anchor(v)
 {
     children(0);
     color("yellow") rotate(v) children(0);
 }
 
-module anchor_thumb()
-{
-    translate([ thumbXOffset, thumbYOffset, thumbZOffset ])
-        gimbalRotate([ thumbXRotation, thumbYRotation, thumbZRotation ]) rotate([ 0, 90, -90 ]) children(0);
-}
-module anchor_pcb()
-{
-    rotate([ 0, -tentingAngle, 0 ]) children(0);
-}
 module table()
 {
     color("brown") translate([ -50, 0, -tableThikness ]) linear_extrude(tableThikness) square([ 300, 250 ]);
 }
 
+moveLeftToCorner = [ "t", [ 7, choc_key_y / 2, 0 ] ];
 // LEFT
 module left_pcb_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_pcb_edgecut.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_pcb_edgecut.dxf");
 }
 module left_keycaps_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_keycaps.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_keycaps.dxf");
 }
 module left_pcb_with_keys_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_pcb_edgecut_with_keys.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_pcb_edgecut_with_keys.dxf");
 }
 module left_switch_cutouts_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_switch_cutouts.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_switch_cutouts.dxf");
 }
 module left_screw_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_screw.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_screw.dxf");
 }
 module left_screw_holes_dxf()
 {
     // bottom left corner
-    translate([ 7, 8.5, 0 ]) import("../../production/pcbs/left/left_screw_holes.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_screw_holes.dxf");
 }
 module left_pcb()
 {
     color(pcbColor) linear_extrude(pcbAndHotswapThikness) left_pcb_dxf();
-}
-
-// THUMB
-
-module thumb_dxf()
-{
-    // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_pcb_edgecut.dxf");
-}
-module thumb_switch_cutouts_dxf()
-{
-    // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_switch_cutouts.dxf");
-}
-module thumb_screw_dxf()
-{
-    // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_screw.dxf");
-}
-module thumb_screw_holes_dxf()
-{
-    // bottom left corner
-    translate([ 9, 8.5, 0 ]) import("../../production/pcbs/thumb/thumb_screw_holes.dxf");
-}
-module thumb_pcb()
-{
-    color("lightgreen") linear_extrude(pcbAndHotswapThikness) thumb_dxf();
 }
 
 module left_keys()
@@ -273,16 +263,47 @@ module left_case()
     color("grey") translate([ 0, 0, -caseThikness ]) push(caseThikness) left_case_dxf();
 }
 
+// THUMB
+moveThumbToCorner = [ "t", [ choc_key_x / 2, choc_key_y / 2, 0 ] ];
+module thumb_dxf()
+{
+    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/thumb/thumb_pcb_edgecut.dxf");
+}
+module thumb_switch_cutouts_dxf()
+{
+    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/thumb/thumb_switch_cutouts.dxf");
+}
+module thumb_screw_dxf()
+{
+    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/thumb/thumb_screw.dxf");
+}
+module thumb_screw_holes_dxf()
+{
+    moveRotateTranslate([
+        [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 0, 180, 0 ] ],
+        [ "t", [ choc_key_x, choc_key_y * 1.5, 0 ] ]
+    ]) import("../../production/pcbs/thumb/thumb_screw_holes.dxf");
+}
+module thumb_keycaps_dxf()
+{
+    // bottom left corner
+    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/thumb/thumb_keycaps.dxf");
+}
+module thumb_pcb()
+{
+    color("lightgreen") linear_extrude(pcbAndHotswapThikness) thumb_dxf();
+}
+
 module thumb_keys()
 {
-    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb_dxf();
+    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb_keycaps_dxf();
 }
 
 // NNANO
 module nice_nano_mount_to_pcb()
 {
     // translate for the pcb anchor
-    translate([ 86.6, 29, 0 ]) rotate([ 180, 0, 90 ]) children(0);
+    moveRotateTranslate([["r",[ 180, 0, 90 ]],["t",[ 86.6, 29, 0 ]]]) children(0);
 }
 module nice_nano()
 {

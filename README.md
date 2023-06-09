@@ -113,7 +113,7 @@ This is how PCB should come out from JLCPCB.com, complete with all diodes, JST c
 
 ## Parts list
 
-You going to need some assorment of items to get done:
+You going to need some assortment of items to get done:
 
 |  Count   | Name   | Photo   |
 |-------------|-------------|-------------|
@@ -121,8 +121,8 @@ You going to need some assorment of items to get done:
 | 42 | Kailh Low Profile Choc switches (highly recommend getting 20g (pink) for thumb cluster to make multi key combos easier)|  [<img src="./photos/parts/pink.webp" width="200px">](./photos/parts/pink.webp)
 | 42 | 1u Blank MBK Choc Low Profile Keycaps| [<img src="./photos/parts/mbk.png" width="200px">](./photos/parts/mbk.png)
 | 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers/sockets for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
-| 2 | Nice!Nano microcontrollers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
-| 2 | Mill Max Pins for Nice!Nano microcontrollers, they are soldered to your Nice!Nanos, and that allows you to plug nice nano into headers, buy default Nice!Nanos come with thick pins not suitable for socketing (see photos), the default ones can only be used to permanently solder controller onto the PCB **which should be avoided**. If the pins are expensive or unavialable you can buy any through hole diodes and cut their legs to use instead, though legs are thinner and are slightly harder to work with, see [this](https://docs.splitkb.com/hc/en-us/articles/360011263059-How-do-I-socket-a-microcontroller-) guide| [<img src="./photos/parts/pins.jpg" width="200px">](./photos/parts/pins.jpg) [<img src="./photos/parts/pins2.jpg" width="200px">](./photos/parts/pins2.jpg) [<img src="./photos/parts/pins3.jpg" width="200px">](./photos/parts/pins3.jpg) [<img src="./photos/parts/pins4.jpg" width="200px">](./photos/parts/pins4.jpg)
+| 2 | Nice!Nano micro controllers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
+| 2 | Mill Max Pins for Nice!Nano micro controllers, they are soldered to your Nice!Nanos, and that allows you to plug nice nano into headers, buy default Nice!Nanos come with thick pins not suitable for socketing (see photos), the default ones can only be used to permanently solder controller onto the PCB **which should be avoided**. If the pins are expensive or unavailable you can buy any through hole diodes and cut their legs to use instead, though legs are thinner and are slightly harder to work with, see [this](https://docs.splitkb.com/hc/en-us/articles/360011263059-How-do-I-socket-a-microcontroller-) guide| [<img src="./photos/parts/pins.jpg" width="200px">](./photos/parts/pins.jpg) [<img src="./photos/parts/pins2.jpg" width="200px">](./photos/parts/pins2.jpg) [<img src="./photos/parts/pins3.jpg" width="200px">](./photos/parts/pins3.jpg) [<img src="./photos/parts/pins4.jpg" width="200px">](./photos/parts/pins4.jpg)
 | 32 | Hot swap connectors (two buttons are soldered directly on each half so you need 4 less than keys but I would get some extras anyway)| [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
 | 2 | Case|
 | 4 | Pcb (one for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg) [<img src="./photos/parts/thumb.jpg" width="200px">](./photos/parts/thumb.jpg)
