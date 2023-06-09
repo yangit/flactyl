@@ -1,32 +1,38 @@
 include <../library/config.scad>;
 use <../library/lib.scad>;
-legDepth = 22;
+legDepth = 20;
 legThickness = 5;
 legOffset = 5;
 thumbClusterWidth = 51;
 thumbClusterHeight = 36;
 
-module anchorLeft()
+module thumb_clay_leg()
 {
-    translate([ thumbClusterHeight / 2, legOffset + legThickness / 2, 0 ]) children(0);
-}
-module anchorRight()
-{
-    translate([ thumbClusterHeight / 2, thumbClusterWidth - legThickness / 2 - legOffset, 0 ]) children(0);
-}
-union()
-{
-    push(caseThikness) difference()
+    union()
     {
-        thumb_dxf();
-        thumb_screw_holes_dxf();
+        push(legDepth) square(legThickness, center = true);
+        translate([ 0, 0, legDepth ]) linear_extrude(height = legThickness, scale = -10)
+            square(legThickness, center = true);
     }
+}
+module thumb()
+{
+    union()
+    {
+        push(caseThikness) difference()
+        {
+            thumb_dxf();
+            thumb_screw_holes_dxf();
+        }
+        push(caseThikness + screwBumpSize) thumb_screw_dxf();
+        translate([ legOffset + legThickness / 2, legOffset + legThickness / 2, 0 ]) thumb_clay_leg();
+        translate([ thumbClusterHeight - legOffset - legThickness / 2, legOffset + legThickness / 2, 0 ])
+            thumb_clay_leg();
 
-    push(legDepth) anchorLeft() square(legThickness, center = true);
-    push(legDepth) anchorRight() square(legThickness, center = true);
-
-    translate([ 0, 0, legDepth ]) anchorLeft() linear_extrude(height = legThickness, scale = -10)
-        square(legThickness, center = true);
-    translate([ 0, 0, legDepth ]) anchorRight() linear_extrude(height = legThickness, scale = -10)
-        square(legThickness, center = true);
+        translate([ legOffset + legThickness / 2, thumbClusterWidth - legOffset - legThickness / 2, 0 ])
+            thumb_clay_leg();
+        translate(
+            [ thumbClusterHeight - legOffset - legThickness / 2, thumbClusterWidth - legOffset - legThickness / 2, 0 ])
+            thumb_clay_leg();
+    }
 }

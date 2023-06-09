@@ -1,5 +1,6 @@
 include <../library/config.scad>;
 use <../library/lib.scad>;
+use <./thumb.scad>
 
 legs = [
     [ 5, 69 - legRubberDiameter / 2 - caseThikness ], [ 5, 6 ], [ ccFarWall - legRubberDiameter / 2 - caseThikness, 6 ],
@@ -18,7 +19,7 @@ vTop = [ [ "r", [ 0, 175 - tentingAngle, 0 ] ], [ "t", [ -pcbWidth + 21, 0, 0 ] 
 vThumb = [ [ "t", [ 0, -10, 0 ] ], [ "r", [ 230, 0, 0 ] ] ];
 vMiniWall = [ [ "r", [ 190, 0, 0 ] ], [ "t", [ 0, 0, -4 ] ] ];
 
-render()
+module clay()
 {
     cut3d([ vThumb, vPcb ]) difference()
     {
@@ -62,4 +63,21 @@ render()
     }
 }
 
-anchor_pcb() left_pcb_dxf();
+if (PARTNO == undef)
+{
+    color(caseColor) translate([ 0, -100, 0 ]) thumb();
+    color(caseColor) clay();
+    color(pcbColor) anchor_pcb() left_pcb_dxf();
+    color(keysColor) anchor_pcb() left_keys();
+}
+else
+{
+    $fa = 1;
+    $fs = 0.4;
+    if (PARTNO == "thumb")
+        thumb();
+    if (PARTNO == "left")
+        clay();
+    if (PARTNO == "right")
+        mirror([ 1, 0, 0 ]) clay();
+}
