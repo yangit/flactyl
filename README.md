@@ -21,7 +21,6 @@ I'd be happy to help!
 - Nice!Nano positioned right under the keys, hiding itself, without need for manual wiring (because of that PCBs are non reversible)
 - Can fit huge batteries
 - Magnetic stripe to securely fasten to the table
-- The tentable table seen on the photos is from HumanScale
 
 ## Videos and links
 
@@ -30,7 +29,7 @@ I'd be happy to help!
 - Video how to order 3d case from JLCPCB.com [here](https://www.youtube.com/watch?v=07qFKaykjfg)
 - Video how to order PCBs from JLCPCB.com [here](https://youtu.be/oP7d0jU99oc)
 - Reddit [thread](https://www.reddit.com/r/ErgoMechKeyboards/comments/13qep4y/after_4_year_lurking_and_2_years_building_my_own/)
-- You can find zmk-config for this board [here](https://github.com/yangit/zmk-config/)
+- You can find zmk-config for this board [here](https://github.com/yangit/zmk-config-flactyl/)
 - It took me two years to finish this project, thanks to [KBD.news](https://kbd.news/) for inspiration!
 
 ## Cases
@@ -47,10 +46,10 @@ Consist of two pieces, you are supposed to put clay/play dough in it and see wha
 [<img src="./photos/cases/clay3.jpeg" width="200px">](./photos/cases/clay3.jpeg)
 [<img src="./photos/cases/clay4.jpeg" width="200px">](./photos/cases/clay4.jpeg)
 
-[<img src="./photos/cases/clay6.png" width="200px">](./photos/cases/clay6.png)
+[<img src="./photos/cases/clay7.png" width="200px">](./photos/cases/clay7.png)
 [<img src="./photos/cases/clay8.png" width="200px">](./photos/cases/clay8.png)
-[<img src="./photos/cases/clay9.png" width="200px">](./photos/cases/clay9.png)
-[<img src="./photos/cases/clay10.png" width="200px">](./photos/cases/clay10.png)
+[<img src="./photos/cases/clay5.png" width="200px">](./photos/cases/clay5.png)
+[<img src="./photos/cases/clay6.png" width="200px">](./photos/cases/clay6.png)
 
 ### Iceberg
 
@@ -110,14 +109,14 @@ You going to need some assorment of items to get done:
 | 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
 | 2 | Nice!Nano microcontrollers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
 | 32 | Hot swap connectors (two buttons are soldered directly on each half)| [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
-| 2 | Case| 
-| 4 | Pcb (two for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg)
+| 2 | Case|
+| 4 | Pcb (one for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg)
 | 12 | M2 x 10mm Screws (I recommend getting hex head screws, they are easier to tighten)| [<img src="./photos/parts/nuts.jpeg" width="200px">](./photos/parts/nuts.jpeg)
-| 12 | M2x3x3x1.8 square (!NOT regular hex!) nuts, see photo| 
-| 12 | Spring washers |
-| 2 | JST SH 1.0mm x 2 wire connector for battery (only if you want to go wireless)| [<img src="./photos/parts/battc.jpeg" width="200px">](./photos/parts/battc.jpeg)
+| 12 | M2x3x3x1.8 square (!NOT regular hex!) nuts, see photo|[<img src="./photos/parts/nut.jpeg" width="200px">](./photos/parts/nut.jpeg)
+| 12 | Spring washers |[<img src="./photos/parts/washers.jpeg" width="200px">](./photos/parts/washers.jpeg)
+| 2 | JST SH 1.0mm x 2 wires x 100mm long wire connector for battery (only if you want to go wireless)| [<img src="./photos/parts/battc.jpeg" width="200px">](./photos/parts/battc.jpeg)
 | 2 | Battery, any single cell Li-ion/Li-po 100-1000mah will do, connector does not matter, you going to resolder it anyway  (only if you want to go wireless)| [<img src="./photos/parts/batt.jpeg" width="200px">](./photos/parts/batt.jpeg)
-| 2 | JST SH 1.0mm x 5 wire cable for thumb cluster (carefully look at the cable colors, there are two types of connector with  cross over and direct, you need connector with the same color order on both sides ), second photo shows how you will need to trim the connector using utility knife to make sure it fits into the pcb|[<img src="./photos/parts/conn.jpeg" width="200px">](./photos/parts/conn.jpeg) [<img src="./photos/parts/trim.jpeg" width="200px">](./photos/parts/trim.jpeg)
+| 2 | JST SH 1.0mm x 5 wire x 100mm long cable for thumb cluster (carefully look at the cable colors, there are two types of connector with  cross over and direct, you need connector with the same color order on both sides ), second photo shows how you will need to trim the connector using utility knife to make sure it fits into the pcb|[<img src="./photos/parts/conn.jpeg" width="200px">](./photos/parts/conn.jpeg) [<img src="./photos/parts/trim.jpeg" width="200px">](./photos/parts/trim.jpeg)
 | 8 | 8mm silicone rubber feet (self adhesive)| [<img src="./photos/parts/feet.webp" width="200px">](./photos/parts/feet.webp)
 | 1 | Roll of 3m magnetic strip 1inch wide (25.4mm) for the undercase holder. Unless your table is metal you need to glue the other part of the tape on the table as well like on the photo => | [<img src="./photos/parts/mag1.jpeg" width="200px">](./photos/parts/mag1.jpeg) [<img src="./photos/parts/mag2.jpeg" width="200px">](./photos/parts/mag2.jpeg) [<img src="./photos/parts/mag3.jpeg" width="200px">](./photos/parts/mag3.jpeg)
 
