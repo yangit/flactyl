@@ -207,7 +207,7 @@ GIT + OpenScad is 100% more predictable, you might need to write your own helper
 
 ### Config generator
 
-Also you will most likely need your own ZMK/QMK config generator. Basic layers, are ok to write by hand, but tap dances are just horrible in both ZMK and QMK, my config generator of 128 lines in JavaScript generates `.keymap`  4719 lines long. How am I supposed to maintain it manually? Features I have in my generator are:
+Also you will most likely need your own ZMK/QMK config generator. Basic layers, are ok to write by hand, but tap dances are just horrible in both ZMK and QMK, my config generator of ~500 lines in JavaScript generates `.keymap`  ~5000 lines long. How am I supposed to maintain it manually? Features I have in my generator are:
 
 - mirror layer
 - create layer from another, but with modifier
