@@ -98,6 +98,8 @@ High-level build steps looks like so:
   - SCREW, WASHER, PCB, **NUT**, CASE, NUT, notice the extra nut, it helps tremendously to fiddle all the screws through the case at the same time.
   - The JST connector will not fit into the thumb cluster side, that is fine, just trim it with a knife
 - Flash it with ZMK firmware (or any other you want)
+  - Spend months in agony migrating Querty => Workman => Colemak, moving around symbols, modifiers, and learning the intricate issues of how TAP-DANCE timings are implemented.
+- Enjoy? Enjoy!
 
 Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
 
@@ -194,12 +196,64 @@ If you are looking to make any changes, go under `./ergogen/input` folder and ch
 
 ## What I have learned
 
+### 3d design
+
 If you are a programmer:
 
 Do not try to design anything in Fusion 360, it is way too easy, visual, and you have so many tools at your disposal. Until one day you need to refactor your model and add a minor change somewhere in the past.
 Screw Fusion 360! It will mess up your model in this case no matter how hard you try to make your model parametric and no matter how careful you are taking care of your history.
 
 GIT + OpenScad is 100% more predictable, you might need to write your own helpers, but it was 10 times faster than fiddling with Fusion 360.
+
+### Config generator
+
+Also you will most likely need your own ZMK/QMK config generator. Basic layers, are ok to write by hand, but tap dances are just horrible in both ZMK and QMK, my config generator of 128 lines in JavaScript generates `.keymap`  4719 lines long. How am I supposed to maintain it manually? Features I have in my generator are:
+
+- mirror layer
+- create layer from another, but with modifier
+- easily define macros, tap-dance etc
+
+You can take a look at my config generator [here](https://github.com/yangit/zmk-config/)
+
+### Mirror layers
+
+I use split in programs like Photoshop and Fusion 360. One of the problems I had is when you need to press single hotkey i.e. letter “L” which is on the right side. Moving my hand from the mouse for that single press is simply annoying.
+
+So I had these solutions:
+
+#### Fusion 360 layer
+
+I would enable it when I navigate to fusion and all most common keys would be on the left hand. I.e. I would put “L” under right index. That allows me to comfortably use any program and all wired shortcuts like “CMD+CTRL+X+P+F2+NUM14” BUT! If I need to switch back and forth between fusion and gmail, or if I need to label objects in my model (type short stings of text) it becomes a pain to switch to/from the layer unless it is a momentary layer. Overall it is a very quick/easy solution, and if you have stable workflow(know your hotkeys) and there are not too many programs(and so layers) you can get away with it.
+
+#### Mirror layer
+
+On my left half i have a “mirror” layer which swaps all the letters from the right half. Using that magic button I can all of a sudden type any key any time with one hand. So great! Gmail hotkeys, chrome, photoshop, fusion all of them work w/o custom layers and on one hand.
+BUT then you realize that you not only need letter L but also CMD+L or SHIFT+CMD+L and that is still manageable by using “tap dance” Essentially short tap emits “L”, hold emits “CMD+L” and tap and hold emits “CMD+SHIFT+L” Ok good? Not yet, there are more than letters you want to mirror, sometimes you need to type single “!” Or just press that “up” key once, or else. So I ended up using 3 mirror layers.
+
+- letters
+- symbols
+- arrows (it also has stuff like PageUp etc)
+
+Then there is an issue. You need to be able to activate all 8 layers from one hand:
+
+- letters
+- mirror letters
+- symbols
+- mirror symbols
+- arrows
+- mirror arrows
+- shift layer
+- mirror shift layer
+
+Ok, we need to talk here. Lets drop the last two, that brings number to 6. The first one(letters) you do not need to activate it is already active. Now you need to increase number of layers you can comfortably activate on the left hand. One approach is to press thumb on two keys simultaneously. If your thumb cluster looks like so {a, b, c} you can press “a”, “b”, “c“ but also “ab” and “bc”. You have got 5 layers instead of 3. That depends on your thumb cluster and that is why I do not like splay(rotation) on thumb keys. I like them aligned next to each other like on [moonlander](https://www.zsa.io/moonlander/) keyboard. Having easy 20g spring under thumb keys helps a lot with pressing two keys simultaneously.
+
+#### Integrate mouse into keyboard
+
+I’m still on the way to this solution, but if you get like [Charybdis](https://bastardkb.com/charybdis/) you may be happy since your hands are not leaving keyboard at all.
+
+#### Design your own
+
+Finally I made myself keyboard with 6 thumb keys positioned such that I can press 12 layers with single thumb and I use it comfortably.
 
 ## License
 
