@@ -87,8 +87,16 @@ High-level build steps looks like so:
 - Select which case you want to print
 - Order case and PCB from JLCPCB or any other pcb/3d printing vendor
 - Order parts online from various vendors according to the parts list
-- Solder everything up
-- Assemble everything down
+- Solder
+  - Pins on the Nice!Nanos themselves
+  - Headers for Nice!Nanos on the left and right PCBs
+  - Hot-swap connectors for switches on all PCBs
+  - Two switches above Nice!Nanos on each side of PCB (letters G,T,J,U on QUERTY)
+  - Batteries with connectors (only for wireless build)
+- Assemble (do not worry, if you got this far it is only pure joy left)
+  - Small tip, when screwing everything, you should use 2 nuts per screw, it goes like so
+  - SCREW, WASHER, PCB, **NUT**, CASE, NUT, notice the extra nut, it helps tremendously to fiddle all the screws through the case at the same time.
+  - The JST connector will not fit into the thumb cluster side, that is fine, just trim it with a knife
 - Flash it with ZMK firmware (or any other you want)
 
 Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
@@ -110,7 +118,7 @@ You going to need some assorment of items to get done:
 | 2 | Nice!Nano microcontrollers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
 | 32 | Hot swap connectors (two buttons are soldered directly on each half)| [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
 | 2 | Case|
-| 4 | Pcb (one for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg)
+| 4 | Pcb (one for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg) [<img src="./photos/parts/thumb.jpg" width="200px">](./photos/parts/thumb.jpg)
 | 12 | M2 x 10mm Screws (I recommend getting hex head screws, they are easier to tighten)| [<img src="./photos/parts/nuts.jpeg" width="200px">](./photos/parts/nuts.jpeg)
 | 12 | M2x3x3x1.8 square (!NOT regular hex!) nuts, see photo|[<img src="./photos/parts/nut.jpeg" width="200px">](./photos/parts/nut.jpeg)
 | 12 | Spring washers |[<img src="./photos/parts/washers.jpeg" width="200px">](./photos/parts/washers.jpeg)
@@ -119,6 +127,7 @@ You going to need some assorment of items to get done:
 | 2 | JST SH 1.0mm x 5 wire x 100mm long cable for thumb cluster (carefully look at the cable colors, there are two types of connector with  cross over and direct, you need connector with the same color order on both sides ), second photo shows how you will need to trim the connector using utility knife to make sure it fits into the pcb|[<img src="./photos/parts/conn.jpeg" width="200px">](./photos/parts/conn.jpeg) [<img src="./photos/parts/trim.jpeg" width="200px">](./photos/parts/trim.jpeg)
 | 8 | 8mm silicone rubber feet (self adhesive)| [<img src="./photos/parts/feet.webp" width="200px">](./photos/parts/feet.webp)
 | 1 | Roll of 3m magnetic strip 1inch wide (25.4mm) for the undercase holder. Unless your table is metal you need to glue the other part of the tape on the table as well like on the photo => | [<img src="./photos/parts/mag1.jpeg" width="200px">](./photos/parts/mag1.jpeg) [<img src="./photos/parts/mag2.jpeg" width="200px">](./photos/parts/mag2.jpeg) [<img src="./photos/parts/mag3.jpeg" width="200px">](./photos/parts/mag3.jpeg)
+|2|USB-C cables of your preference, one will connect your main half and computer to communicate keypresses and provide power, another between your driven half and any power source, to provide power only. You may not need 2 cables and get away with one USB-C cable if you intend to use battery, also 2 cables are handy when you need to re-flash your controllers with new firmware|[<img src="./photos/parts/usbc.jpg" width="200px">](./photos/parts/usbc.jpg)
 
 You will also need
 
@@ -182,6 +191,15 @@ If you are looking to make any changes, go under `./ergogen/input` folder and ch
 [<img src="./photos/11.jpeg" width="800px">](./photos/11.jpeg)
 [<img src="./photos/12.jpeg" width="800px">](./photos/12.jpeg)
 [<img src="./photos/4.jpeg" width="800px">](./photos/4.jpeg)
+
+## What I have learned
+
+If you are a programmer:
+
+Do not try to design anything in Fusion 360, it is way too easy, visual, and you have so many tools at your disposal. Until one day you need to refactor your model and add a minor change somewhere in the past.
+Screw Fusion 360! It will mess up your model in this case no matter how hard you try to make your model parametric and no matter how careful you are taking care of your history.
+
+GIT + OpenScad is 100% more predictable, you might need to write your own helpers, but it was 10 times faster than fiddling with Fusion 360.
 
 ## License
 
