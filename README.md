@@ -255,9 +255,10 @@ Ok, we need to talk here. Lets drop the last two, that brings number to 6. The f
 
 I’m still on the way to this solution, but if you get like [Charybdis](https://bastardkb.com/charybdis/) you may be happy since your hands are not leaving keyboard at all.
 
-#### Design your own
+## Mods
 
-Finally I made myself keyboard with 6 thumb keys positioned such that I can press 12 layers with single thumb and I use it comfortably.
+- If 20g pink Choc are unavailable you can do 15g SPRiT springs mod, it is tedious, but worth it if all you got is 40g linear.
+- Ball bearing mod: somehow ball bearing mod did not work as well on Kailh Choc as it did on Kailh Box, so I can not recommend it to reduce travel, I was able to add balls, but the slightly reduced travel immediately affected the consistency and I had to type harder or twice to get key to fire.
 
 ## License
 
