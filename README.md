@@ -19,7 +19,7 @@ I'd be happy to help!
 - Choc hotswap
 - Rotary encoder
 - Ergogen for PCB with some custom scripts to generate `.bom` `.pos` files for jlcpcb.com SMT assembly service, and output outlines for easier 3d case designing
-- zmk with custom nodejs script to make layer declaration easier and more readable
+- zmk-config generator with custom NodeJS script to make layer declaration easier and more readable
 - Nice!Nano positioned right under the keys, hiding itself, without need for manual wiring (because of that PCBs are non reversible)
 - Can fit huge batteries
 - Magnetic stripe to securely fasten to the table
@@ -79,8 +79,7 @@ Look up `Videos` section of this readme to see how to order PCBs and 3d files fr
 ## Customize case
 
 You can customize thumb cluster location reasonably easy using
-`./scad/` folder. Try to play around with it, you need OpenScad free software. Look for `./scad/hitam/develop.scad` file.
-And if you want to render for export you can use `export_left.scad` and `export_right.scad` respectively
+`./scad/` folder. Try to play around with it, you need OpenScad free software. Look for `./scad/readme.md` for more details.
 
 ## Build
 
