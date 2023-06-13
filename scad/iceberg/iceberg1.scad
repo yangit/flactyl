@@ -1,6 +1,6 @@
 include <../library/config.scad>;
 include <../library/lib.scad>;
-include <./thumbConfig.scad>;
+include <./config/thumbConfig1.scad>;
 
 vPcb = [[ "r", [ 0, 180 - tentingAngle, 0 ] ]];
 vPcbMount = invertPlane(vPcb);

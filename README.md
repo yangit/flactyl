@@ -63,10 +63,10 @@ Consists of single hollow box, switches are exposed on the sides.
 [<img src="./photos/8.jpeg" width="200px">](./photos/8.jpeg)
 [<img src="./photos/10.jpeg" width="200px">](./photos/10.jpeg)
 
-[<img src="./production/case/iceberg/case1.jpg" width="200px">](./production/case/iceberg/case1.jpg)
-[<img src="./production/case/iceberg/case2.jpg" width="200px">](./production/case/iceberg/case2.jpg)
-[<img src="./production/case/iceberg/case3.jpg" width="200px">](./production/case/iceberg/case3.jpg)
-[<img src="./production/case/iceberg/case4.jpg" width="200px">](./production/case/iceberg/case4.jpg)
+[<img src="./production/case/iceberg/variant1/case1.jpg" width="200px">](./production/case/iceberg/variant1/case1.jpg)
+[<img src="./production/case/iceberg/variant1/case2.jpg" width="200px">](./production/case/iceberg/variant1/case2.jpg)
+[<img src="./production/case/iceberg/variant1/case3.jpg" width="200px">](./production/case/iceberg/variant1/case3.jpg)
+[<img src="./production/case/iceberg/variant1/case4.jpg" width="200px">](./production/case/iceberg/variant1/case4.jpg)
 
 ### Hitam
 
