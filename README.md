@@ -1,5 +1,7 @@
 # Flactyl
 
+[<img src="./photos/1.jpeg" width="600px">](./photos/1.jpeg)
+
 ## Contacts
 
 If you need help building this keyboard or have any questions you can drop me a line at [yan@yan.my](mailto:yan@yan.my)
@@ -88,7 +90,7 @@ High-level build steps looks like so:
 - Order case and PCB from JLCPCB or any other pcb/3d printing vendor
 - Order parts online from various vendors according to the parts list
 - Solder
-  - Pins on the Nice!Nanos themselves
+  - Pins on the Nice!Nanos themselves see [this](https://docs.splitkb.com/hc/en-us/articles/360011263059-How-do-I-socket-a-microcontroller-) guide
   - Headers for Nice!Nanos on the left and right PCBs
   - Hot-swap connectors for switches on all PCBs
   - Two switches above Nice!Nanos on each side of PCB (letters G,T,J,U on QUERTY)
@@ -118,7 +120,7 @@ You going to need some assorment of items to get done:
 | 42 | 1u Blank MBK Choc Low Profile Keycaps| [<img src="./photos/parts/mbk.png" width="200px">](./photos/parts/mbk.png)
 | 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers/sockets for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
 | 2 | Nice!Nano microcontrollers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
-| 2 | Mill Max Pins for Nice!Nano microcontrollers, they are soldered to your Nice!Nanos, and that allows you to plug nice nano into headers, buy default Nice!Nanos come with thick pins not suitable for socketing (see photos), the default ones can only be used to permanently solder controller onto the PCB **which should be avoided** | [<img src="./photos/parts/pins.jpg" width="200px">](./photos/parts/pins.jpg) [<img src="./photos/parts/pins2.jpg" width="200px">](./photos/parts/pins2.jpg) [<img src="./photos/parts/pins3.jpg" width="200px">](./photos/parts/pins3.jpg)
+| 2 | Mill Max Pins for Nice!Nano microcontrollers, they are soldered to your Nice!Nanos, and that allows you to plug nice nano into headers, buy default Nice!Nanos come with thick pins not suitable for socketing (see photos), the default ones can only be used to permanently solder controller onto the PCB **which should be avoided**. If the pins are expensive or unavialable you can buy any through hole diodes and cut their legs to use instead, though legs are thinner and are slightly harder to work with, see [this](https://docs.splitkb.com/hc/en-us/articles/360011263059-How-do-I-socket-a-microcontroller-) guide| [<img src="./photos/parts/pins.jpg" width="200px">](./photos/parts/pins.jpg) [<img src="./photos/parts/pins2.jpg" width="200px">](./photos/parts/pins2.jpg) [<img src="./photos/parts/pins3.jpg" width="200px">](./photos/parts/pins3.jpg) [<img src="./photos/parts/pins4.jpg" width="200px">](./photos/parts/pins4.jpg)
 | 32 | Hot swap connectors (two buttons are soldered directly on each half)| [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
 | 2 | Case|
 | 4 | Pcb (one for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg) [<img src="./photos/parts/thumb.jpg" width="200px">](./photos/parts/thumb.jpg)
