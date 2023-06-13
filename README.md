@@ -8,6 +8,19 @@ If you need help building this keyboard or have any questions you can drop me a 
 
 I'd be happy to help!
 
+## Release notes
+
+### 5.0
+
+- You can not use 4.2 PCB with 5.0 CASE and vice versa
+- Moved thumb JST connector to the side so that it is not necessary to trim JST cable
+- Moved JST connectors, reset button, power switch on main PCBs such that it it easier make parametric case
+- Added .scad for Iceberg/Clay cases
+
+### 4.2
+
+- First public release
+
 ## Features
 
 - Thumb cluster with 6 keys, easy to use in combos, so ~12 combinations depending on how you setup combos
@@ -182,7 +195,7 @@ npm install
 ```
 
 This will produce files in the `./ergogen/output` folder.
-Now you need to prepare them for JLCPCB, you HAVE to follow requirements in `./ergogen`
+Now you need to prepare them for JLCPCB, you HAVE to follow requirements in `./ergogen/input/readme.md`, notice that it is in subfolder `./input` and not the root level `readme.md`
 
  and they can be used for JLCPCB.com printing, that includes `.pos` and `.bom` files for SMT assembly.
 If you are looking to make any changes, go under `./ergogen/input` folder and change config files there.
