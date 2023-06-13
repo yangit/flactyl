@@ -141,10 +141,16 @@ if (PARTNO == undef)
 }
 else
 {
-    if (PARTNO == "thumb")
-        thumb();
     if (PARTNO == "left")
-        iceberg();
+        color(caseColor) iceberg();
     if (PARTNO == "right")
-        mirror([ 1, 0, 0 ]) iceberg();
+        color(caseColor) mirror([ 1, 0, 0 ]) iceberg();
+
+    if (KEYS == true)
+    {
+        color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
+        color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
+        color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
+        color(keysColor) moveRotateTranslate(vThumb) thumb_keys();
+    }
 }

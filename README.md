@@ -48,10 +48,11 @@ Consist of two pieces, you are supposed to put clay/play dough in it and see wha
 [<img src="./photos/cases/clay3.jpeg" width="200px">](./photos/cases/clay3.jpeg)
 [<img src="./photos/cases/clay4.jpeg" width="200px">](./photos/cases/clay4.jpeg)
 
-[<img src="./photos/cases/clay7.png" width="200px">](./photos/cases/clay7.png)
-[<img src="./photos/cases/clay8.png" width="200px">](./photos/cases/clay8.png)
-[<img src="./photos/cases/clay5.png" width="200px">](./photos/cases/clay5.png)
-[<img src="./photos/cases/clay6.png" width="200px">](./photos/cases/clay6.png)
+[<img src="./production/case/clay/case1.jpg" width="200px">](./production/case/clay/case1.jpg)
+[<img src="./production/case/clay/case2.jpg" width="200px">](./production/case/clay/case2.jpg)
+[<img src="./production/case/clay/case3.jpg" width="200px">](./production/case/clay/case3.jpg)
+[<img src="./production/case/clay/case4.jpg" width="200px">](./production/case/clay/case4.jpg)
+
 
 ### Iceberg
 
@@ -62,10 +63,10 @@ Consists of single hollow box, switches are exposed on the sides.
 [<img src="./photos/8.jpeg" width="200px">](./photos/8.jpeg)
 [<img src="./photos/10.jpeg" width="200px">](./photos/10.jpeg)
 
-[<img src="./photos/cases/ice1.png" width="200px">](./photos/cases/ice1.png)
-[<img src="./photos/cases/ice2.png" width="200px">](./photos/cases/ice2.png)
-[<img src="./photos/cases/ice3.png" width="200px">](./photos/cases/ice3.png)
-[<img src="./photos/cases/ice4.png" width="200px">](./photos/cases/ice4.png)
+[<img src="./production/case/iceberg/case1.jpg" width="200px">](./production/case/iceberg/case1.jpg)
+[<img src="./production/case/iceberg/case2.jpg" width="200px">](./production/case/iceberg/case2.jpg)
+[<img src="./production/case/iceberg/case3.jpg" width="200px">](./production/case/iceberg/case3.jpg)
+[<img src="./production/case/iceberg/case4.jpg" width="200px">](./production/case/iceberg/case4.jpg)
 
 ### Hitam
 
