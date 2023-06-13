@@ -231,6 +231,11 @@ module left_keycaps_dxf()
     // bottom left corner
     moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_keycaps.dxf");
 }
+module left_keycaps_round_dxf()
+{
+    // bottom left corner
+    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/left/left_keycaps_round.dxf");
+}
 module left_pcb_with_keys_dxf()
 {
     // bottom left corner
@@ -258,7 +263,7 @@ module left_pcb()
 
 module left_keys()
 {
-    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) left_keycaps_dxf();
+    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) left_keycaps_round_dxf();
 }
 module left_case()
 {
@@ -291,6 +296,11 @@ module thumb_keycaps_dxf()
     // bottom left corner
     moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/thumb/thumb_keycaps.dxf");
 }
+module thumb_keycaps_round_dxf()
+{
+    // bottom left corner
+    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/thumb/thumb_keycaps_round.dxf");
+}
 module thumb_pcb()
 {
     color("lightgreen") linear_extrude(pcbAndHotswapThikness) thumb_dxf();
@@ -298,7 +308,7 @@ module thumb_pcb()
 
 module thumb_keys()
 {
-    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb_keycaps_dxf();
+    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb_keycaps_round_dxf();
 }
 
 // NNANO
