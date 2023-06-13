@@ -148,7 +148,7 @@ module showWall()
 // moveRotateTranslate([["r",r],["t",t]]) is the same as translate(t) rotate(r)
 // notice the reverse order of arguments.
 // Except you can pass [["r",r],["t",t]] around as an argument and you can not pass "translate(t) rotate(r)" as an
-// argument 
+// argument
 // Limited to 11 elements
 module moveRotateTranslate(rt)
 {
@@ -187,6 +187,8 @@ module moveRotateTranslate(rt)
         }
     }
 }
+function invertPlane(mrtVector) = concat([[ "r", [ 0, 180, 0 ] ]], mrtVector);
+;
 
 // see box.scad for usage and debug examples
 // Can create convex shapes using planes
@@ -303,7 +305,7 @@ module thumb_keys()
 module nice_nano_mount_to_pcb()
 {
     // translate for the pcb anchor
-    moveRotateTranslate([["r",[ 180, 0, 90 ]],["t",[ 86.6, 29, 0 ]]]) children(0);
+    moveRotateTranslate([ [ "r", [ 180, 0, 90 ] ], [ "t", [ 86.6, 29, 0 ] ] ]) children(0);
 }
 module nice_nano()
 {

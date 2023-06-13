@@ -3,17 +3,17 @@ include <../library/lib.scad>;
 include <./thumbConfig.scad>;
 
 vPcb = [[ "r", [ 0, 180 - tentingAngle, 0 ] ]];
-vPcbMount = concat([[ "r", [ 0, 180, 0 ] ]], vPcb);
+vPcbMount = invertPlane(vPcb);
 vTable = [];
 vFront = [ [ "t", [ 0, 0, -frontEdge ] ], [ "r", [ -90, 0, 0 ] ] ];
-vFront180 = concat([[ "r", [ 0, 180, 0 ] ]], vFront);
+vFront180 = invertPlane(vFront);
 vBack = [ [ "r", [ 70, 180 - tentingAngle, 0 ] ], [ "t", [ 0, 68, 0 ] ] ];
 vBack2 = [ [ "r", [ 20, 10, 0 ] ], [ "t", [ -pcbWidth, 80, -68 ] ], [ "r", [ 90, 180 - tentingAngle, 0 ] ] ];
 
 vMagnetBack = [ [ "t", [ 0, 0, -caseThikness * 2 - magnetStripeWidth + frontEdge ] ], [ "r", [ 90, 0, 0 ] ] ];
-vMagnetBack180 = concat([[ "r", [ 0, 180, 0 ] ]], vMagnetBack);
+vMagnetBack180 = invertPlane(vMagnetBack);
 vMagnetTop = [ [ "t", [ 0, 0, -magnetStripeDepth - caseThikness ] ], [ "r", [ 0, 180, 0 ] ] ];
-vMagnetTop180 = concat([[ "r", [ 0, 180, 0 ] ]], vMagnetTop);
+vMagnetTop180 = invertPlane(vMagnetTop);
 vFar = [
     [ "t", [ 0, 0, -100 ] ],
     [ "r", [ 0, -110, -10 ] ],
@@ -27,7 +27,7 @@ vThumb = concat(
     sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
     // translation
     [[ "t", [ thumbXOffset, thumbYOffset, thumbZOffset ] ]]);
-vThumb180 = concat([[ "r", [ 0, 180, 0 ] ]], vThumb);
+vThumb180 = invertPlane(vThumb);
 
 module legs()
 {
