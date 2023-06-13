@@ -54,7 +54,7 @@ module clay()
         moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() push(10, 10) offset(wallOffsetFromPcb) projection()
             nice_nano();
         // subtract screw holes
-        moveRotateTranslate(vPcbMount) push(20, 20) left_screw_holes_dxf();
+        moveRotateTranslate(vPcbMount) push(0.001, caseThikness + 0.001) left_screw_holes_dxf();
         // add legs holes
         for (i = legs)
         {
@@ -74,9 +74,14 @@ if (PARTNO == undef)
 else
 {
     if (PARTNO == "thumb")
-        thumb();
+        color(caseColor) thumb();
     if (PARTNO == "left")
-        clay();
+        color(caseColor) clay();
     if (PARTNO == "right")
-        mirror([ 1, 0, 0 ]) clay();
+        color(caseColor) mirror([ 1, 0, 0 ]) clay();
+    if (KEYS == true)
+    {
+        color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb_dxf();
+        color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
+    }
 }
