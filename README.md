@@ -31,7 +31,7 @@ I'd be happy to help!
 - Video how to order 3d case from JLCPCB.com [here](https://www.youtube.com/watch?v=07qFKaykjfg)
 - Video how to order PCBs from JLCPCB.com [here](https://youtu.be/oP7d0jU99oc)
 - Reddit [thread](https://www.reddit.com/r/ErgoMechKeyboards/comments/13qep4y/after_4_year_lurking_and_2_years_building_my_own/)
-- You can find zmk-config for this board [here](https://github.com/yangit/zmk-config-flactyl/)
+- You can find zmk-config for this board [here](https://github.com/yangit/zmk-config-flactyl/) and my own config generator [here](https://github.com/yangit/zmk-config/)
 - It took me two years to finish this project, thanks to [KBD.news](https://kbd.news/) for inspiration!
 
 ## Cases
@@ -94,14 +94,16 @@ High-level build steps looks like so:
   - Headers for Nice!Nanos on the left and right PCBs
   - Hot-swap connectors for switches on all PCBs
   - Two switches above Nice!Nanos on each side of PCB (letters G,T,J,U on QUERTY)
+  - Rotary encoders to PCBs
   - Batteries with connectors (only for wireless build)
 - Assemble (do not worry, if you got this far it is only pure joy left)
   - Small tip, when screwing everything, you should use 2 nuts per screw, it goes like so
-  - SCREW, WASHER, PCB, **NUT**, CASE, NUT, notice the extra nut, it helps tremendously to fiddle all the screws through the case at the same time.
+  - SCREW, WASHER, PCB, **NUT**, CASE, NUT. Notice the extra nut, it helps tremendously to fiddle all the screws through the case at the same time.
   - The JST connector will not fit into the thumb cluster side, that is fine, just trim it with a knife
 - Flash it with ZMK firmware (or any other you want)
   - Spend months in agony migrating Querty => Workman => Colemak, moving around symbols, modifiers, and learning the intricate issues of how TAP-DANCE timings are implemented.
-- Enjoy? Enjoy!
+- Enjoy?
+  - Enjoy!
 
 Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
 
