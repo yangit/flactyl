@@ -116,8 +116,9 @@ You going to need some assorment of items to get done:
 | 2 | EC11 Rotary encoder with a knob (ALP-ENC-TCT-001 or any similar will do)| [<img src="./photos/parts/encoder.webp" width="200px">](./photos/parts/encoder.webp)
 | 42 | Kailh Low Profile Choc switches (highly recommend getting 20g (pink) for thumb cluster to make multi key combos easier)|  [<img src="./photos/parts/pink.webp" width="200px">](./photos/parts/pink.webp)
 | 42 | 1u Blank MBK Choc Low Profile Keycaps| [<img src="./photos/parts/mbk.png" width="200px">](./photos/parts/mbk.png)
-| 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
+| 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers/sockets for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
 | 2 | Nice!Nano microcontrollers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
+| 2 | Mill Max Pins for Nice!Nano microcontrollers, they are soldered to your Nice!Nanos, and that allows you to plug nice nano into headers, buy default Nice!Nanos come with thick pins not suitable for socketing (see photos), the default ones can only be used to permanently solder controller onto the PCB **which should be avoided** | [<img src="./photos/parts/pins.jpg" width="200px">](./photos/parts/pins.jpg) [<img src="./photos/parts/pins2.jpg" width="200px">](./photos/parts/pins2.jpg) [<img src="./photos/parts/pins3.jpg" width="200px">](./photos/parts/pins3.jpg)
 | 32 | Hot swap connectors (two buttons are soldered directly on each half)| [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
 | 2 | Case|
 | 4 | Pcb (one for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg) [<img src="./photos/parts/thumb.jpg" width="200px">](./photos/parts/thumb.jpg)
