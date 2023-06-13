@@ -54,7 +54,7 @@ module clay()
         moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() push(10, 10) offset(wallOffsetFromPcb) projection()
             nice_nano();
         // subtract screw holes
-        moveRotateTranslate(vPcbMount) push(0.001, caseThikness + 0.001) left_screw_holes_dxf();
+        moveRotateTranslate(vPcbMount) push(0.001, caseThikness + screwBumpSize + 0.001) left_screw_holes_dxf();
         // add legs holes
         for (i = legs)
         {
