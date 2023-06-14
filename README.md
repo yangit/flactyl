@@ -130,7 +130,7 @@ You going to need some assortment of items to get done:
 
 |  Count   | Name   | Photo   |
 |-------------|-------------|-------------|
-| 2 | EC11 Rotary encoder with a knob (ALP-ENC-TCT-001 or any similar will do)| [<img src="./photos/parts/encoder.webp" width="200px">](./photos/parts/encoder.webp)
+| 2 | EC11 Rotary encoder with a knob (ALP-ENC-TCT-001 or any similar will do), if you do not want to have a rotary encoder, you can just solder a normal switch in its place. It will work.| [<img src="./photos/parts/encoder.webp" width="200px">](./photos/parts/encoder.webp)
 | 42 | Kailh Low Profile Choc switches (highly recommend getting 20g (pink) for thumb cluster to make multi key combos easier)|  [<img src="./photos/parts/pink.webp" width="200px">](./photos/parts/pink.webp)
 | 42 | 1u Blank MBK Choc Low Profile Keycaps| [<img src="./photos/parts/mbk.png" width="200px">](./photos/parts/mbk.png)
 | 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers/sockets for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
