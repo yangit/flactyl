@@ -230,9 +230,9 @@ Also you will most likely need your own ZMK/QMK config generator. Basic layers, 
 - mirror layer
 - create layer from another, but with modifier
 - easily define macros, tap-dance etc
+- fix tap-dance timing mess
 
 You can take a look at my config generator [here](https://github.com/yangit/zmk-config/)
-
 
 ### Mirror layers
 
