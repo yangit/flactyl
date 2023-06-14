@@ -12,8 +12,8 @@ I'd be happy to help!
 
 ### 5.0
 
-- You can not use 4.2 PCB with 5.0 CASE and vice versa
-- Moved thumb JST connector to the side so that it is not necessary to trim JST cable
+- PCBs v4 are not compatible with case v5, connector cutout location have been changed
+- Moved thumb JST connector so that it is not necessary to trim JST cable
 - Moved JST connectors, reset button, power switch on main PCBs such that it it easier make parametric case
 - Added .scad for Iceberg/Clay cases
 
