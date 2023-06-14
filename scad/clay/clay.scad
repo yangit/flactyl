@@ -68,6 +68,8 @@ if (PARTNO == undef)
 {
     color(caseColor) translate([ 0, -100, 0 ]) thumb();
     color(caseColor) clay();
+    color("lightblue") moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() nice_nano();
+
     color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb_dxf();
     color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
 }

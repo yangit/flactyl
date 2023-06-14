@@ -233,6 +233,7 @@ Also you will most likely need your own ZMK/QMK config generator. Basic layers, 
 
 You can take a look at my config generator [here](https://github.com/yangit/zmk-config/)
 
+
 ### Mirror layers
 
 I use split in programs like Photoshop and Fusion 360. One of the problems I had is when you need to press single hotkey i.e. letter “L” which is on the right side. Moving my hand from the mouse for that single press is simply annoying.
