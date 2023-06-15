@@ -19,7 +19,9 @@ vFar = [
     [ "r", [ 0, -110, -10 ] ],
 ];
 vTop = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -pcbWidth - caseThikness, 0, 0 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
-vTop2 = [ [ "r", [ 15, 100, 0 ] ], [ "t", [ -pcbWidth, 60, 40 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
+// vTop2 = [ [ "r", [ 15, 100, 0 ] ], [ "t", [ -pcbWidth, 60, 40 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
+vTop2 = [ [ "r", [ 35, 110, 10 ] ], [ "t", [ -pcbWidth, 60, 30 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
+// moveRotateTranslate(vTop2) showWall();
 vThumb = concat(
     // prepare
     [[ "r", [ 0, 90, -90 ] ]],
@@ -133,8 +135,7 @@ if (PARTNO == undef)
     // // color("blue") moveRotateTranslate(vIce) import("../../production/case/iceberg/left.stl");
 
     color(caseColor) iceberg();
-
-    color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
+    *color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
     *color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
     *color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
     *color(keysColor) moveRotateTranslate(vThumb) thumb_keys();
