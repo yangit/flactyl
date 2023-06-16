@@ -224,37 +224,37 @@ moveLeftToCorner = [ "t", [ 7, choc_key_y / 2, 0 ] ];
 module left_pcb_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/5.0/left/left_pcb_edgecut.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../../production/pcbs/4.2/left/left_pcb_edgecut.dxf");
 }
 module left_keycaps_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/5.0/left/left_keycaps.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../../production/pcbs/4.2/left/left_keycaps.dxf");
 }
 module left_keycaps_round_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/5.0/left/left_keycaps_round.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../../production/pcbs/4.2/left/left_keycaps_round.dxf");
 }
 module left_pcb_with_keys_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/5.0/left/left_pcb_edgecut_with_keys.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../../production/pcbs/4.2/left/left_pcb_edgecut_with_keys.dxf");
 }
 module left_switch_cutouts_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/5.0/left/left_switch_cutouts.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../../production/pcbs/4.2/left/left_switch_cutouts.dxf");
 }
 module left_screw_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/5.0/left/left_screw.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../../production/pcbs/4.2/left/left_screw.dxf");
 }
 module left_screw_holes_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveLeftToCorner]) import("../../production/pcbs/5.0/left/left_screw_holes.dxf");
+    moveRotateTranslate([moveLeftToCorner]) import("../../../production/pcbs/4.2/left/left_screw_holes.dxf");
 }
 module left_pcb()
 {
@@ -274,32 +274,32 @@ module left_case()
 moveThumbToCorner = [ "t", [ choc_key_x / 2, choc_key_y / 2, 0 ] ];
 module thumb_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/5.0/thumb/thumb_pcb_edgecut.dxf");
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/4.2/thumb/thumb_pcb_edgecut.dxf");
 }
 module thumb_switch_cutouts_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/5.0/thumb/thumb_switch_cutouts.dxf");
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/4.2/thumb/thumb_switch_cutouts.dxf");
 }
 module thumb_screw_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/5.0/thumb/thumb_screw.dxf");
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/4.2/thumb/thumb_screw.dxf");
 }
 module thumb_screw_holes_dxf()
 {
     moveRotateTranslate([
         [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 0, 180, 0 ] ],
         [ "t", [ choc_key_x, choc_key_y * 1.5, 0 ] ]
-    ]) import("../../production/pcbs/5.0/thumb/thumb_screw_holes.dxf");
+    ]) import("../../../production/pcbs/4.2/thumb/thumb_screw_holes.dxf");
 }
 module thumb_keycaps_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/5.0/thumb/thumb_keycaps.dxf");
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/4.2/thumb/thumb_keycaps.dxf");
 }
 module thumb_keycaps_round_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveThumbToCorner]) import("../../production/pcbs/5.0/thumb/thumb_keycaps_round.dxf");
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/4.2/thumb/thumb_keycaps_round.dxf");
 }
 module thumb_pcb()
 {

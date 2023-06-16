@@ -1,6 +1,6 @@
 #!/bin/bash
 # see [here](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/FAQ#How_can_I_export_multiple_parts_from_one_script?) to understand how it works
-EXPORTDIR=../../production/case/iceberg
+EXPORTDIR=../../../production/case/4.2/iceberg
 # time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/left.stl iceberg.scad
 # time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"right\" -o $EXPORTDIR/right.stl iceberg.scad
 
