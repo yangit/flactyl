@@ -118,6 +118,7 @@ module iceberg()
             magnetHolder();
             flatLegs();
             legs();
+            moveRotateTranslate(vBack) push(caseThikness + 1) translate([ -60, 10, 0 ]) text(version, size = 4);
         }
         legsCut();
         // nice nano cutout
