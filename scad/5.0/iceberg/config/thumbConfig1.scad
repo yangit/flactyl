@@ -5,7 +5,7 @@ thumbXRotation = -23;
 thumbYRotation = 36;
 thumbZRotation = -10;
 frontEdge = 10;
-
+version = "Iceberg v5.0 var1";
 legs = [
     // back left
     [ 5, 69 - legRubberDiameter / 2 - caseThikness ],

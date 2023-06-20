@@ -29,7 +29,7 @@ I'd be happy to help!
 - Multiple cases including the `clay` case to easily prototype your thumb cluster location
 - Low distance between pinky and the table, allows to rest palms directly on the table without floating them, or using wrist rests.
 - Heavy tenting at 60 degrees
-- Choc hotswap
+- Kailh Choc V1 hotswap, with choc spacing
 - Rotary encoder
 - Ergogen for PCB with some custom scripts to generate `.bom` `.pos` files for jlcpcb.com SMT assembly service, and output outlines for easier 3d case designing
 - zmk-config generator with custom NodeJS script to make layer declaration easier and more readable
@@ -131,12 +131,12 @@ You going to need some assortment of items to get done:
 |  Count   | Name   | Photo   |
 |-------------|-------------|-------------|
 | 2 | EC11 Rotary encoder with a knob (ALP-ENC-TCT-001 or any similar will do), if you do not want to have a rotary encoder, you can just solder a normal switch in its place. It will work.| [<img src="./photos/parts/encoder.webp" width="200px">](./photos/parts/encoder.webp)
-| 42 | Kailh Low Profile Choc switches (highly recommend getting 20g (pink) for thumb cluster to make multi key combos easier)|  [<img src="./photos/parts/pink.webp" width="200px">](./photos/parts/pink.webp)
+| 42 | Kailh Low Profile Choc V1 PG1350 switches (highly recommend getting 20g (pink) for thumb cluster to make multi key combos easier)|  [<img src="./photos/parts/pink.webp" width="200px">](./photos/parts/pink.webp)
 | 42 | 1u Blank MBK Choc Low Profile Keycaps| [<img src="./photos/parts/mbk.png" width="200px">](./photos/parts/mbk.png)
 | 2 | Pitch 2.54mm 1 * 40 Pin Sets of headers/sockets for Nice!Nanos| [<img src="./photos/parts/header.jpg" width="200px">](./photos/parts/header.jpg)
 | 2 | Nice!Nano micro controllers| [<img src="./photos/parts/nicenano-v2.avif" width="120px">](./photos/parts/nicenano-v2.avif)
 | 2 | Mill Max 3320 Pins for Nice!Nano micro controllers, they are soldered to your Nice!Nanos, and that allows you to plug nice nano into headers, buy default Nice!Nanos come with square pins not suitable for socketing (see photos), the default ones can only be used to permanently solder controller onto the PCB **which should be avoided**. If the pins are expensive or unavailable you can buy any through hole diodes and cut their legs to use instead, though legs are thinner and are slightly harder to work with, see [this](https://docs.splitkb.com/hc/en-us/articles/360011263059-How-do-I-socket-a-microcontroller-) guide| [<img src="./photos/parts/pins.jpg" width="200px">](./photos/parts/pins.jpg) [<img src="./photos/parts/pins2.jpg" width="200px">](./photos/parts/pins2.jpg) [<img src="./photos/parts/pins3.jpg" width="200px">](./photos/parts/pins3.jpg) [<img src="./photos/parts/pins4.jpg" width="200px">](./photos/parts/pins4.jpg)
-| 32 | Hot swap connectors (two buttons are soldered directly on each half so you need 4 less than keys but I would get some extras anyway)| [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
+| 32 | Hot swap connectors for PG1350 | [<img src="./photos/parts/hotswap.webp" width="200px">](./photos/parts/hotswap.webp)
 | 2 | Case|
 | 4 | Pcb (one for each half and two for thumb clusters)| [<img src="./photos/parts/pcb.jpeg" width="200px">](./photos/parts/pcb.jpeg) [<img src="./photos/parts/thumb.jpg" width="200px">](./photos/parts/thumb.jpg)
 | 12 | M2 x 10mm Screws (I recommend getting hex head screws, they are easier to tighten)| [<img src="./photos/parts/nuts.jpeg" width="200px">](./photos/parts/nuts.jpeg)

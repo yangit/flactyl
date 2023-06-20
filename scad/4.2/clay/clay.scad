@@ -17,7 +17,7 @@ vTop = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -pcbWidth + 21, 0, 0 ] ], [ "r", [ 0, 1
 vThumb = [ [ "r", [ 230, 0, 0 ] ], [ "t", [ 0, -10, 0 ] ] ];
 vMiniWall = [ [ "t", [ 0, 0, -4 ] ], [ "r", [ 190, 0, 0 ] ] ];
 vSupportTop = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -35, 0, 0 ] ], [ "r", [ 0, 235 - tentingAngle, 0 ] ] ];
-
+version = "Clay v4.2";
 module clay()
 {
     cut3d([ vThumb, vPcb ]) difference()
@@ -48,6 +48,7 @@ module clay()
             cut3d([ vTable, vBack, vFront, vMiniWall ]) moveRotateTranslate(vFar) wall(caseThikness, cutter);
             // add screw bumps
             moveRotateTranslate(vPcbMount) push(-caseThikness - screwBumpSize) left_screw_dxf();
+            moveRotateTranslate(vBack) push(caseThikness + 1) translate([ 30, 10, 0 ]) text(version, size = 5);
         }
 
         // nice nano cutout
