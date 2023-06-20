@@ -1,7 +1,7 @@
 #!/bin/bash
 # see [here](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/FAQ#How_can_I_export_multiple_parts_from_one_script?) to understand how it works
 
-EXPORTDIR=../../../production/case/5.1/clay
+EXPORTDIR=../../../production/case/5.0/clay
 time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/left.stl clay.scad
 time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"right\" -o $EXPORTDIR/right.stl clay.scad
 time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"thumb\" -o $EXPORTDIR/thumb.stl clay.scad
