@@ -126,7 +126,7 @@ This is how PCB should come out from JLCPCB.com, complete with all diodes, JST c
 
 ## Parts list
 
-You going to need some assortment of items to get done:
+You are going to need some items to get done:
 
 |  Count   | Name   | Photo   |
 |-------------|-------------|-------------|
