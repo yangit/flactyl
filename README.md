@@ -1,6 +1,6 @@
 # Flactyl
 
-[<img src="./photos/1.jpeg" width="600px">](./photos/1.jpeg)
+[<img src="./photos/cases/ice5.jpeg" width="600px">](./photos/1.jpeg)
 
 ## Contacts
 
