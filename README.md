@@ -61,25 +61,25 @@ Consist of two pieces, you are supposed to put clay/play dough in it and see wha
 [<img src="./photos/cases/clay3.jpeg" width="200px">](./photos/cases/clay3.jpeg)
 [<img src="./photos/cases/clay4.jpeg" width="200px">](./photos/cases/clay4.jpeg)
 
-[<img src="./production/case/clay/case1.jpg" width="200px">](./production/case/clay/case1.jpg)
-[<img src="./production/case/clay/case2.jpg" width="200px">](./production/case/clay/case2.jpg)
-[<img src="./production/case/clay/case3.jpg" width="200px">](./production/case/clay/case3.jpg)
-[<img src="./production/case/clay/case4.jpg" width="200px">](./production/case/clay/case4.jpg)
+[<img src="./production/case/5.0/clay/case1.jpg" width="200px">](./production/case/5.0/clay/case1.jpg)
+[<img src="./production/case/5.0/clay/case2.jpg" width="200px">](./production/case/5.0/clay/case2.jpg)
+[<img src="./production/case/5.0/clay/case3.jpg" width="200px">](./production/case/5.0/clay/case3.jpg)
+[<img src="./production/case/5.0/clay/case4.jpg" width="200px">](./production/case/5.0/clay/case4.jpg)
 
 
 ### Iceberg
 
 Consists of single hollow box, switches are exposed on the sides.
 
-[<img src="./photos/1.jpeg" width="200px">](./photos/1.jpeg)
-[<img src="./photos/6.jpeg" width="200px">](./photos/6.jpeg)
-[<img src="./photos/8.jpeg" width="200px">](./photos/8.jpeg)
-[<img src="./photos/10.jpeg" width="200px">](./photos/10.jpeg)
+[<img src="./photos/cases/ice1.jpeg" width="200px">](./photos/cases/ice1.jpeg)
+[<img src="./photos/cases/ice2.jpeg" width="200px">](./photos/cases/ice2.jpeg)
+[<img src="./photos/cases/ice3.jpeg" width="200px">](./photos/cases/ice3.jpeg)
+[<img src="./photos/cases/ice4.jpeg" width="200px">](./photos/cases/ice4.jpeg)
 
-[<img src="./production/case/iceberg/variant1/case1.jpg" width="200px">](./production/case/iceberg/variant1/case1.jpg)
-[<img src="./production/case/iceberg/variant1/case2.jpg" width="200px">](./production/case/iceberg/variant1/case2.jpg)
-[<img src="./production/case/iceberg/variant1/case3.jpg" width="200px">](./production/case/iceberg/variant1/case3.jpg)
-[<img src="./production/case/iceberg/variant1/case4.jpg" width="200px">](./production/case/iceberg/variant1/case4.jpg)
+[<img src="./production/case/5.0/iceberg/variant2/case1.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case1.jpg)
+[<img src="./production/case/5.0/iceberg/variant2/case2.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case2.jpg)
+[<img src="./production/case/5.0/iceberg/variant2/case3.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case3.jpg)
+[<img src="./production/case/5.0/iceberg/variant2/case4.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case4.jpg)
 
 ### Hitam
 
