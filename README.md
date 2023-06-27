@@ -15,7 +15,7 @@ I'd be happy to help!
 - PCBs v4 are not compatible with case v5, connector cutout location have been changed
 - Moved thumb JST connector so that it is not necessary to trim JST cable
 - Moved JST connectors, reset button, power switch on main PCBs such that it it easier make parametric case
-- Added .scad for Iceberg/Clay cases
+- Added `.scad` for Iceberg/Clay cases
 
 ### 4.2
 
