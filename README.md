@@ -111,7 +111,7 @@ High-level build steps looks like so:
   - Batteries with connectors (only for wireless build)
 - Assemble (do not worry, if you got this far it is only pure joy left)
   - Small tip, when screwing everything, you should use 2 nuts per screw, it goes like so
-  - SCREW, WASHER, PCB, **NUT**, CASE, NUT. Notice the extra nut, it helps tremendously to fiddle all the screws through the case at the same time.
+  - SCREW, WASHER, PCB, **NUT**, CASE, NUT. Notice the extra nut, it helps tremendously to fiddle all the screws through the case at the same time. See [here](./photos/parts/nut_how.jpeg)
   - The JST connector will not fit into the thumb cluster side, that is fine, just trim it with a knife
 - Flash it with ZMK firmware (or any other you want)
   - Spend months in agony migrating Querty => Workman => Colemak, moving around symbols, modifiers, and learning the intricate issues of how TAP-DANCE timings are implemented.
