@@ -1,6 +1,6 @@
 # Flactyl
 
-[<img src="./photos/cases/ice5.jpeg" width="600px">](./photos/1.jpeg)
+[<img src="./photos/cases/ice5.jpeg" width="600px">](./photos/cases/ice5.jpeg)
 
 ## Contacts
 
@@ -203,6 +203,7 @@ If you are looking to make any changes, go under `./ergogen/input` folder and ch
 ## Photos
 
 [<img src="./photos/1.jpeg" width="800px">](./photos/1.jpeg)
+[<img src="./photos/cases/ice6.jpeg" width="600px">](./photos/cases/ice5.jpeg)
 [<img src="./photos/6.jpeg" width="800px">](./photos/6.jpeg)
 [<img src="./photos/7.jpeg" width="800px">](./photos/7.jpeg)
 [<img src="./photos/8.jpeg" width="800px">](./photos/8.jpeg)
