@@ -202,16 +202,14 @@ If you are looking to make any changes, go under `./ergogen/input` folder and ch
 
 ## Photos
 
-[<img src="./photos/1.jpeg" width="800px">](./photos/1.jpeg)
-[<img src="./photos/cases/ice6.jpeg" width="600px">](./photos/cases/ice5.jpeg)
-[<img src="./photos/6.jpeg" width="800px">](./photos/6.jpeg)
-[<img src="./photos/7.jpeg" width="800px">](./photos/7.jpeg)
-[<img src="./photos/8.jpeg" width="800px">](./photos/8.jpeg)
-[<img src="./photos/9.jpeg" width="800px">](./photos/9.jpeg)
-[<img src="./photos/10.jpeg" width="800px">](./photos/10.jpeg)
-[<img src="./photos/11.jpeg" width="800px">](./photos/11.jpeg)
-[<img src="./photos/12.jpeg" width="800px">](./photos/12.jpeg)
-[<img src="./photos/4.jpeg" width="800px">](./photos/4.jpeg)
+[<img src="./photos/cases/ice1.jpeg" width="600px">](./photos/cases/ice1.jpeg)
+[<img src="./photos/cases/ice2.jpeg" width="600px">](./photos/cases/ice2.jpeg)
+[<img src="./photos/cases/ice3.jpeg" width="600px">](./photos/cases/ice3.jpeg)
+[<img src="./photos/cases/ice4.jpeg" width="600px">](./photos/cases/ice4.jpeg)
+[<img src="./photos/cases/ice5.jpeg" width="600px">](./photos/cases/ice5.jpeg)
+[<img src="./photos/cases/ice6.jpeg" width="600px">](./photos/cases/ice6.jpeg)
+[<img src="./photos/cases/ice7.jpeg" width="600px">](./photos/cases/ice7.jpeg)
+[<img src="./photos/cases/ice8.jpeg" width="600px">](./photos/cases/ice8.jpeg)
 
 ## What I have learned
 
