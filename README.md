@@ -213,6 +213,13 @@ If you are looking to make any changes, go under `./ergogen/input` folder and ch
 
 ## What I have learned
 
+### 3d printing materials (From JLCPCB.com)
+
+- ABS plastic, the surface finish is not there. It should be painted or it it too rough. I do not like the resolution of the ABS FDM
+- SLA (resin) `LEDO 6060`: the plastic is very nice, white, finish is great, but it will [yellow significantly](./photos/parts/yellowing.jpg) if you expose it to the sunlight, my keyboard looks like that after 2 months on my desk and some direct summer sun. Notice how the inside did not yellow.
+- SLA (resin) `Black Resin`: it is more very dark grey, satin, finish is very smooth, I like it.
+
+
 ### 3d design
 
 If you are a programmer:
