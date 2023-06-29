@@ -321,5 +321,6 @@ module nice_nano()
 {
     color("lightblue")
         // set anchor to bottom outermost corner hole of the pcb
-        translate([ 15.24, -7.62, 6.3 ]) color(pcbColor) import("../shared-3d-models/nice-nano.stl");
+        translate([ 15.24, -7.62, nnHeaderThikness - hotSwapThikness ]) color(pcbColor)
+            import("../shared-3d-models/nice-nano.3mf");
 }

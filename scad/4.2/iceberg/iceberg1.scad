@@ -80,18 +80,8 @@ module iceberg()
                 moveRotateTranslate(vThumb) push(cutter, cutter) thumb_dxf();
             }
 
-            // back part of the case
-            difference()
-            {
-                // walls
-                box([ vBack2, vBack, vTop2 ], [ vMagnetTop180, vPcb, vFront, vFar, vTop, vThumb180 ], caseThikness,
-                    cutter);
-                // hole for USB-C nicenano connector
-
-                moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() rotate([ 0, -90, 0 ]) translate([ 0, 0, -24 ])
-                    push(cutter, cutter) offset(delta = wallOffsetFromConnector) hull() projection(cut = true)
-                        translate(v = [ 0, 0, 32.5 ]) rotate([ 0, 90, 0 ]) nice_nano();
-            }
+            // walls
+            box([ vBack2, vBack, vTop2 ], [ vMagnetTop180, vPcb, vFront, vFar, vTop, vThumb180 ], caseThikness, cutter);
 
             // add screw bumps
             cut3d([vThumb180]) moveRotateTranslate(vPcbMount) push(-caseThikness - screwBumpSize) left_screw_dxf();
@@ -126,6 +116,11 @@ module iceberg()
             nice_nano();
         // subtract screw holes
         moveRotateTranslate(vPcbMount) push(1, caseThikness + screwBumpSize + 0.001) left_screw_holes_dxf();
+
+        // hole for USB-C nicenano connector
+        moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() rotate([ 0, -90, 0 ]) translate([ 0, 0, -24 ])
+            push(10, 100) offset(delta = wallOffsetFromConnector + 0.1) hull() projection(cut = true)
+                translate(v = [ 0, 0, 32.5 ]) rotate([ 0, 90, 0 ]) nice_nano();
     }
 }
 

@@ -3,7 +3,10 @@ $fs = $preview ? 2 : 0.4;
 
 choc_key_x = 18;
 choc_key_y = 17;
-pcbAndHotswapThikness = 3;
+nnHeaderThikness = 4.4;
+fr4thickness = 1.6;
+hotSwapThikness = 1.4;
+pcbAndHotswapThikness = hotSwapThikness + fr4thickness;
 caseThikness = 2.5;
 wallOffsetFromPcb = 1;
 wallOffsetFromConnector = 3;
