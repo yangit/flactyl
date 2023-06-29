@@ -3,20 +3,6 @@ include <./config.scad>;
 // This function is limited to 11 elements!
 function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8], vec[9], vec[10], vec[11] ];
 
-module showVector(vector)
-// showVector(vector = [ 10, 10, 10 ]);
-{
-    start = [ 0, 0, 0 ];           // Starting point of the vector
-    length = norm(vector - start); // Length of the vector
-    x = vector[0];
-    y = vector[1];
-    z = vector[2];
-    b = acos(z / length); // inclination angle
-    c = atan2(y, x);      // azimuthal angle
-
-    rotate([ 0, b, c ]) cylinder(h = length, r = 0.2);
-    // % cube(vector); // corner of cube should coinciqde with end of cylin
-}
 // This function is limited to 11 elements!
 function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8], vec[9], vec[10], vec[11] ];
 
@@ -309,6 +295,47 @@ module thumb_pcb()
 module thumb_keys()
 {
     translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb_keycaps_round_dxf();
+}
+
+// THUMB3
+module thumb3_dxf()
+{
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_pcb_edgecut.dxf");
+}
+module thumb3_switch_cutouts_dxf()
+{
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_switch_cutouts.dxf");
+}
+module thumb3_screw_dxf()
+{
+    moveRotateTranslate(
+        [ [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 180, 180, 0 ] ], [ "t", [ 0, choc_key_y * 1.5, 0 ] ] ])
+        import("../../../production/pcbs/5.0/thumb3/thumb3_screw.dxf");
+}
+module thumb3_screw_holes_dxf()
+{
+    moveRotateTranslate(
+        [ [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 180, 180, 0 ] ], [ "t", [ 0, choc_key_y * 1.5, 0 ] ] ])
+        import("../../../production/pcbs/5.0/thumb3/thumb3_screw_holes.dxf");
+}
+module thumb3_keycaps_dxf()
+{
+    // bottom left corner
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_keycaps.dxf");
+}
+module thumb3_keycaps_round_dxf()
+{
+    // bottom left corner
+    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_keycaps_round.dxf");
+}
+module thumb3_pcb()
+{
+    color("lightgreen") linear_extrude(pcbAndHotswapThikness) thumb3_dxf();
+}
+
+module thumb3_keys()
+{
+    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb3_keycaps_round_dxf();
 }
 
 // NNANO

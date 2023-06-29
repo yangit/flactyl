@@ -3,20 +3,6 @@ include <./config.scad>;
 // This function is limited to 11 elements!
 function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8], vec[9], vec[10], vec[11] ];
 
-module showVector(vector)
-// showVector(vector = [ 10, 10, 10 ]);
-{
-    start = [ 0, 0, 0 ];           // Starting point of the vector
-    length = norm(vector - start); // Length of the vector
-    x = vector[0];
-    y = vector[1];
-    z = vector[2];
-    b = acos(z / length); // inclination angle
-    c = atan2(y, x);      // azimuthal angle
-
-    rotate([ 0, b, c ]) cylinder(h = length, r = 0.2);
-    // % cube(vector); // corner of cube should coinciqde with end of cylin
-}
 // This function is limited to 11 elements!
 function unshift(vec) = [ vec[1], vec[2], vec[3], vec[4], vec[5], vec[6], vec[7], vec[8], vec[9], vec[10], vec[11] ];
 

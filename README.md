@@ -49,8 +49,8 @@ I'd be happy to help!
 
 ## Cases
 
-There are 3 cases available:
-**Clay**, **Iceberg**, **Hitam**.
+There are 2 cases available:
+**Clay**, **Iceberg**.
 
 ### Clay
 
@@ -66,7 +66,6 @@ Consist of two pieces, you are supposed to put clay/play dough in it and see wha
 [<img src="./production/case/5.0/clay/case3.jpg" width="200px">](./production/case/5.0/clay/case3.jpg)
 [<img src="./production/case/5.0/clay/case4.jpg" width="200px">](./production/case/5.0/clay/case4.jpg)
 
-
 ### Iceberg
 
 Consists of single hollow box, switches are exposed on the sides.
@@ -81,12 +80,12 @@ Consists of single hollow box, switches are exposed on the sides.
 [<img src="./production/case/5.0/iceberg/variant2/case3.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case3.jpg)
 [<img src="./production/case/5.0/iceberg/variant2/case4.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case4.jpg)
 
-### Hitam
+<!-- ### Hitam
 
 (COMING SOON) pretty involved shape to cover all the keys from the sides as well.
 
 [<img src="./photos/cases/hitam1.png" width="200px">](./photos/cases/hitam1.png)
-[<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png)
+[<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png) -->
 
 Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
 
@@ -218,7 +217,6 @@ If you are looking to make any changes, go under `./ergogen/input` folder and ch
 - ABS plastic, the surface finish is not there. It should be painted or it is too rough. I do not like the resolution of the ABS FDM
 - SLA (resin) `LEDO 6060`: the plastic is very nice, white, finish is great, but it will [yellow significantly](./photos/parts/yellowing.jpg) if you expose it to the sunlight, my keyboard looks like that after 2 months on my desk and some direct summer sun. Notice how the inside did not yellow.
 - SLA (resin) `Black Resin`: it is very dark grey, satin, finish is very smooth, I like it.
-
 
 ### 3d design
 

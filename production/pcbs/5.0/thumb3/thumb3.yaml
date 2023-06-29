@@ -24,7 +24,8 @@ units:
   diode_y: -2.6
   mh_radius: 1.1
   connector_depth: 7
-  connector_extension_2: 4
+  connector_extension_2: 3
+  connector_thumb_width: 10
 points:
   key:
     padding: cy
@@ -43,12 +44,12 @@ outlines:
     - what: rectangle
       size:
         - connector_depth+connector_extension_2
-        - 22
+        - connector_thumb_width
       where:
         ref: main_C5_R1
         shift:
-          - '-cx/2+(connector_depth+connector_extension_2)/2'
-          - 0
+          - -3.5
+          - 4.5
   thumb3_switch_cutouts:
     - what: rectangle
       where: true
