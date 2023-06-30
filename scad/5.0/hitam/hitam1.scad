@@ -130,115 +130,117 @@ module thumb_keys()
 }
 module hitam()
 {
-
-    // left plate
-    render() difference()
+    color(caseColor) union()
     {
-        union()
+        // left plate
+        render() difference()
         {
-            cut3d([vTable]) moveRotateTranslate(vPcbMount) push(-caseThikness) left_caseWalls();
-            // add screw bumps
-            cut3d([vThumb180]) moveRotateTranslate(vPcbMount) push(-caseThikness - screwBumpSize) left_screw_dxf();
-        }
-        nice_nano_cutout();
-        thumb_slide_left_cutter();
-        // subtract left screw holes
-        moveRotateTranslate(vPcbMount) push(cutter, cutter) left_screw_holes_dxf();
-        thumb_pcbWell_cutter();
-        usbc_cutout();
-    }
-    // left keywell
-    render() difference()
-    {
-        cut3d([vTable]) moveRotateTranslate(vPcbMount) push(keysThikness + pcbAndHotswapThikness) difference()
-        {
-            left_caseWalls();
-            left_pcbWell();
-        };
-        thumb_pcbWell_cutter();
-        usbc_cutout();
-    }
-    // case base 90 from table
-    render() difference()
-    {
-        push(keysThikness + caseThikness) projection(cut = true) moveRotateTranslate([
-            [ "r", [ 0, tentingAngle, 0 ] ], [ "t", [ 0, 0, -caseThikness ] ], [ "r", [ 0, -tentingAngle, 0 ] ],
-            [ "t", [ 0, 0, -caseThikness - keysThikness ] ]
-        ]) rotate([ 0, tiltAngle - tentingAngle, 0 ]) cut3d([[[ "r", [ 0, 180 - tiltAngle, 0 ] ]]]) push(cutter, cutter)
-            rotate([ 0, -tiltAngle, 0 ]) left_caseWalls();
-        case_base_90_cutout();
-        case_base_tilted_cutout();
-    }
-    // case base tilted
-    render() difference()
-    {
-        color(caseColor) cut3d([[[ "t", [ 0, 0, keysThikness + caseThikness ] ]]]) moveRotateTranslate(
-            [ [ "r", [ 0, tentingAngle, 0 ] ], [ "t", [ 0, 0, -caseThikness ] ], [ "r", [ 0, -tentingAngle, 0 ] ] ])
-            rotate([ 0, tiltAngle - tentingAngle, 0 ]) cut3d([[[ "r", [ 0, 180 - tiltAngle, 0 ] ]]])
-                push(cutter, cutter) rotate([ 0, -tiltAngle, 0 ]) left_caseWalls();
-        case_base_tilted_cutout();
-        thumb_base_cutter();
-        thumb_pcbWell_cutter();
-        usbc_cutout();
-    }
-
-    // filler in the corner
-    render() cut3d([vPcb]) difference()
-    {
-        rotate([ 0, -90, 0 ]) push(-11) projection(cut = true) translate([ 0, 0, 10 ]) rotate([ 0, 90, 0 ])
-            push(keysThikness + caseThikness) left_caseWalls();
-        rotate([ 0, -90, 0 ]) push(-21) projection(cut = true) translate([ 0, 0, 10 ]) rotate([ 0, 90, 0 ])
-            push(keysThikness + caseThikness + 0.01, 0.01) left_pcbWell();
-    }
-    // thumb
-    render() difference()
-    {
-
-        union()
-        {
-            vThumbKeyWellCutter = invertPlane(concat(
-                // prepare
-                [[ "t", [ 0, 0, keysThikness + pcbAndHotswapThikness - 5 ] ]], [[ "r", [ 0, 80, -90 ] ]], ,
-                // rotation
-                sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
-                // translation
-                [[ "t", [ thumbXOffset, thumbYOffset, thumbZOffset ] ]]));
-            // thumb keywell
-            cut3d([vThumbKeyWellCutter]) moveRotateTranslate(vThumb) push(keysThikness + pcbAndHotswapThikness)
-                difference()
+            union()
             {
-                offset(wallOffsetFromPcb + caseThikness) thumb_dxf();
-                offset(wallOffsetFromPcb) thumb_dxf();
-            };
-            // thumb plate
-            difference()
-            {
-                moveRotateTranslate(vThumb) union()
-                {
-                    push(-caseThikness) offset(wallOffsetFromPcb + caseThikness) thumb_dxf();
-                    // screw bumps
-                    push(-caseThikness - screwBumpSize) thumb_screw_dxf();
-                }
-                nice_nano_cutout();
-
-                // thumb screw holes
-                moveRotateTranslate(vThumb) push(0.01, caseThikness + 0.01) thumb_screw_holes_dxf();
+                cut3d([vTable]) moveRotateTranslate(vPcbMount) push(-caseThikness) left_caseWalls();
+                // add screw bumps
+                cut3d([vThumb180]) moveRotateTranslate(vPcbMount) push(-caseThikness - screwBumpSize) left_screw_dxf();
             }
+            nice_nano_cutout();
+            thumb_slide_left_cutter();
+            // subtract left screw holes
+            moveRotateTranslate(vPcbMount) push(cutter, cutter) left_screw_holes_dxf();
+            thumb_pcbWell_cutter();
+            usbc_cutout();
         }
-        left_pcbWell_cutter();
-        thumb_slide_left_cutter();
-    }
-    // thumb base
-    render() difference()
-    {
-        cut3d([ vTable, vBack ]) moveRotateTranslate(vThumb) translate([ 0, 0, -caseThikness ])
-            cut3d([invertPlane(vTable)]) rotate([ 0, -thumbTiltAngle, 0 ]) push(cutter, cutter)
-                rotate([ 0, thumbTiltAngle, 0 ]) offset(wallOffsetFromPcb + caseThikness) thumb_dxf();
-        nice_nano_cutout();
-        left_pcbWell_cutter();
-        thumb_base_cutter();
-        case_base_90_cutout();
-        case_base_tilted_cutout();
+        // left keywell
+        render() difference()
+        {
+            cut3d([vTable]) moveRotateTranslate(vPcbMount) push(keysThikness + pcbAndHotswapThikness) difference()
+            {
+                left_caseWalls();
+                left_pcbWell();
+            };
+            thumb_pcbWell_cutter();
+            usbc_cutout();
+        }
+        // case base 90 from table
+        render() difference()
+        {
+            push(keysThikness + caseThikness) projection(cut = true) moveRotateTranslate([
+                [ "r", [ 0, tentingAngle, 0 ] ], [ "t", [ 0, 0, -caseThikness ] ], [ "r", [ 0, -tentingAngle, 0 ] ],
+                [ "t", [ 0, 0, -caseThikness - keysThikness ] ]
+            ]) rotate([ 0, tiltAngle - tentingAngle, 0 ]) cut3d([[[ "r", [ 0, 180 - tiltAngle, 0 ] ]]])
+                push(cutter, cutter) rotate([ 0, -tiltAngle, 0 ]) left_caseWalls();
+            case_base_90_cutout();
+            case_base_tilted_cutout();
+        }
+        // case base tilted
+        render() difference()
+        {
+            color(caseColor) cut3d([[[ "t", [ 0, 0, keysThikness + caseThikness ] ]]]) moveRotateTranslate(
+                [ [ "r", [ 0, tentingAngle, 0 ] ], [ "t", [ 0, 0, -caseThikness ] ], [ "r", [ 0, -tentingAngle, 0 ] ] ])
+                rotate([ 0, tiltAngle - tentingAngle, 0 ]) cut3d([[[ "r", [ 0, 180 - tiltAngle, 0 ] ]]])
+                    push(cutter, cutter) rotate([ 0, -tiltAngle, 0 ]) left_caseWalls();
+            case_base_tilted_cutout();
+            thumb_base_cutter();
+            thumb_pcbWell_cutter();
+            usbc_cutout();
+        }
+
+        // filler in the corner
+        render() cut3d([vPcb]) difference()
+        {
+            rotate([ 0, -90, 0 ]) push(-11) projection(cut = true) translate([ 0, 0, 10 ]) rotate([ 0, 90, 0 ])
+                push(keysThikness + caseThikness) left_caseWalls();
+            rotate([ 0, -90, 0 ]) push(-21) projection(cut = true) translate([ 0, 0, 10 ]) rotate([ 0, 90, 0 ])
+                push(keysThikness + caseThikness + 0.01, 0.01) left_pcbWell();
+        }
+        // thumb
+        render() difference()
+        {
+
+            union()
+            {
+                vThumbKeyWellCutter = invertPlane(concat(
+                    // prepare
+                    [[ "t", [ 0, 0, keysThikness + pcbAndHotswapThikness - 5 ] ]], [[ "r", [ 0, 80, -90 ] ]], ,
+                    // rotation
+                    sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
+                    // translation
+                    [[ "t", [ thumbXOffset, thumbYOffset, thumbZOffset ] ]]));
+                // thumb keywell
+                cut3d([vThumbKeyWellCutter]) moveRotateTranslate(vThumb) push(keysThikness + pcbAndHotswapThikness)
+                    difference()
+                {
+                    offset(wallOffsetFromPcb + caseThikness) thumb_dxf();
+                    offset(wallOffsetFromPcb) thumb_dxf();
+                };
+                // thumb plate
+                difference()
+                {
+                    moveRotateTranslate(vThumb) union()
+                    {
+                        push(-caseThikness) offset(wallOffsetFromPcb + caseThikness) thumb_dxf();
+                        // screw bumps
+                        push(-caseThikness - screwBumpSize) thumb_screw_dxf();
+                    }
+                    nice_nano_cutout();
+
+                    // thumb screw holes
+                    moveRotateTranslate(vThumb) push(0.01, caseThikness + 0.01) thumb_screw_holes_dxf();
+                }
+            }
+            left_pcbWell_cutter();
+            thumb_slide_left_cutter();
+        }
+        // thumb base
+        render() difference()
+        {
+            cut3d([ vTable, vBack ]) moveRotateTranslate(vThumb) translate([ 0, 0, -caseThikness ])
+                cut3d([invertPlane(vTable)]) rotate([ 0, -thumbTiltAngle, 0 ]) push(cutter, cutter)
+                    rotate([ 0, thumbTiltAngle, 0 ]) offset(wallOffsetFromPcb + caseThikness) thumb_dxf();
+            nice_nano_cutout();
+            left_pcbWell_cutter();
+            thumb_base_cutter();
+            case_base_90_cutout();
+            case_base_tilted_cutout();
+        }
     }
 }
 // Some export magic, look into ./build.sh
@@ -249,9 +251,7 @@ if (PARTNO == undef)
     hitam();
     moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() nice_nano();
     color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
-    // color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
     color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
-    // color(keysColor) moveRotateTranslate(vThumb) thumb_keys();
 }
 else
 {
@@ -263,8 +263,8 @@ else
     if (KEYS == true)
     {
         color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
-        color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
+        left_keys();
+        thumb_keys();
         color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
-        color(keysColor) moveRotateTranslate(vThumb) thumb_keys();
     }
 }
