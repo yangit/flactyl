@@ -1,0 +1,24 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,(7.0.0-0)*%
+%TF.CreationDate,2023-06-29T18:43:15+08:00*%
+%TF.ProjectId,cirque-connector,63697271-7565-42d6-936f-6e6e6563746f,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,NonPlated,1,2,NPTH,Drill*%
+%TF.FilePolarity,Positive*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW (7.0.0-0)) date 2023-06-29 18:43:15*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,ComponentDrill*%
+%ADD10C,2.200000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+%TO.C,REF\u002A\u002A*%
+X30000000Y-53000000D03*
+X30000000Y-83000000D03*
+X37000000Y-53000000D03*
+X37000000Y-83000000D03*
+M02*
