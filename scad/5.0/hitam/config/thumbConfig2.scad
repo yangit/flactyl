@@ -1,3 +1,5 @@
+thumbTiltAngle = 22;
+tiltAngle = 25;
 thumbXOffset = 49;
 thumbYOffset = 28;
 thumbZOffset = 71;
