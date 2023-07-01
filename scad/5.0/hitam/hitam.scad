@@ -1,42 +1,7 @@
 include <../library/config.scad>;
 include <../library/lib.scad>;
-include <./config/thumbConfig2.scad>;
-stagger_pinky = 0;
-stagger_ring = 17 + stagger_pinky;
-stagger_middle = 3 + stagger_ring;
-stagger_index = -6 + stagger_middle;
-stagger_index2 = -3 + stagger_index;
-rows = [ stagger_pinky, stagger_ring, stagger_middle, stagger_index, stagger_index2 ];
+include <./config/thumbConfig.scad>;
 
-vPcb = [[ "r", [ 0, 180 - tentingAngle, 0 ] ]];
-vPcbMount = invertPlane(vPcb);
-vTable = [];
-vFront = [ [ "t", [ 0, 0, -frontEdge ] ], [ "r", [ -90, 0, 0 ] ] ];
-vFront180 = invertPlane(vFront);
-vBack = [ [ "r", [ 90, 180 - tentingAngle, 0 ] ], [ "t", [ 0, 60, 0 ] ] ];
-// vBack2 = [ [ "r", [ 20, 10, 0 ] ], [ "t", [ -pcbWidth, 80, -68 ] ], [ "r", [ 90, 180 - tentingAngle, 0 ] ] ];
-
-vMagnetBack = [ [ "t", [ 0, 0, -caseThikness * 2 - magnetStripeWidth + frontEdge ] ], [ "r", [ 90, 0, 0 ] ] ];
-vMagnetBack180 = invertPlane(vMagnetBack);
-vMagnetTop = [ [ "t", [ 0, 0, -magnetStripeDepth - caseThikness ] ], [ "r", [ 0, 180, 0 ] ] ];
-vMagnetTop180 = invertPlane(vMagnetTop);
-vFar = [
-    [ "t", [ 0, 0, -100 ] ],
-    [ "r", [ 0, -110, -10 ] ],
-];
-vTop = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -pcbWidth - caseThikness, 0, 0 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
-// vTop2 = [ [ "r", [ 15, 100, 0 ] ], [ "t", [ -pcbWidth, 60, 40 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
-vTop2 = [ [ "r", [ 35, 110, 10 ] ], [ "t", [ -pcbWidth, 60, 30 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
-// moveRotateTranslate(vTop2) showWall();
-vThumb = concat(
-    // prepare
-    [[ "r", [ 0, 90, -90 ] ]],
-    // rotation
-    sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
-    // translation
-    [[ "t", [ thumbXOffset, thumbYOffset, thumbZOffset ] ]]);
-
-vThumb180 = invertPlane(vThumb);
 module left_pcbWell()
 {
     offset(wallOffsetFromPcb) union()
@@ -101,33 +66,7 @@ module usbc_cutout()
         offset(delta = wallOffsetFromConnector + 0.1) hull() projection(cut = true) translate(v = [ 0, 0, 32.5 ])
             rotate([ 0, 90, 0 ]) nice_nano();
 }
-module left_keys()
-{
-    for (row = [0:4])
-    {
-        for (i = [0:2])
-        {
-            color("white") moveRotateTranslate(
-                concat([ [ "r", [ 0, 0, 90 ] ], [ "t", [ 7 + row * 18, 8.5 + rows[row] + i * 17, 3 ] ] ], vPcbMount))
 
-                import("../shared-3d-models/choc-hot.3mf");
-        }
-    }
-}
-module thumb_keys()
-{
-
-    for (row = [0:1])
-    {
-        for (i = [0:2])
-        {
-            color("white") moveRotateTranslate(
-                concat([ [ "r", [ 0, 0, 90 ] ], [ "t", [ 9 + row * 18, 8.5 + i * 17, 3 ] ] ], vThumb))
-
-                import("../shared-3d-models/choc-hot.3mf");
-        }
-    }
-}
 module hitam()
 {
     color(caseColor) union()
@@ -259,12 +198,4 @@ else
         hitam();
     if (PARTNO == "right")
         mirror([ 1, 0, 0 ]) hitam();
-
-    if (KEYS == true)
-    {
-        color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
-        left_keys();
-        thumb_keys();
-        color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
-    }
 }

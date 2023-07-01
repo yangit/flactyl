@@ -244,12 +244,24 @@ module left_screw_holes_dxf()
 }
 module left_pcb()
 {
-    color(pcbColor) linear_extrude(pcbAndHotswapThikness) left_pcb_dxf();
+    color(pcbColor) render() linear_extrude(pcbAndHotswapThikness) left_pcb_dxf();
 }
 
 module left_keys()
 {
-    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) left_keycaps_round_dxf();
+    color("white")
+    {
+        for (row = [0:4])
+        {
+            for (i = [0:2])
+            {
+                moveRotateTranslate(
+                    concat([ [ "r", [ 0, 0, 90 ] ], [ "t", [ 7 + row * 18, 8.5 + rows[row] + i * 17, 3 ] ] ]))
+
+                    import("../shared-3d-models/choc-hot.3mf");
+            }
+        }
+    }
 }
 module left_case()
 {
@@ -289,12 +301,22 @@ module thumb_keycaps_round_dxf()
 }
 module thumb_pcb()
 {
-    color("lightgreen") linear_extrude(pcbAndHotswapThikness) thumb_dxf();
+    color("lightgreen") render() linear_extrude(pcbAndHotswapThikness) thumb_dxf();
 }
 
 module thumb_keys()
 {
-    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb_keycaps_round_dxf();
+    color("white")
+    {
+        for (row = [0:1])
+        {
+            for (i = [0:2])
+            {
+                moveRotateTranslate(concat([ [ "r", [ 0, 0, 90 ] ], [ "t", [ 9 + row * 18, 8.5 + i * 17, 3 ] ] ]))
+                    import("../shared-3d-models/choc-hot.3mf");
+            }
+        }
+    }
 }
 
 // THUMB3

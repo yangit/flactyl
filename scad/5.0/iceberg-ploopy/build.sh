@@ -12,13 +12,13 @@ do
     time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"right\" -o $EXPORTDIR/variant$i/right.stl $MODEL$i.scad
 
     # inside
-    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/variant$i/case1.png --imgsize=800,600 --camera=40,60,20,70,0,40,400 $MODEL$i.scad
+    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/variant$i/case1.png --imgsize=1600,1200 --camera=40,60,20,70,0,40,400 $MODEL$i.scad
     # inside with keys
-    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=true -o $EXPORTDIR/variant$i/case2.png --imgsize=800,600 --camera=40,60,20,70,0,40,400 $MODEL$i.scad
+    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=true -o $EXPORTDIR/variant$i/case2.png --imgsize=1600,1200 --camera=40,60,20,70,0,40,400 $MODEL$i.scad
     # outside
-    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/variant$i/case3.png --imgsize=800,600 --camera=80,60,20,70,0,-40,400 $MODEL$i.scad
+    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/variant$i/case3.png --imgsize=1600,1200 --camera=80,60,20,70,0,-40,400 $MODEL$i.scad
     # outside with keys
-    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=true -o $EXPORTDIR/variant$i/case4.png --imgsize=800,600 --camera=80,60,20,70,0,-40,400 $MODEL$i.scad
+    time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=true -o $EXPORTDIR/variant$i/case4.png --imgsize=1600,1200 --camera=80,60,20,70,0,-40,400 $MODEL$i.scad
 
     sips -s format jpeg $EXPORTDIR/variant$i/case1.png --out $EXPORTDIR/variant$i/case1.jpg
     sips -s format jpeg $EXPORTDIR/variant$i/case2.png --out $EXPORTDIR/variant$i/case2.jpg
