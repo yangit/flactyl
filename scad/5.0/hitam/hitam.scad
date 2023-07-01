@@ -67,6 +67,53 @@ module usbc_cutout()
             rotate([ 0, 90, 0 ]) nice_nano();
 }
 
+module magnetCutter()
+{
+    union()
+    {
+        moveRotateTranslate([[ "t", [ caseThikness, -wallOffsetFromPcb, 0 ] ]]) push(magnetStripeDepth, 0.01) union()
+        {
+            offset(rounding) offset(-1 * rounding) square([ farEdge - caseThikness * 2, magnetStripeWidth ]);
+            translate([ 0, rounding ]) square([ farEdge - caseThikness * 2, magnetStripeWidth - rounding ]);
+        }
+    }
+}
+module magnetHolder()
+{
+
+    color(caseColor) cut3d([vPcb]) difference()
+    {
+        moveRotateTranslate([[ "t", [ 0, -caseThikness - wallOffsetFromPcb, 0 ] ]])
+            push(caseThikness + magnetStripeDepth) union()
+        {
+            offset(rounding) offset(-1 * rounding) square([ farEdge, magnetStripeWidth + caseThikness * 2 ]);
+            translate([ 0, rounding ]) square([ farEdge, magnetStripeWidth + caseThikness * 2 - rounding ]);
+        }
+        magnetCutter();
+    }
+}
+
+module legs()
+{
+    for (i = legs)
+    {
+        // leg hole support
+        translate([ i[0], i[1] ]) push(caseThikness + legsInsideDepth + legRubberDepth)
+            circle(r = (legRubberDiameter + 3) / 2);
+    }
+}
+module legsCut()
+{
+    union()
+    {
+        // cut legs holes
+        for (i = legs)
+        {
+            translate([ i[0], i[1] ]) push(legRubberDepth, 0.01) circle(d = (legRubberDiameter + 1));
+        }
+    }
+}
+
 module hitam()
 {
     color(caseColor) union()
@@ -86,6 +133,7 @@ module hitam()
             moveRotateTranslate(vPcbMount) push(cutter, cutter) left_screw_holes_dxf();
             thumb_pcbWell_cutter();
             usbc_cutout();
+            legsCut();
         }
         // left keywell
         render() difference()
@@ -108,6 +156,8 @@ module hitam()
                 push(cutter, cutter) rotate([ 0, -tiltAngle, 0 ]) left_caseWalls();
             case_base_90_cutout();
             case_base_tilted_cutout();
+            magnetCutter();
+            legsCut();
         }
         // case base tilted
         render() difference()
@@ -129,6 +179,7 @@ module hitam()
                 push(keysThikness + caseThikness) left_caseWalls();
             rotate([ 0, -90, 0 ]) push(-21) projection(cut = true) translate([ 0, 0, 10 ]) rotate([ 0, 90, 0 ])
                 push(keysThikness + caseThikness + 0.01, 0.01) left_pcbWell();
+            legsCut();
         }
         // thumb
         render() difference()
@@ -180,6 +231,18 @@ module hitam()
             case_base_90_cutout();
             case_base_tilted_cutout();
         }
+        // magnet holder
+        render() difference()
+        {
+            magnetHolder();
+            legsCut();
+        }
+        // legs
+        color(caseColor) cut3d([vPcb]) difference()
+        {
+            legs();
+            legsCut();
+        }
     }
 }
 // Some export magic, look into ./build.sh
@@ -187,10 +250,10 @@ if (PARTNO == undef)
 {
     // the preview in openscad UI
     hitam();
-    color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
-    color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
-    moveRotateTranslate(vPcbMount) left_keys();
-    moveRotateTranslate(vThumb) thumb_keys();
+    // color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
+    // color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
+    // moveRotateTranslate(vPcbMount) left_keys();
+    // moveRotateTranslate(vThumb) thumb_keys();
     moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() nice_nano();
 }
 else

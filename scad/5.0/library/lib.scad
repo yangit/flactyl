@@ -254,9 +254,13 @@ module left_keys()
     {
         for (i = [0:2])
         {
-            moveRotateTranslate(
-                [[ "t", [ row * choc_key_x + choc_key_x / 2 - 2, rows[row] + i * choc_key_y + choc_key_y / 2, 0 ] ]])
-                choc();
+            moveRotateTranslate([[
+                "t",
+                [
+                    row * choc_key_x + choc_key_x / 2 - 2, rows[row] + i * choc_key_y + choc_key_y / 2,
+                    pcbAndHotswapThikness
+                ]
+            ]]) choc();
         }
     }
 }

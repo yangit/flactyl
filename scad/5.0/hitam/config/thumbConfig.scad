@@ -7,18 +7,21 @@ thumbXRotation = -20;
 thumbYRotation = 35;
 thumbZRotation = -10;
 frontEdge = 0;
+rounding = caseThikness + wallOffsetFromPcb + 1.5;
+farEdge = 95.3;
 version = "Ice v5.0 var2";
 legs = [
     // back left
-    [ 5, 69 - legRubberDiameter / 2 - caseThikness ],
+    [ 8, 72 - legRubberDiameter / 2 - caseThikness - wallOffsetFromPcb ],
     // front left
-    [ 5, 6 ],
+    [ 8, 5 ],
     // front right
-    [ 107 - legRubberDiameter / 2 - caseThikness, 8 ],
+    [ farEdge - legRubberDiameter / 2 - caseThikness - wallOffsetFromPcb, 13 ],
     // back right
-    [ 119 - legRubberDiameter / 2 - caseThikness, 68 - legRubberDiameter / 2 - caseThikness ],
-    // the 5th one
-    [ 62, 81 ]
+    [
+        farEdge - legRubberDiameter / 2 - caseThikness - wallOffsetFromPcb, 66 - legRubberDiameter / 2 - caseThikness -
+        wallOffsetFromPcb
+    ],
 ];
 
 vPcb = [[ "r", [ 0, 180 - tentingAngle, 0 ] ]];
