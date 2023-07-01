@@ -185,17 +185,23 @@ module hitam()
 // Some export magic, look into ./build.sh
 if (PARTNO == undef)
 {
-    left_keys();
-    thumb_keys();
+    // the preview in openscad UI
     hitam();
-    moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() nice_nano();
     color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
     color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
+    moveRotateTranslate(vPcbMount) left_keys();
+    moveRotateTranslate(vThumb) thumb_keys();
+    moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() nice_nano();
 }
 else
 {
+    // the build.sh file
     if (PARTNO == "left")
+    {
         hitam();
+    }
     if (PARTNO == "right")
+    {
         mirror([ 1, 0, 0 ]) hitam();
+    }
 }

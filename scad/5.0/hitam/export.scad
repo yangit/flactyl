@@ -11,6 +11,6 @@ if (KEYS == true)
 {
     moveRotateTranslate(vPcbMount) left_pcb();
     moveRotateTranslate(vPcbMount) left_keys();
-    moveRotateTranslate(vThumb) thumb_keys();
     moveRotateTranslate(vThumb) thumb_pcb();
+    moveRotateTranslate(vThumb) thumb_keys();
 }

@@ -244,22 +244,19 @@ module left_screw_holes_dxf()
 }
 module left_pcb()
 {
-    color(pcbColor) render() linear_extrude(pcbAndHotswapThikness) left_pcb_dxf();
+    color(pcbColor) render() translate([ 0, 0, hotSwapThikness ]) push(fr4thickness) left_pcb_dxf();
 }
 
 module left_keys()
 {
-    color("white")
-    {
-        for (row = [0:4])
-        {
-            for (i = [0:2])
-            {
-                moveRotateTranslate(
-                    concat([ [ "r", [ 0, 0, 90 ] ], [ "t", [ 7 + row * 18, 8.5 + rows[row] + i * 17, 3 ] ] ]))
 
-                    import("../shared-3d-models/choc-hot.3mf");
-            }
+    for (row = [0:4])
+    {
+        for (i = [0:2])
+        {
+            moveRotateTranslate(
+                [[ "t", [ row * choc_key_x + choc_key_x / 2 - 2, rows[row] + i * choc_key_y + choc_key_y / 2, 0 ] ]])
+                choc();
         }
     }
 }
@@ -301,19 +298,23 @@ module thumb_keycaps_round_dxf()
 }
 module thumb_pcb()
 {
-    color("lightgreen") render() linear_extrude(pcbAndHotswapThikness) thumb_dxf();
+    color("lightgreen") render() translate([ 0, 0, hotSwapThikness ]) push(fr4thickness) thumb_dxf();
 }
 
 module thumb_keys()
 {
-    color("white")
     {
         for (row = [0:1])
         {
             for (i = [0:2])
             {
-                moveRotateTranslate(concat([ [ "r", [ 0, 0, 90 ] ], [ "t", [ 9 + row * 18, 8.5 + i * 17, 3 ] ] ]))
-                    import("../shared-3d-models/choc-hot.3mf");
+                moveRotateTranslate([
+                    [ "r", [ 0, 0, 180 * (row - 1) ] ],
+                    [
+                        "t",
+                        [ row * choc_key_x + choc_key_x / 2, i * choc_key_y + choc_key_y / 2, pcbAndHotswapThikness ]
+                    ]
+                ]) choc();
             }
         }
     }
@@ -358,6 +359,19 @@ module thumb3_pcb()
 module thumb3_keys()
 {
     translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb3_keycaps_round_dxf();
+}
+// CHOC
+module choc()
+{
+    rotate([ 0, 0, 90 ]) union()
+    {
+        color("white") moveRotateTranslate([[ "t", [ 0, 0, 0 ] ]]) import("../shared-3d-models/choc_keycap.3mf");
+        color("lightgrey") moveRotateTranslate([[ "t", [ 2.7, 4.8, -2.2 ] ]])
+            import("../shared-3d-models/kailh_lp_choc_v1.3mf");
+        color("#696969") scale([ 1, 1, 0.675 ])
+            moveRotateTranslate([ [ "r", [ 90, 0, 90 ] ], [ "t", [ -6, 10, -2.55 ] ] ])
+                import("../shared-3d-models/pg1350_socket.3mf");
+    }
 }
 
 // NNANO
