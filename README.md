@@ -40,7 +40,8 @@ I'd be happy to help!
 ## Videos and links
 
 - Youtube video with detailed review is [here](https://www.youtube.com/watch?v=Pdhb9uNnzU0)
-- Short typing video [here](https://www.youtube.com/watch?v=eU5eg4PKMlQ)
+- Short [typing video](https://www.youtube.com/watch?v=eU5eg4PKMlQ)
+- 3d models can be [interactively rotated](https://yangit.github.io/flactyl/)
 - Video how to order 3d case from JLCPCB.com [here](https://www.youtube.com/watch?v=07qFKaykjfg)
 - Video how to order PCBs from JLCPCB.com [here](https://youtu.be/oP7d0jU99oc)
 - Reddit [thread](https://www.reddit.com/r/ErgoMechKeyboards/comments/13qep4y/after_4_year_lurking_and_2_years_building_my_own/)
