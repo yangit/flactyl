@@ -51,7 +51,8 @@ I'd be happy to help!
 ## Cases
 
 There are 3 cases available:
-**Clay**, **Iceberg**, **Hitam**
+**Clay**, **Iceberg**, **Hitam**  
+3d models can be [interactively rotated](https://yangit.github.io/flactyl/)
 
 ### Clay
 
