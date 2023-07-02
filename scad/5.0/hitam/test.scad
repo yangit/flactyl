@@ -1,9 +1,27 @@
 include <../library/config.scad>;
 include <../library/lib.scad>;
 include <./config/thumbConfig.scad>;
+// left_pcb();
+// left_keys();
+thumb_pcb();
+thumb_keys();
+thumb3_pcb();
+thumb3_keys();
 
-left_pcb();
-left_keys();
+union()
+{
+    // difference()
+    // {
+    //     push(-caseThikness) thumb_dxf();
+    //     push(0.01, caseThikness + 0.01) thumb_screw_holes_combined_dxf();
+    // }
+    push(-screwBumpSize - caseThikness) thumb_screw_combined_dxf();
+}
+
+//     // push(4, 3) thumb_screw_holes_dxf();
+//     // push(4, 3) thumb3_screw_holes_dxf();
+//     push(4, 3) thumb_screw_holes_combined_dxf();
+// }
 
 // intersection()
 // {

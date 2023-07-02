@@ -40,10 +40,3 @@ legsTotalThickness = caseThikness + legsInsideDepth + legRubberDepth;
 
 // case to case mounting
 screwHoleDiameter = 2.3;
-
-stagger_pinky = 0;
-stagger_ring = 17 + stagger_pinky;
-stagger_middle = 3 + stagger_ring;
-stagger_index = -6 + stagger_middle;
-stagger_index2 = -3 + stagger_index;
-rows = [ stagger_pinky, stagger_ring, stagger_middle, stagger_index, stagger_index2 ];

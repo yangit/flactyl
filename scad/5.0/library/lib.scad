@@ -247,20 +247,16 @@ module left_pcb()
     color(pcbColor) render() translate([ 0, 0, hotSwapThikness ]) push(fr4thickness) left_pcb_dxf();
 }
 
+include <../../../production/pcbs/5.0/left/left_config.scad>;
 module left_keys()
 {
-
-    for (row = [0:4])
+    translate([ choc_key_x / 2 - 2, choc_key_y / 2, 0 ])
     {
-        for (i = [0:2])
+        for (keyxy = left_keys_xy)
         {
-            moveRotateTranslate([[
-                "t",
-                [
-                    row * choc_key_x + choc_key_x / 2 - 2, rows[row] + i * choc_key_y + choc_key_y / 2,
-                    pcbAndHotswapThikness
-                ]
-            ]]) choc();
+            echo(msg = "keyxy", keyxy[0]);
+            moveRotateTranslate(
+                [ [ "r", [ 0, 0, keyxy[2] ] ], [ "t", [ keyxy[0], -keyxy[1], pcbAndHotswapThikness ] ] ]) choc();
         }
     }
 }
@@ -270,56 +266,53 @@ module left_case()
 }
 
 // THUMB
-moveThumbToCorner = [ "t", [ choc_key_x / 2, choc_key_y / 2, 0 ] ];
+// moveThumbToCorner = [ "t", [ choc_key_x / 2, choc_key_y / 2, 0 ] ];
+moveThumbToCorner =
+    [ [ "t", [ -choc_key_x * 1.5, -choc_key_y, 0 ] ], [ "r", [ 180, 180, 0 ] ], [ "t", [ 0, choc_key_y * 1.5, 0 ] ] ];
+moveThumb3ToCorner =
+    [ [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 180, 180, 0 ] ], [ "t", [ 0, choc_key_y * 1.5, 0 ] ] ];
 module thumb_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb/thumb_pcb_edgecut.dxf");
+    moveRotateTranslate(moveThumbToCorner) import("../../../production/pcbs/5.0/thumb/thumb_pcb_edgecut.dxf");
 }
 module thumb_switch_cutouts_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb/thumb_switch_cutouts.dxf");
+    moveRotateTranslate(moveThumbToCorner) import("../../../production/pcbs/5.0/thumb/thumb_switch_cutouts.dxf");
 }
 module thumb_screw_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb/thumb_screw.dxf");
+    moveRotateTranslate(moveThumbToCorner) import("../../../production/pcbs/5.0/thumb/thumb_screw.dxf");
 }
 module thumb_screw_holes_dxf()
 {
-    moveRotateTranslate([
-        [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 0, 180, 0 ] ],
-        [ "t", [ choc_key_x, choc_key_y * 1.5, 0 ] ]
-    ]) import("../../../production/pcbs/5.0/thumb/thumb_screw_holes.dxf");
+    moveRotateTranslate(moveThumbToCorner) import("../../../production/pcbs/5.0/thumb/thumb_screw_holes.dxf");
 }
 module thumb_keycaps_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb/thumb_keycaps.dxf");
+    moveRotateTranslate(moveThumbToCorner) import("../../../production/pcbs/5.0/thumb/thumb_keycaps.dxf");
 }
 module thumb_keycaps_round_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb/thumb_keycaps_round.dxf");
+    moveRotateTranslate(moveThumbToCorner) import("../../../production/pcbs/5.0/thumb/thumb_keycaps_round.dxf");
 }
 module thumb_pcb()
 {
     color("lightgreen") render() translate([ 0, 0, hotSwapThikness ]) push(fr4thickness) thumb_dxf();
 }
 
+include <../../../production/pcbs/5.0/thumb/thumb_config.scad>;
+
 module thumb_keys()
 {
+    moveRotateTranslate([ [ "r", [ 0, 0, 180 ] ], [ "t", [ choc_key_x * 1.5, choc_key_y / 2, 0 ] ] ])
     {
-        for (row = [0:1])
+        for (keyxy = thumb_keys_xy)
         {
-            for (i = [0:2])
-            {
-                moveRotateTranslate([
-                    [ "r", [ 0, 0, 180 * (row - 1) ] ],
-                    [
-                        "t",
-                        [ row * choc_key_x + choc_key_x / 2, i * choc_key_y + choc_key_y / 2, pcbAndHotswapThikness ]
-                    ]
-                ]) choc();
-            }
+            echo(msg = "keyxy", keyxy[0]);
+            moveRotateTranslate([ [ "r", [ 0, 0, keyxy[2] ] ], [ "t", [ keyxy[0], keyxy[1], pcbAndHotswapThikness ] ] ])
+                choc();
         }
     }
 }
@@ -327,43 +320,63 @@ module thumb_keys()
 // THUMB3
 module thumb3_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_pcb_edgecut.dxf");
+    moveRotateTranslate(moveThumb3ToCorner) import("../../../production/pcbs/5.0/thumb3/thumb3_pcb_edgecut.dxf");
 }
 module thumb3_switch_cutouts_dxf()
 {
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_switch_cutouts.dxf");
+    moveRotateTranslate(moveThumb3ToCorner) import("../../../production/pcbs/5.0/thumb3/thumb3_switch_cutouts.dxf");
 }
 module thumb3_screw_dxf()
 {
-    moveRotateTranslate(
-        [ [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 180, 180, 0 ] ], [ "t", [ 0, choc_key_y * 1.5, 0 ] ] ])
-        import("../../../production/pcbs/5.0/thumb3/thumb3_screw.dxf");
+    moveRotateTranslate(moveThumb3ToCorner) import("../../../production/pcbs/5.0/thumb3/thumb3_screw.dxf");
 }
 module thumb3_screw_holes_dxf()
 {
-    moveRotateTranslate(
-        [ [ "t", [ -choc_key_x / 2, -choc_key_y, 0 ] ], [ "r", [ 180, 180, 0 ] ], [ "t", [ 0, choc_key_y * 1.5, 0 ] ] ])
-        import("../../../production/pcbs/5.0/thumb3/thumb3_screw_holes.dxf");
+    moveRotateTranslate(moveThumb3ToCorner) import("../../../production/pcbs/5.0/thumb3/thumb3_screw_holes.dxf");
 }
 module thumb3_keycaps_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_keycaps.dxf");
+    moveRotateTranslate(moveThumb3ToCorner) import("../../../production/pcbs/5.0/thumb3/thumb3_keycaps.dxf");
 }
 module thumb3_keycaps_round_dxf()
 {
     // bottom left corner
-    moveRotateTranslate([moveThumbToCorner]) import("../../../production/pcbs/5.0/thumb3/thumb3_keycaps_round.dxf");
+    moveRotateTranslate(moveThumb3ToCorner) import("../../../production/pcbs/5.0/thumb3/thumb3_keycaps_round.dxf");
 }
+
+module thumb_screw_combined_dxf()
+{
+    thumb_screw_dxf();
+    thumb3_screw_dxf();
+}
+
+module thumb_screw_holes_combined_dxf()
+{
+    thumb_screw_holes_dxf();
+    thumb3_screw_holes_dxf();
+}
+
 module thumb3_pcb()
 {
-    color("lightgreen") linear_extrude(pcbAndHotswapThikness) thumb3_dxf();
+    color("lightgreen") render() translate([ 0, 0, hotSwapThikness ]) push(fr4thickness) thumb3_dxf();
 }
+
+include <../../../production/pcbs/5.0/thumb3/thumb3_config.scad>;
 
 module thumb3_keys()
 {
-    translate([ 0, 0, pcbAndHotswapThikness ]) color(keysColor) linear_extrude(keysThikness) thumb3_keycaps_round_dxf();
+    moveRotateTranslate([ [ "r", [ 0, 0, 180 ] ], [ "t", [ choc_key_x / 2, choc_key_y / 2, 0 ] ] ])
+    {
+        for (keyxy = thumb3_keys_xy)
+        {
+            echo(msg = "keyxy", keyxy[0]);
+            moveRotateTranslate([ [ "r", [ 0, 0, keyxy[2] ] ], [ "t", [ keyxy[0], keyxy[1], pcbAndHotswapThikness ] ] ])
+                choc();
+        }
+    }
 }
+
 // CHOC
 module choc()
 {

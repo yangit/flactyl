@@ -51,5 +51,16 @@ vThumb = concat(
     sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
     // translation
     [[ "t", [ thumbXOffset, thumbYOffset, thumbZOffset ] ]]);
+vThumbMirror = concat(
+    // a
+    [[ "t", [ 0, -51, 0 ] ]],
+    // b
+    [[ "r", [ 0, 90, -90 ] ]],
+    // c
+    sequenceRotateFn([ thumbXRotation, -thumbYRotation, -thumbZRotation ]),
+    // d
+    [[ "t", [ -thumbXOffset, thumbYOffset, thumbZOffset ] ]]
+
+);
 
 vThumb180 = invertPlane(vThumb);
