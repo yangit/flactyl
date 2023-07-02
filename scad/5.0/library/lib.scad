@@ -254,7 +254,6 @@ module left_keys()
     {
         for (keyxy = left_keys_xy)
         {
-            echo(msg = "keyxy", keyxy[0]);
             moveRotateTranslate(
                 [ [ "r", [ 0, 0, keyxy[2] ] ], [ "t", [ keyxy[0], -keyxy[1], pcbAndHotswapThikness ] ] ]) choc();
         }
@@ -310,7 +309,6 @@ module thumb_keys()
     {
         for (keyxy = thumb_keys_xy)
         {
-            echo(msg = "keyxy", keyxy[0]);
             moveRotateTranslate([ [ "r", [ 0, 0, keyxy[2] ] ], [ "t", [ keyxy[0], keyxy[1], pcbAndHotswapThikness ] ] ])
                 choc();
         }
@@ -370,7 +368,6 @@ module thumb3_keys()
     {
         for (keyxy = thumb3_keys_xy)
         {
-            echo(msg = "keyxy", keyxy[0]);
             moveRotateTranslate([ [ "r", [ 0, 0, keyxy[2] ] ], [ "t", [ keyxy[0], keyxy[1], pcbAndHotswapThikness ] ] ])
                 choc();
         }

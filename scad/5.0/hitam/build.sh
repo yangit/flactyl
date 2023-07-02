@@ -11,11 +11,11 @@ time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"right\" -o $E
 
 echo "Generating images";
 # inside
-time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/case1.png --imgsize=1600,1200 --camera=40,60,20,70,0,40,400 export.scad
+time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=false -o $EXPORTDIR/case1.png --imgsize=1600,1200 --camera=40,60,20,70,0,40,400 export.scad
 # inside with keys
 time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=true -o $EXPORTDIR/case2.png --imgsize=1600,1200 --camera=40,60,20,70,0,40,400 export.scad
 # outside
-time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/case3.png --imgsize=1600,1200 --camera=80,60,20,70,0,-40,400 export.scad
+time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=false -o $EXPORTDIR/case3.png --imgsize=1600,1200 --camera=80,60,20,70,0,-40,400 export.scad
 # outside with keys
 time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=true -o $EXPORTDIR/case4.png --imgsize=1600,1200 --camera=80,60,20,70,0,-40,400 export.scad
 

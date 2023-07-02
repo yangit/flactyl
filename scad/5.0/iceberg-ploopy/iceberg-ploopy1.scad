@@ -1,6 +1,6 @@
 include <../library/config.scad>;
 include <../library/lib.scad>;
-include <./config/thumbConfig2.scad>;
+include <./config/thumbConfig1.scad>;
 
 vPcb = [[ "r", [ 0, 180 - tentingAngle, 0 ] ]];
 vPcbMount = invertPlane(vPcb);
@@ -141,9 +141,9 @@ module iceberg()
                 translate(v = [ 0, 0, 32.5 ]) rotate([ 0, 90, 0 ]) nice_nano();
     }
 }
-module icebergMeta(mirror)
+module icebergMeta(mirrorCase)
 {
-    if (mirror == 1)
+    if (mirrorCase == 1)
     {
         union()
         {

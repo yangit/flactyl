@@ -7,13 +7,13 @@ time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"right\" -o $E
 time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"thumb\" -o $EXPORTDIR/thumb.stl clay.scad
 
 # inside
-time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/case1.png --imgsize=1600,1200 --camera=40,70,0,70,0,50,400 clay.scad
+time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=false -o $EXPORTDIR/case1.png --imgsize=1600,1200 --camera=40,70,0,70,0,50,400 clay.scad
 # inside with keys
 time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=true -o $EXPORTDIR/case2.png --imgsize=1600,1200 --camera=0,70,0,70,0,50,400 clay.scad
 # outside
-time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\" -o $EXPORTDIR/case3.png --imgsize=1600,1200 --camera=60,50,0,70,0,-40,400 clay.scad
+time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"left\"\;KEYS=false -o $EXPORTDIR/case3.png --imgsize=1600,1200 --camera=60,50,0,70,0,-40,400 clay.scad
 # thumb
-time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"thumb\" -o $EXPORTDIR/case4.png --imgsize=1600,1200 --camera=0,0,30,60,0,-40,200 clay.scad
+time /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD -DPARTNO=\"thumb\"\;KEYS=false -o $EXPORTDIR/case4.png --imgsize=1600,1200 --camera=0,0,30,60,0,-40,200 clay.scad
 
 sips -s format jpeg $EXPORTDIR/case1.png --out $EXPORTDIR/case1.jpg
 sips -s format jpeg $EXPORTDIR/case2.png --out $EXPORTDIR/case2.jpg

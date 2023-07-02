@@ -15,7 +15,7 @@ vMagnetBack180 = invertPlane(vMagnetBack);
 vMagnetTop = [ [ "t", [ 0, 0, -magnetStripeDepth - caseThikness ] ], [ "r", [ 0, 180, 0 ] ] ];
 vMagnetTop180 = invertPlane(vMagnetTop);
 vFar = [
-    [ "t", [ 0, 0, -103 ] ],
+    [ "t", [ 0, 0, -100 ] ],
     [ "r", [ 0, -110, -10 ] ],
 ];
 vTop = [ [ "r", [ 0, 90, 0 ] ], [ "t", [ -pcbWidth - caseThikness, 0, 0 ] ], [ "r", [ 0, 180 - tentingAngle, 0 ] ] ];
@@ -29,26 +29,6 @@ vThumb = concat(
     sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
     // translation
     [[ "t", [ thumbXOffset, thumbYOffset, thumbZOffset ] ]]);
-vThumbMirror = concat(
-    // a
-    [[ "t", [ 0, -51, 0 ] ]],
-    // b
-    [[ "r", [ 0, 90, -90 ] ]],
-    // c
-    sequenceRotateFn([ thumbXRotation, -thumbYRotation, -thumbZRotation ]),
-    // d
-    [[ "t", [ -thumbXOffset, thumbYOffset, thumbZOffset ] ]]
-
-);
-
-// vThumbMirrorUn = concat(
-//     // prepare
-//     [[ "r", [ 0, 90, -90 ] ]],
-//     // rotation
-//     sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
-//     // translation
-//     [[ "t", [ thumbXOffset, thumbYOffset, thumbZOffset ] ]]);
-
 vThumb180 = invertPlane(vThumb);
 
 module legs()
@@ -94,10 +74,10 @@ module iceberg()
             difference()
             {
                 // walls
-                box([ vPcb, vFar, vTop ], [ vFront, vThumb180, vMagnetTop180, vBack2, vBack, vTop2 ], caseThikness,
+                box([ vPcb, vFront, vFar, vTop, vThumb180 ], [ vMagnetTop180, vBack2, vBack, vTop2 ], caseThikness,
                     cutter);
                 // hole for thumb cluser
-                moveRotateTranslate(vThumb) push(cutter, cutter) thumb3_dxf();
+                moveRotateTranslate(vThumb) push(cutter, cutter) thumb_dxf();
             }
 
             // walls
@@ -110,24 +90,25 @@ module iceberg()
             union()
             {
                 // thumb cluster backplate
-                moveRotateTranslate(vThumb) push(-caseThikness) thumb3_dxf();
+                moveRotateTranslate(vThumb) push(-caseThikness) difference()
+                {
+                    thumb_dxf();
+                    thumb_screw_holes_dxf();
+                }
+                // screw bumps
+                moveRotateTranslate(vThumb) push(-1 * (caseThikness + screwBumpSize)) thumb_screw_dxf();
 
                 // walls under thumb cluster
                 cut3d([vFront180]) moveRotateTranslate(vThumb) push(-cutter) difference()
                 {
-                    thumb3_dxf();
-                    offset(-caseThikness) thumb3_dxf();
+                    thumb_dxf();
+                    offset(-caseThikness) thumb_dxf();
                 }
-                cut3d([ vFar, vPcb, vFront ]) moveRotateTranslate(vThumb) rotate([ -90, 0, 0 ]) push(-20) projection()
-                    rotate([ 90, 0, 0 ]) push(-caseThikness) thumb3_dxf();
-                cut3d([ vTop, vPcb ]) moveRotateTranslate(vThumb) rotate([ 0, -90, 0 ]) push(200) projection()
-                    rotate([ 0, 90, 0 ]) push(-caseThikness) thumb3_dxf();
             }
             magnetHolder();
             flatLegs();
             legs();
             moveRotateTranslate(vBack) push(caseThikness + 1) translate([ -60, 10, 0 ]) text(version, size = 4);
-            cut3d([vPcb]) tray();
         }
         legsCut();
         // nice nano cutout
@@ -141,96 +122,32 @@ module iceberg()
                 translate(v = [ 0, 0, 32.5 ]) rotate([ 0, 90, 0 ]) nice_nano();
     }
 }
-module icebergMeta(mirrorCase)
-{
-    if (mirrorCase == 1)
-    {
-        union()
-        {
-            difference()
-            {
-                mirror()
-                {
-                    color(caseColor) iceberg();
-                }
-                // screw holes
-                moveRotateTranslate(vThumbMirror) push(1, caseThikness + 0.01) thumb3_screw_holes_dxf();
-            }
 
-            // screw bumps
-            moveRotateTranslate(vThumbMirror) push(-1 * (caseThikness + screwBumpSize)) thumb3_screw_dxf();
-        }
-    }
-    else
-    {
-        union()
-        {
-            difference()
-            {
-                color(caseColor) iceberg();
-                // screw holes
-                moveRotateTranslate(vThumb) push(1, caseThikness + 0.01) thumb3_screw_holes_dxf();
-            }
-
-            // screw bumps
-            moveRotateTranslate(vThumb) push(-1 * (caseThikness + screwBumpSize)) thumb3_screw_dxf();
-        }
-    }
-}
-module ploopy()
-{
-    moveRotateTranslate([[ "r", [ 90, 0, 180 ] ]]) union()
-    {
-        moveRotateTranslate([[ "t", [ 32, 32, 30.5 ] ]]) color("red") sphere(38.1 / 2);
-        color("grey") import("../shared-3d-models/ploopy-nano/STLs/Bottom.stl");
-        color("grey") moveRotateTranslate([[ "t", [ -1.5, 10.5, -1 ] ]])
-            import("../shared-3d-models/ploopy-nano/STLs/Top.stl");
-    }
-}
-
-trayThickness = 2;
-trayWide = 80;
-trayDeep = 80;
-trayHigh = 20;
-module tray()
-{
-    translate([ trayXOffset - trayWide / 2, trayYOffset - trayDeep / 2, magnetStripeDepth ]) union()
-    {
-        difference()
-        {
-            cube([ trayWide + trayThickness * 2, trayDeep + trayThickness * 2, trayHigh + caseThikness - 0.1 ]);
-            translate([ trayThickness, trayThickness, caseThikness ]) cube([ trayWide, trayDeep, trayHigh ]);
-        }
-        translate([ 0, 0, -magnetStripeDepth ]) cube([ trayWide + trayThickness * 2, caseThikness, magnetStripeDepth ]);
-    }
-}
 // Some export magic, look into ./build.sh
 if (PARTNO == undef)
 {
     // vIce = [ [ "t", [ 48, 41, 0 ] ], [ "r", [ 0, -tentingAngle, 0 ] ] ];
     // // color("blue") moveRotateTranslate(vIce) import("../../production/case/iceberg/left.stl");
-    icebergMeta(0);
-    *moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() nice_nano();
+
+    color(caseColor) iceberg();
+    moveRotateTranslate(vPcbMount) nice_nano_mount_to_pcb() nice_nano();
     *color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
     *color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
-    *color(pcbColor) moveRotateTranslate(vThumb) thumb3_pcb();
-    *color(keysColor) moveRotateTranslate(vThumb) thumb3_keys();
-    *moveRotateTranslate([[ "t", [ -20, -trayDeep / 2 + 10 + trayYOffset, magnetStripeDepth + caseThikness ] ]])
-        ploopy();
+    *color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
+    *color(keysColor) moveRotateTranslate(vThumb) thumb_keys();
 }
 else
 {
     if (PARTNO == "left")
-        color(caseColor) icebergMeta(0);
-
+        color(caseColor) iceberg();
     if (PARTNO == "right")
-        color(caseColor) icebergMeta(1);
+        color(caseColor) mirror([ 1, 0, 0 ]) iceberg();
 
     if (KEYS == true)
     {
         color(pcbColor) moveRotateTranslate(vPcbMount) left_pcb();
         color(keysColor) moveRotateTranslate(vPcbMount) left_keys();
-        color(pcbColor) moveRotateTranslate(vThumb) thumb3_pcb();
-        color(keysColor) moveRotateTranslate(vThumb) thumb3_keys();
+        color(pcbColor) moveRotateTranslate(vThumb) thumb_pcb();
+        color(keysColor) moveRotateTranslate(vThumb) thumb_keys();
     }
 }
