@@ -226,7 +226,7 @@ module hitam()
             {
                 vThumbKeyWellCutter = invertPlane(concat(
                     // prepare
-                    [[ "t", [ 0, 0, keysThikness + pcbAndHotswapThikness - 5 ] ]], [[ "r", [ 0, 80, -90 ] ]], ,
+                    [[ "t", [ 0, 0, keysThikness + pcbAndHotswapThikness - 5 ] ]], [[ "r", [ 0, 80, -90 ] ]],
                     // rotation
                     sequenceRotateFn([ thumbXRotation, thumbYRotation, thumbZRotation ]),
                     // translation
