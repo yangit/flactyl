@@ -149,7 +149,7 @@ module icebergMeta(mirrorCase)
         {
             difference()
             {
-                mirror()
+                mirror([ 1, 0, 0 ])
                 {
                     color(caseColor) iceberg();
                 }

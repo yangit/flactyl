@@ -122,7 +122,7 @@ module hitamMirrorable(mirrorCase)
         {
             difference()
             {
-                mirror()
+                mirror([ 1, 0, 0 ])
                 {
                     hitam();
                 }

@@ -1,7 +1,8 @@
 #!/bin/bash
 MODEL=iceberg-ploopy
 # see [here](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/FAQ#How_can_I_export_multiple_parts_from_one_script?) to understand how it works
-EXPORTDIR=../../../production/case/5.0/$MODEL
+# EXPORTDIR=../../../production/case/5.0/$MODEL
+EXPORTDIR=./build
 
 sed -e "s/thumbConfig1.scad/thumbConfig2.scad/" ${MODEL}1.scad > ${MODEL}2.scad
 mkdir -p $EXPORTDIR/variant1
