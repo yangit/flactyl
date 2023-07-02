@@ -9,7 +9,7 @@ thumbZRotation = -10;
 frontEdge = 0;
 rounding = caseThikness + wallOffsetFromPcb + 1.5;
 farEdge = 95.3;
-version = "Ice v5.0 var2";
+version = "Hitam v5.0 var2";
 legs = [
     // back left
     [ 8, 72 - legRubberDiameter / 2 - caseThikness - wallOffsetFromPcb ],

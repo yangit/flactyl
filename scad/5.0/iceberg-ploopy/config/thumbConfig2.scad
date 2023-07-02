@@ -9,7 +9,7 @@ trayXOffset = 48;
 trayYOffset = -5;
 
 frontEdge = 0;
-version = "Ice v5.0 var2";
+version = "Ice Ploopy v5.0 var2";
 legs = [
     // back left
     [ 5, 69 - legRubberDiameter / 2 - caseThikness ],

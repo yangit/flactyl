@@ -80,7 +80,6 @@ module magnetCutter()
 }
 module magnetHolder()
 {
-
     color(caseColor) cut3d([vPcb]) difference()
     {
         moveRotateTranslate([[ "t", [ 0, -caseThikness - wallOffsetFromPcb, 0 ] ]])
@@ -154,6 +153,8 @@ module hitam()
 {
     color(caseColor) union()
     {
+        moveRotateTranslate(vPcbMount) translate([ 20, 62, 0 ]) rotate([ 180, 0, 0 ]) push(caseThikness + 1)
+            text(version, size = 4);
         // left plate
         render() difference()
         {
