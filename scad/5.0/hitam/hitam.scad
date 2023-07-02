@@ -114,6 +114,42 @@ module legsCut()
     }
 }
 
+module hitamMirrorable(mirrorCase)
+{
+    if (mirrorCase == 1)
+    {
+        color("caseColor") render() union()
+        {
+            difference()
+            {
+                mirror()
+                {
+                    hitam();
+                }
+                // screw holes
+                moveRotateTranslate(vThumbMirror) push(1, caseThikness + 0.01) thumb_screw_holes_dxf();
+            }
+
+            // screw bumps
+            moveRotateTranslate(vThumbMirror) push(-1 * (caseThikness + screwBumpSize)) thumb_screw_dxf();
+        }
+    }
+    else
+    {
+        color("caseColor") render() union()
+        {
+            difference()
+            {
+                hitam();
+                // screw holes
+                moveRotateTranslate(vThumb) push(1, caseThikness + 0.01) thumb_screw_holes_dxf();
+            }
+
+            // screw bumps
+            moveRotateTranslate(vThumb) push(-1 * (caseThikness + screwBumpSize)) thumb_screw_dxf();
+        }
+    }
+}
 module hitam()
 {
     color(caseColor) union()
@@ -207,13 +243,13 @@ module hitam()
                     moveRotateTranslate(vThumb) union()
                     {
                         push(-caseThikness) offset(wallOffsetFromPcb + caseThikness) thumb_dxf();
-                        // screw bumps
-                        push(-caseThikness - screwBumpSize) thumb_screw_dxf();
+                        // // screw bumps
+                        // push(-caseThikness - screwBumpSize) thumb_screw_dxf();
                     }
                     nice_nano_cutout();
 
                     // thumb screw holes
-                    moveRotateTranslate(vThumb) push(0.01, caseThikness + 0.01) thumb_screw_holes_dxf();
+                    // moveRotateTranslate(vThumb) push(0.01, caseThikness + 0.01) thumb_screw_holes_dxf();
                 }
             }
             left_pcbWell_cutter();
@@ -261,10 +297,10 @@ else
     // the build.sh file
     if (PARTNO == "left")
     {
-        hitam();
+        hitamMirrorable(0);
     }
     if (PARTNO == "right")
     {
-        mirror([ 1, 0, 0 ]) hitam();
+        hitamMirrorable(1);
     }
 }
