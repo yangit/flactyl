@@ -118,7 +118,7 @@ module hitamMirrorable(mirrorCase)
 {
     if (mirrorCase == 1)
     {
-        color("caseColor") render() union()
+        color(caseColor) render() union()
         {
             difference()
             {
@@ -136,7 +136,7 @@ module hitamMirrorable(mirrorCase)
     }
     else
     {
-        color("caseColor") render() union()
+        color(caseColor) render() union()
         {
             difference()
             {
