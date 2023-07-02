@@ -49,8 +49,8 @@ I'd be happy to help!
 
 ## Cases
 
-There are 2 cases available:
-**Clay**, **Iceberg**.
+There are 3 cases available:
+**Clay**, **Iceberg**, **Hitam**
 
 ### Clay
 
@@ -80,14 +80,14 @@ Consists of single hollow box, switches are exposed on the sides.
 [<img src="./production/case/5.0/iceberg/variant2/case3.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case3.jpg)
 [<img src="./production/case/5.0/iceberg/variant2/case4.jpg" width="200px">](./production/case/5.0/iceberg/variant2/case4.jpg)
 
-<!-- ### Hitam
+### Hitam
 
-(COMING SOON) pretty involved shape to cover all the keys from the sides as well.
+Pretty involved shape to cover all the keys from the sides as well.
 
-[<img src="./photos/cases/hitam1.png" width="200px">](./photos/cases/hitam1.png)
-[<img src="./photos/cases/hitam2.png" width="200px">](./photos/cases/hitam2.png) -->
-
-Look up `Videos` section of this readme to see how to order PCBs and 3d files from JLCPCB.com
+[<img src="./production/case/5.0/hitam/case1.jpg" width="200px">](./production/case/5.0/hitam/case1.jpg)
+[<img src="./production/case/5.0/hitam/case2.jpg" width="200px">](./production/case/5.0/hitam/case2.jpg)
+[<img src="./production/case/5.0/hitam/case3.jpg" width="200px">](./production/case/5.0/hitam/case3.jpg)
+[<img src="./production/case/5.0/hitam/case4.jpg" width="200px">](./production/case/5.0/hitam/case4.jpg)
 
 ## Customize case
 
