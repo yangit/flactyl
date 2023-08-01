@@ -1,0 +1,833 @@
+yanGenerator:
+  holes:
+    - ref: main_C3_R1
+      shift:
+        - (cx-5)*rR/2
+        - cy/2
+    - ref: main_C2_R0
+      shift:
+        - '-cx*rR/2'
+        - '-cy/2'
+    - ref: main_C2_R2
+      shift:
+        - '-cx*rR/2'
+        - '-cy/2'
+    - ref: main_C0_R0
+      shift:
+        - cx*rR/2
+        - cy/2
+    - ref: main_C0_R2
+      shift:
+        - cx*rR/2
+        - cy/2
+  keys:
+    - - C0_R0
+      - true
+    - - C0_R1
+      - true
+    - - C0_R2
+      - true
+    - - C1_R0
+      - true
+    - - C1_R1
+      - true
+    - - C1_R2
+      - true
+    - - C2_R0
+      - false
+    - - C2_R1
+      - true
+    - - C2_R2
+      - true
+    - - C3_R0
+      - false
+    - - C3_R1
+      - false
+    - - C3_R2
+      - true
+    - - C4_R2
+      - true
+units:
+  screw_nut_cutout: 3.1
+  screw_nut_cutout_l: 7
+  choc_cap_x: 18
+  choc_cap_y: 17
+  stagger_ring: cy
+  stagger_middle: 3
+  stagger_index: -6
+  stagger_index2: -3
+  switchCutoutForPrint: 13.8
+  batt_y_offset: -4
+  batt_x_offset: -4
+  slide_y_size: 12
+  smdbutton_offset_x: '-cx/2+4.5'
+  smdbutton_offset_y: '-cy/2+3'
+  nnano_offset: -10.5
+  diode_x: 3.6
+  diode_y: -2.6
+  jst5_y_offset: 5.5
+  jst5_x_offset: -4
+  pinky_cut: 2-cx
+  logox: 0.5
+  screw_ext_x: cx/2
+  nnano_y: 33+3
+  nnano_y_ext: 5
+  nnano_ext_x_shift: 0.5
+  nnano_x: 18+3
+  mh_radius: 1.1
+  connector_depth: 7
+  connector_extension: 8
+  connector_thumb_width: 10
+  rR: 1
+  fR: 0
+points:
+  key:
+    padding: cy
+    spread: cx
+  zones:
+    main:
+      rows:
+        R2: null
+        R1: null
+        R0: null
+      columns:
+        C0:
+          rows:
+            R2: null
+            R1: null
+            R0: null
+            R3: null
+        C1:
+          key:
+            stagger: stagger_ring
+        C2:
+          key:
+            stagger: stagger_middle
+        C3:
+          key:
+            stagger: stagger_index
+        C4:
+          key:
+            stagger: stagger_index2
+outlines:
+  _nnano_mount:
+    - what: circle
+      where:
+        ref: main_C4_R1
+        shift:
+          - 7.6
+          - -7.5
+      radius: 1
+  _nnano_ext:
+    - what: rectangle
+      where:
+        ref: main_C4_R1
+        shift:
+          - nnano_ext_x_shift*rR
+          - 13
+      size:
+        - nnano_x
+        - nnano_y+nnano_y_ext*2
+  _nnano:
+    - what: rectangle
+      where:
+        ref: main_C4_R1
+        shift:
+          - 0
+          - 8
+      size:
+        - nnano_x
+        - nnano_y
+  left_switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: switchCutoutForPrint
+      bound: false
+  left_keycaps:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - choc_cap_x
+        - choc_cap_y
+      bound: false
+  left_keycaps_round:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - choc_cap_x-0.5
+        - choc_cap_y-0.5
+      bound: false
+      fillet: 1.49
+  _batt:
+    - what: rectangle
+      size:
+        - connector_depth+connector_extension
+        - 7
+      where:
+        ref: main_C1_R2
+        shift:
+          - connector_extension*rR/2+batt_x_offset*rR
+          - batt_y_offset
+  _slide:
+    - what: rectangle
+      size:
+        - cx-2
+        - slide_y_size
+      where:
+        ref: main_C1_R1
+        shift:
+          - 0
+          - '-cy/2+slide_y_size/4'
+  _connector_thumb:
+    - what: rectangle
+      size:
+        - connector_depth+connector_extension
+        - connector_thumb_width
+      where:
+        ref: main_C2_R1
+        shift:
+          - connector_extension*rR/2+jst5_x_offset*rR
+          - '-jst5_y_offset'
+  _pinky_cut:
+    - what: rectangle
+      where:
+        ref: main_C0_R1
+        shift:
+          - pinky_cut*rR
+          - 0
+      size:
+        - cx
+        - 100
+  _perimeter:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - cx+4
+        - cy
+  _pcb_outline_raw:
+    - _perimeter
+    - '-_pinky_cut'
+  left_pcb_edgecut:
+    - what: outline
+      name: _pcb_outline_raw
+      fillet: 1.49
+  _pcb_outline_raw_with_keys:
+    - _perimeter
+    - '-_pinky_cut'
+    - left_keycaps
+  left_pcb_edgecut_with_keys:
+    - what: outline
+      name: _pcb_outline_raw_with_keys
+      fillet: 1.49
+  left_case_nano:
+    - left_pcb_edgecut
+    - '-_nnano_mount'
+  _gen_hole0:
+    - what: circle
+      where:
+        ref: main_C3_R1
+        shift:
+          - (cx-5)*rR/2
+          - cy/2
+      radius: mh_radius
+  _gen_hole0lr:
+    - what: rectangle
+      where:
+        ref: main_C3_R1
+        shift:
+          - (cx-5)*rR/2
+          - cy/2
+      size:
+        - screw_nut_cutout_l
+        - screw_nut_cutout_l
+  _gen_hole0sr:
+    - what: rectangle
+      where:
+        ref: main_C3_R1
+        shift:
+          - (cx-5)*rR/2
+          - cy/2
+      size:
+        - screw_nut_cutout
+        - screw_nut_cutout
+  _gen_hole1:
+    - what: circle
+      where:
+        ref: main_C2_R0
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      radius: mh_radius
+  _gen_hole1lr:
+    - what: rectangle
+      where:
+        ref: main_C2_R0
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      size:
+        - screw_nut_cutout_l
+        - screw_nut_cutout_l
+  _gen_hole1sr:
+    - what: rectangle
+      where:
+        ref: main_C2_R0
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      size:
+        - screw_nut_cutout
+        - screw_nut_cutout
+  _gen_hole2:
+    - what: circle
+      where:
+        ref: main_C2_R2
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      radius: mh_radius
+  _gen_hole2lr:
+    - what: rectangle
+      where:
+        ref: main_C2_R2
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      size:
+        - screw_nut_cutout_l
+        - screw_nut_cutout_l
+  _gen_hole2sr:
+    - what: rectangle
+      where:
+        ref: main_C2_R2
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      size:
+        - screw_nut_cutout
+        - screw_nut_cutout
+  _gen_hole3:
+    - what: circle
+      where:
+        ref: main_C0_R0
+        shift:
+          - cx*rR/2
+          - cy/2
+      radius: mh_radius
+  _gen_hole3lr:
+    - what: rectangle
+      where:
+        ref: main_C0_R0
+        shift:
+          - cx*rR/2
+          - cy/2
+      size:
+        - screw_nut_cutout_l
+        - screw_nut_cutout_l
+  _gen_hole3sr:
+    - what: rectangle
+      where:
+        ref: main_C0_R0
+        shift:
+          - cx*rR/2
+          - cy/2
+      size:
+        - screw_nut_cutout
+        - screw_nut_cutout
+  _gen_hole4:
+    - what: circle
+      where:
+        ref: main_C0_R2
+        shift:
+          - cx*rR/2
+          - cy/2
+      radius: mh_radius
+  _gen_hole4lr:
+    - what: rectangle
+      where:
+        ref: main_C0_R2
+        shift:
+          - cx*rR/2
+          - cy/2
+      size:
+        - screw_nut_cutout_l
+        - screw_nut_cutout_l
+  _gen_hole4sr:
+    - what: rectangle
+      where:
+        ref: main_C0_R2
+        shift:
+          - cx*rR/2
+          - cy/2
+      size:
+        - screw_nut_cutout
+        - screw_nut_cutout
+  left_case:
+    - left_pcb_edgecut
+    - '-_nnano_ext'
+    - '-_batt'
+    - '-_slide'
+    - '-_connector_thumb'
+    - '-_gen_hole0'
+    - '-_gen_hole1'
+    - '-_gen_hole2'
+    - '-_gen_hole3'
+    - '-_gen_hole4'
+  left_screw:
+    - _gen_hole0lr
+    - '-_gen_hole0sr'
+    - _gen_hole1lr
+    - '-_gen_hole1sr'
+    - _gen_hole2lr
+    - '-_gen_hole2sr'
+    - _gen_hole3lr
+    - '-_gen_hole3sr'
+    - _gen_hole4lr
+    - '-_gen_hole4sr'
+  left_screw_holes:
+    - _batt
+    - _slide
+    - _connector_thumb
+    - _gen_hole0
+    - _gen_hole1
+    - _gen_hole2
+    - _gen_hole3
+    - _gen_hole4
+pcbs:
+  left:
+    outlines:
+      pcb_edgecut:
+        outline: left_pcb_edgecut
+        layer: Edge.Cuts
+      case:
+        outline: left_case
+        layer: Eco1.User
+      keycaps:
+        outline: left_keycaps
+        layer: Eco2.User
+    footprints:
+      C4_R0:
+        what: f_choc
+        where:
+          ref: main_C4_R0
+        params:
+          from: C4
+          to: C4_R0D
+          label: C4_R0
+          hotswap: false
+      C4_R0diode:
+        what: f_diode
+        where:
+          ref: main_C4_R0
+          shift:
+            - diode_x
+            - diode_y
+        params:
+          from: C4_R0D
+          to: R0
+      C4_R1:
+        what: f_choc
+        where:
+          ref: main_C4_R1
+        params:
+          from: C4
+          to: C4_R1D
+          label: C4_R1
+          hotswap: false
+      C4_R1diode:
+        what: f_diode
+        where:
+          ref: main_C4_R1
+          shift:
+            - diode_x
+            - diode_y
+        params:
+          from: C4_R1D
+          to: R1
+      rotary:
+        what: f_rotary_button
+        where:
+          ref: main_C0_R3
+          shift:
+            - 0
+            - 0
+          rotate: 90
+        params:
+          from: C0
+          to: C0_R3D
+          A: P2
+          B: P3
+      rotaryDiode:
+        what: f_diode
+        where:
+          ref: main_C0_R3
+          shift:
+            - 4
+            - -3
+          rotate: 180
+        params:
+          from: C0_R3D
+          to: R3
+      slider:
+        what: f_top_slider
+        where:
+          ref: main_C1_R1
+          shift:
+            - 2.5*rR
+            - 2.75-rR-cy/2
+          rotate: fR
+        params:
+          one: RAW
+          two: BSLI
+          three: three
+      smdbutton:
+        what: f_smdbutton
+        where:
+          ref: main_C1_R1
+          shift:
+            - smdbutton_offset_x*rR
+            - smdbutton_offset_y
+          rotate: 90
+        params:
+          one: GND
+          two: RST
+      nicenano:
+        what: f_nicenano
+        where:
+          ref: main_C4_R0
+          shift:
+            - 0
+            - nnano_offset
+          rotate: -90
+        params:
+          side: B
+      batt:
+        what: f_jstsh2
+        where:
+          ref: main_C1_R2
+          shift:
+            - batt_x_offset*rR
+            - batt_y_offset
+          rotate: 270-fR
+        params:
+          pos: BSLI
+          neg: GND
+      connector_thumb:
+        what: f_jstsh5
+        where:
+          ref: main_C2_R1
+          shift:
+            - jst5_x_offset*rR
+            - '-jst5_y_offset'
+          rotate: 270+fR
+        params:
+          side: B
+      logo:
+        what: f_text
+        where:
+          ref: main_C2_R2
+          shift:
+            - logox*rR
+            - '-cy/2+1'
+        params:
+          text: Flactyl 5.1 (left)
+          side: F
+      _gen_hole0:
+        what: f_npth
+        where:
+          ref: main_C3_R1
+          shift:
+            - (cx-5)*rR/2
+            - cy/2
+      _gen_hole1:
+        what: f_npth
+        where:
+          ref: main_C2_R0
+          shift:
+            - '-cx*rR/2'
+            - '-cy/2'
+      _gen_hole2:
+        what: f_npth
+        where:
+          ref: main_C2_R2
+          shift:
+            - '-cx*rR/2'
+            - '-cy/2'
+      _gen_hole3:
+        what: f_npth
+        where:
+          ref: main_C0_R0
+          shift:
+            - cx*rR/2
+            - cy/2
+      _gen_hole4:
+        what: f_npth
+        where:
+          ref: main_C0_R2
+          shift:
+            - cx*rR/2
+            - cy/2
+      C0_R0:
+        what: f_choc
+        where:
+          ref: main_C0_R0
+          rotate: 180
+        params:
+          from: C0
+          to: C0_R0D
+          label: C0_R0
+      C0_R0diode:
+        what: f_diode
+        where:
+          ref: main_C0_R0
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C0_R0D
+          to: R0
+      C0_R1:
+        what: f_choc
+        where:
+          ref: main_C0_R1
+          rotate: 180
+        params:
+          from: C0
+          to: C0_R1D
+          label: C0_R1
+      C0_R1diode:
+        what: f_diode
+        where:
+          ref: main_C0_R1
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C0_R1D
+          to: R1
+      C0_R2:
+        what: f_choc
+        where:
+          ref: main_C0_R2
+          rotate: 180
+        params:
+          from: C0
+          to: C0_R2D
+          label: C0_R2
+      C0_R2diode:
+        what: f_diode
+        where:
+          ref: main_C0_R2
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C0_R2D
+          to: R2
+      C1_R0:
+        what: f_choc
+        where:
+          ref: main_C1_R0
+          rotate: 180
+        params:
+          from: C1
+          to: C1_R0D
+          label: C1_R0
+      C1_R0diode:
+        what: f_diode
+        where:
+          ref: main_C1_R0
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C1_R0D
+          to: R0
+      C1_R1:
+        what: f_choc
+        where:
+          ref: main_C1_R1
+          rotate: 180
+        params:
+          from: C1
+          to: C1_R1D
+          label: C1_R1
+      C1_R1diode:
+        what: f_diode
+        where:
+          ref: main_C1_R1
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C1_R1D
+          to: R1
+      C1_R2:
+        what: f_choc
+        where:
+          ref: main_C1_R2
+          rotate: 180
+        params:
+          from: C1
+          to: C1_R2D
+          label: C1_R2
+      C1_R2diode:
+        what: f_diode
+        where:
+          ref: main_C1_R2
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C1_R2D
+          to: R2
+      C2_R0:
+        what: f_choc
+        where:
+          ref: main_C2_R0
+          rotate: 0
+        params:
+          from: C2
+          to: C2_R0D
+          label: C2_R0
+      C2_R0diode:
+        what: f_diode
+        where:
+          ref: main_C2_R0
+          shift:
+            - diode_x
+            - diode_y
+          rotate: 0
+        params:
+          from: C2_R0D
+          to: R0
+      C2_R1:
+        what: f_choc
+        where:
+          ref: main_C2_R1
+          rotate: 180
+        params:
+          from: C2
+          to: C2_R1D
+          label: C2_R1
+      C2_R1diode:
+        what: f_diode
+        where:
+          ref: main_C2_R1
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C2_R1D
+          to: R1
+      C2_R2:
+        what: f_choc
+        where:
+          ref: main_C2_R2
+          rotate: 180
+        params:
+          from: C2
+          to: C2_R2D
+          label: C2_R2
+      C2_R2diode:
+        what: f_diode
+        where:
+          ref: main_C2_R2
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C2_R2D
+          to: R2
+      C3_R0:
+        what: f_choc
+        where:
+          ref: main_C3_R0
+          rotate: 0
+        params:
+          from: C3
+          to: C3_R0D
+          label: C3_R0
+      C3_R0diode:
+        what: f_diode
+        where:
+          ref: main_C3_R0
+          shift:
+            - diode_x
+            - diode_y
+          rotate: 0
+        params:
+          from: C3_R0D
+          to: R0
+      C3_R1:
+        what: f_choc
+        where:
+          ref: main_C3_R1
+          rotate: 0
+        params:
+          from: C3
+          to: C3_R1D
+          label: C3_R1
+      C3_R1diode:
+        what: f_diode
+        where:
+          ref: main_C3_R1
+          shift:
+            - diode_x
+            - diode_y
+          rotate: 0
+        params:
+          from: C3_R1D
+          to: R1
+      C3_R2:
+        what: f_choc
+        where:
+          ref: main_C3_R2
+          rotate: 180
+        params:
+          from: C3
+          to: C3_R2D
+          label: C3_R2
+      C3_R2diode:
+        what: f_diode
+        where:
+          ref: main_C3_R2
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C3_R2D
+          to: R2
+      C4_R2:
+        what: f_choc
+        where:
+          ref: main_C4_R2
+          rotate: 180
+        params:
+          from: C4
+          to: C4_R2D
+          label: C4_R2
+      C4_R2diode:
+        what: f_diode
+        where:
+          ref: main_C4_R2
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C4_R2D
+          to: R2

@@ -1,0 +1,278 @@
+yanGenerator:
+  holes:
+    - ref: main_C5_R2
+      shift:
+        - -5
+        - cy/2
+    - ref: main_C5_R1
+      shift:
+        - 5
+        - cy/2
+  keys:
+    - - C5_R0
+      - true
+    - - C5_R1
+      - false
+    - - C5_R2
+      - false
+units:
+  screw_nut_cutout: 3.1
+  screw_nut_cutout_l: 7
+  choc_cap_x: 18
+  choc_cap_y: 17
+  diode_x: 3.6
+  diode_y: -2.6
+  mh_radius: 1.1
+  connector_depth: 7
+  connector_extension_2: 3
+  connector_thumb_width: 10
+points:
+  key:
+    padding: cy
+    spread: cx
+  zones:
+    main:
+      rotate: 0
+      rows:
+        R2: null
+        R1: null
+        R0: null
+      columns:
+        C5: null
+outlines:
+  _connector_thumb:
+    - what: rectangle
+      size:
+        - connector_depth+connector_extension_2
+        - connector_thumb_width
+      where:
+        ref: main_C5_R1
+        shift:
+          - -3.5
+          - 4.5
+  thumb3_switch_cutouts:
+    - what: rectangle
+      where: true
+      size: 14
+  thumb3_keycaps:
+    - what: rectangle
+      where: true
+      size:
+        - choc_cap_x
+        - choc_cap_y
+  thumb3_keycaps_round:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - choc_cap_x-0.5
+        - choc_cap_y-0.5
+      bound: false
+      fillet: 1.49
+  thumb3_pcb_edgecut:
+    - what: rectangle
+      where: true
+      size:
+        - cx+2
+        - cy
+      fillet: 1.5
+  _gen_hole0:
+    - what: circle
+      where:
+        ref: main_C5_R2
+        shift:
+          - -5
+          - cy/2
+      radius: mh_radius
+  _gen_hole0lr:
+    - what: rectangle
+      where:
+        ref: main_C5_R2
+        shift:
+          - -5
+          - cy/2
+      size:
+        - screw_nut_cutout_l
+        - screw_nut_cutout_l
+  _gen_hole0sr:
+    - what: rectangle
+      where:
+        ref: main_C5_R2
+        shift:
+          - -5
+          - cy/2
+      size:
+        - screw_nut_cutout
+        - screw_nut_cutout
+  _gen_hole1:
+    - what: circle
+      where:
+        ref: main_C5_R1
+        shift:
+          - 5
+          - cy/2
+      radius: mh_radius
+  _gen_hole1lr:
+    - what: rectangle
+      where:
+        ref: main_C5_R1
+        shift:
+          - 5
+          - cy/2
+      size:
+        - screw_nut_cutout_l
+        - screw_nut_cutout_l
+  _gen_hole1sr:
+    - what: rectangle
+      where:
+        ref: main_C5_R1
+        shift:
+          - 5
+          - cy/2
+      size:
+        - screw_nut_cutout
+        - screw_nut_cutout
+  thumb3_case:
+    - thumb3_pcb_edgecut
+    - '-_connector_thumb'
+    - '-_gen_hole0'
+    - '-_gen_hole1'
+  thumb3_screw:
+    - _gen_hole0lr
+    - '-_gen_hole0sr'
+    - _gen_hole1lr
+    - '-_gen_hole1sr'
+  thumb3_screw_holes:
+    - _connector_thumb
+    - _gen_hole0
+    - _gen_hole1
+pcbs:
+  thumb3:
+    outlines:
+      pcb_edgecut:
+        outline: thumb3_pcb_edgecut
+        layer: Edge.Cuts
+      case:
+        outline: thumb3_case
+        layer: Eco1.User
+      keycaps:
+        outline: thumb3_keycaps
+        layer: Eco2.User
+    footprints:
+      connector_thumb:
+        what: f_jstsh5
+        where:
+          ref: main_C5_R1
+          shift:
+            - -5
+            - 4.5
+          rotate: 270
+        params:
+          side: B
+      logo:
+        what: f_text
+        where:
+          ref: main_C5_R1
+          shift:
+            - cx/2-1.5
+            - 0
+          rotate: 270
+        params:
+          text: Flactyl 5.1 (thumb3)
+          side: F
+      x:
+        what: f_text
+        where:
+          ref: main_C5_R0
+          shift:
+            - 20
+            - 0
+        params:
+          text: x
+          side: F
+          layer: Fab
+      'y':
+        what: f_text
+        where:
+          ref: main_C5_R0
+          shift:
+            - 0
+            - 20
+        params:
+          text: 'y'
+          side: F
+          layer: Fab
+      _gen_hole0:
+        what: f_npth
+        where:
+          ref: main_C5_R2
+          shift:
+            - -5
+            - cy/2
+      _gen_hole1:
+        what: f_npth
+        where:
+          ref: main_C5_R1
+          shift:
+            - 5
+            - cy/2
+      C5_R0:
+        what: f_choc
+        where:
+          ref: main_C5_R0
+          rotate: 180
+        params:
+          from: C5
+          to: C5_R0D
+          label: C5_R0
+      C5_R0diode:
+        what: f_diode
+        where:
+          ref: main_C5_R0
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C5_R0D
+          to: R0
+      C5_R1:
+        what: f_choc
+        where:
+          ref: main_C5_R1
+          rotate: 0
+        params:
+          from: C5
+          to: C5_R1D
+          label: C5_R1
+      C5_R1diode:
+        what: f_diode
+        where:
+          ref: main_C5_R1
+          shift:
+            - diode_x
+            - diode_y
+          rotate: 0
+        params:
+          from: C5_R1D
+          to: R1
+      C5_R2:
+        what: f_choc
+        where:
+          ref: main_C5_R2
+          rotate: 0
+        params:
+          from: C5
+          to: C5_R2D
+          label: C5_R2
+      C5_R2diode:
+        what: f_diode
+        where:
+          ref: main_C5_R2
+          shift:
+            - diode_x
+            - diode_y
+          rotate: 0
+        params:
+          from: C5_R2D
+          to: R2

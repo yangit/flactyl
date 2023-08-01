@@ -1,0 +1,300 @@
+units:
+  choc_cap_x: 18
+  choc_cap_y: 17
+  diode_x: 3.6
+  diode_y: -2.6
+points:
+  key:
+    padding: cy
+    spread: cx
+  zones:
+    main:
+      rows:
+        R3: null
+        R2: null
+        R1: null
+        R0: null
+      columns:
+        C0: null
+        C1: null
+        C2: null
+        C3: null
+        C4: null
+        C5: null
+outlines:
+  _connector_thumb:
+    - what: rectangle
+      size:
+        - 9
+        - 6
+      where:
+        ref: main_C0_R1
+        shift:
+          - 0
+          - 0
+  _batt:
+    - what: rectangle
+      size:
+        - 6
+        - 6
+      where:
+        ref: main_C1_R1
+        shift:
+          - 0
+          - 0
+  test_switch_cutouts:
+    - what: rectangle
+      where: true
+      size: 14
+  test_keycaps:
+    - what: rectangle
+      where: true
+      size:
+        - choc_cap_x
+        - choc_cap_y
+  test_pcb_edgecut:
+    - what: rectangle
+      where: true
+      size:
+        - cx
+        - cy
+      fillet: 1.5
+  test_case:
+    - test_pcb_edgecut
+    - '-_connector_thumb'
+    - '-_batt'
+pcbs:
+  test:
+    outlines:
+      pcb_edgecut:
+        outline: test_pcb_edgecut
+        layer: Edge.Cuts
+      case:
+        outline: test_case
+        layer: Eco1.User
+      keycaps:
+        outline: test_keycaps
+        layer: Eco2.User
+    footprints:
+      D1:
+        what: f_diode
+        where:
+          ref: main_C0_R0
+          rotate: 0
+        params:
+          from: f
+          to: t
+      D2:
+        what: f_diode
+        where:
+          ref: main_C0_R1
+          rotate: 90
+        params:
+          from: f
+          to: t
+      D3:
+        what: f_diode
+        where:
+          ref: main_C0_R2
+          rotate: 180
+        params:
+          from: f
+          to: t
+      D4:
+        what: f_diode
+        where:
+          ref: main_C0_R3
+          rotate: 270
+        params:
+          from: f
+          to: t
+      TH1:
+        what: f_jstsh5
+        where:
+          ref: main_C1_R0
+          rotate: 0
+        params:
+          side: B
+      TH2:
+        what: f_jstsh5
+        where:
+          ref: main_C1_R1
+          rotate: 90
+        params:
+          side: B
+      TH3:
+        what: f_jstsh5
+        where:
+          ref: main_C1_R2
+          rotate: 180
+        params:
+          side: B
+      TH4:
+        what: f_jstsh5
+        where:
+          ref: main_C1_R3
+          rotate: 270
+        params:
+          side: B
+      B1:
+        what: f_jstsh2
+        where:
+          ref: main_C2_R0
+          rotate: 0
+        params:
+          pos: BSLI
+          neg: GND
+      B2:
+        what: f_jstsh2
+        where:
+          ref: main_C2_R1
+          rotate: 90
+        params:
+          pos: BSLI
+          neg: GND
+      B3:
+        what: f_jstsh2
+        where:
+          ref: main_C2_R2
+          rotate: 180
+        params:
+          pos: BSLI
+          neg: GND
+      B4:
+        what: f_jstsh2
+        where:
+          ref: main_C2_R3
+          rotate: 270
+        params:
+          pos: BSLI
+          neg: GND
+      SB1:
+        what: f_smdbutton
+        where:
+          ref: main_C3_R0
+          rotate: 0
+        params:
+          one: GND
+          two: RST
+      SB2:
+        what: f_smdbutton
+        where:
+          ref: main_C3_R1
+          rotate: 90
+        params:
+          one: GND
+          two: RST
+      SB3:
+        what: f_smdbutton
+        where:
+          ref: main_C3_R2
+          rotate: 180
+        params:
+          one: GND
+          two: RST
+      SB4:
+        what: f_smdbutton
+        where:
+          ref: main_C3_R3
+          rotate: 270
+        params:
+          one: GND
+          two: RST
+      slider1:
+        what: f_top_slider
+        where:
+          ref: main_C4_R0
+          rotate: 0
+        params:
+          one: RAW
+          two: BSLI
+          three: three
+      slider2:
+        what: f_top_slider
+        where:
+          ref: main_C4_R1
+          rotate: 90
+        params:
+          one: RAW
+          two: BSLI
+          three: three
+      slider3:
+        what: f_top_slider
+        where:
+          ref: main_C4_R2
+          rotate: 180
+        params:
+          one: RAW
+          two: BSLI
+          three: three
+      slider4:
+        what: f_top_slider
+        where:
+          ref: main_C4_R3
+          rotate: 270
+        params:
+          one: RAW
+          two: BSLI
+          three: thre
+      C5R0:
+        what: f_choc
+        where:
+          ref: main_C5_R0
+          rotate: 180
+        params:
+          from: C5
+          to: C5R0D
+          label: C5R0
+      C5R0diode:
+        what: f_diode
+        where:
+          ref: main_C5_R0
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 180
+        params:
+          from: C5R0D
+          to: R0
+      C5R1:
+        what: f_choc
+        where:
+          ref: main_C5_R1
+          rotate: 0
+        params:
+          from: C5
+          to: C5R1D
+          label: C5R1
+      C5R1diode:
+        what: f_diode
+        where:
+          ref: main_C5_R1
+          shift:
+            - '-diode_x'
+            - '-diode_y'
+          rotate: 0
+        params:
+          from: C5R1D
+          to: R1
+      x:
+        what: f_text
+        where:
+          ref: main_C0_R0
+          shift:
+            - 60
+            - 0
+        params:
+          text: x
+          side: F
+          layer: Fab
+      'y':
+        what: f_text
+        where:
+          ref: main_C0_R0
+          shift:
+            - 0
+            - 20
+        params:
+          text: 'y'
+          side: F
+          layer: Fab

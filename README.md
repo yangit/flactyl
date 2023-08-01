@@ -10,6 +10,10 @@ I'd be happy to help!
 
 ## Release notes
 
+### 5.1
+
+- Fix routes too close to mounting screw holes can be stripped if screw is overtightened
+
 ### 5.0
 
 - PCBs v4 are not compatible with case v5, connector cutout location have been changed
